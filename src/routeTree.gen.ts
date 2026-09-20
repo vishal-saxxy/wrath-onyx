@@ -10,33 +10,141 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as BrandSourceOfTruthRouteImport } from './routes/brand-source-of-truth'
+import { Route as FixesRouteImport } from './routes/fixes'
+import { Route as LibraryRouteImport } from './routes/library'
+import { Route as MeasurementRouteImport } from './routes/measurement'
+import { Route as WhoWeWorkWithRouteImport } from './routes/who-we-work-with'
+import { Route as WhyAiAnswersRouteImport } from './routes/why-ai-answers'
+import { Route as WorkRouteImport } from './routes/work'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BrandSourceOfTruthRoute = BrandSourceOfTruthRouteImport.update({
+  id: '/brand-source-of-truth',
+  path: '/brand-source-of-truth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FixesRoute = FixesRouteImport.update({
+  id: '/fixes',
+  path: '/fixes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LibraryRoute = LibraryRouteImport.update({
+  id: '/library',
+  path: '/library',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MeasurementRoute = MeasurementRouteImport.update({
+  id: '/measurement',
+  path: '/measurement',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WhoWeWorkWithRoute = WhoWeWorkWithRouteImport.update({
+  id: '/who-we-work-with',
+  path: '/who-we-work-with',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WhyAiAnswersRoute = WhyAiAnswersRouteImport.update({
+  id: '/why-ai-answers',
+  path: '/why-ai-answers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkRoute = WorkRouteImport.update({
+  id: '/work',
+  path: '/work',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/brand-source-of-truth': typeof BrandSourceOfTruthRoute
+  '/fixes': typeof FixesRoute
+  '/library': typeof LibraryRoute
+  '/measurement': typeof MeasurementRoute
+  '/who-we-work-with': typeof WhoWeWorkWithRoute
+  '/why-ai-answers': typeof WhyAiAnswersRoute
+  '/work': typeof WorkRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/brand-source-of-truth': typeof BrandSourceOfTruthRoute
+  '/fixes': typeof FixesRoute
+  '/library': typeof LibraryRoute
+  '/measurement': typeof MeasurementRoute
+  '/who-we-work-with': typeof WhoWeWorkWithRoute
+  '/why-ai-answers': typeof WhyAiAnswersRoute
+  '/work': typeof WorkRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/brand-source-of-truth': typeof BrandSourceOfTruthRoute
+  '/fixes': typeof FixesRoute
+  '/library': typeof LibraryRoute
+  '/measurement': typeof MeasurementRoute
+  '/who-we-work-with': typeof WhoWeWorkWithRoute
+  '/why-ai-answers': typeof WhyAiAnswersRoute
+  '/work': typeof WorkRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/brand-source-of-truth'
+    | '/fixes'
+    | '/library'
+    | '/measurement'
+    | '/who-we-work-with'
+    | '/why-ai-answers'
+    | '/work'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/brand-source-of-truth'
+    | '/fixes'
+    | '/library'
+    | '/measurement'
+    | '/who-we-work-with'
+    | '/why-ai-answers'
+    | '/work'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/brand-source-of-truth'
+    | '/fixes'
+    | '/library'
+    | '/measurement'
+    | '/who-we-work-with'
+    | '/why-ai-answers'
+    | '/work'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  BrandSourceOfTruthRoute: typeof BrandSourceOfTruthRoute
+  FixesRoute: typeof FixesRoute
+  LibraryRoute: typeof LibraryRoute
+  MeasurementRoute: typeof MeasurementRoute
+  WhoWeWorkWithRoute: typeof WhoWeWorkWithRoute
+  WhyAiAnswersRoute: typeof WhyAiAnswersRoute
+  WorkRoute: typeof WorkRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +156,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/brand-source-of-truth': {
+      id: '/brand-source-of-truth'
+      path: '/brand-source-of-truth'
+      fullPath: '/brand-source-of-truth'
+      preLoaderRoute: typeof BrandSourceOfTruthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fixes': {
+      id: '/fixes'
+      path: '/fixes'
+      fullPath: '/fixes'
+      preLoaderRoute: typeof FixesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/library': {
+      id: '/library'
+      path: '/library'
+      fullPath: '/library'
+      preLoaderRoute: typeof LibraryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/measurement': {
+      id: '/measurement'
+      path: '/measurement'
+      fullPath: '/measurement'
+      preLoaderRoute: typeof MeasurementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/who-we-work-with': {
+      id: '/who-we-work-with'
+      path: '/who-we-work-with'
+      fullPath: '/who-we-work-with'
+      preLoaderRoute: typeof WhoWeWorkWithRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/why-ai-answers': {
+      id: '/why-ai-answers'
+      path: '/why-ai-answers'
+      fullPath: '/why-ai-answers'
+      preLoaderRoute: typeof WhyAiAnswersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/work': {
+      id: '/work'
+      path: '/work'
+      fullPath: '/work'
+      preLoaderRoute: typeof WorkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  BrandSourceOfTruthRoute: BrandSourceOfTruthRoute,
+  FixesRoute: FixesRoute,
+  LibraryRoute: LibraryRoute,
+  MeasurementRoute: MeasurementRoute,
+  WhoWeWorkWithRoute: WhoWeWorkWithRoute,
+  WhyAiAnswersRoute: WhyAiAnswersRoute,
+  WorkRoute: WorkRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
