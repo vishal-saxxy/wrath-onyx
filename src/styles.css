@@ -114,6 +114,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .data-mono { font: 500 clamp(13px, 1.05vw, 15px)/1.2 "IBM Plex Mono", monospace; letter-spacing: 0; }
 .annotation { font: 500 22px/1.2 "Caveat", cursive; }
 .dark-band { --signal-blue: var(--signal-blue-dark); --signal-orange: var(--signal-orange-dark); --signal-green: var(--signal-green-dark); --signal-red: var(--signal-red-dark); --signal-blue-tint: color-mix(in srgb, var(--signal-blue) 10%, transparent); --signal-orange-tint: color-mix(in srgb, var(--signal-orange) 10%, transparent); --signal-green-tint: color-mix(in srgb, var(--signal-green) 10%, transparent); --signal-red-tint: color-mix(in srgb, var(--signal-red) 10%, transparent); color: var(--paper-raised); background: var(--ink); border-color: var(--hairline-dark); }
+.dark-band .button-primary { border-color: var(--paper-raised); background: var(--paper-raised); color: var(--ink); }
+.dark-band .button-secondary { border-color: var(--paper-raised); color: var(--paper-raised); }
+.dark-band .button-secondary:hover { background: var(--hairline-dark); }
 .layered-panel { position: relative; border: 1px solid var(--hairline); border-radius: 14px; background: var(--paper-raised); }
 .layered-panel::before { content: ""; position: absolute; inset: 8px -8px -8px 8px; z-index: -1; border: 1px solid var(--hairline); border-radius: 14px; background: var(--paper-dim); }
 .illustrative-label { position: absolute; top: 12px; right: 14px; color: var(--grey); font: 500 11px/1.2 "IBM Plex Mono", monospace; letter-spacing: .09em; text-transform: uppercase; }
