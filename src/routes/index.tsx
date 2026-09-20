@@ -233,7 +233,7 @@ function CloseBlock() {
   return <section className="home-band close-band">
     <BlockMark number={b.close.number}/>
     <div className="site-grid fit-zone"><div className="col-span-6"><BandHeader eyebrow={b.close.fitEyebrow} headline={<Headline lines={b.close.fitHeadline}/>} lead={null}/><TextLink label={b.close.link} to={b.close.linkHref}/></div><div className="col-start-8 col-span-5"><ul className="vertical-list">{verticalsWithIcons.map(([vertical, Icon]) => <li key={vertical}><Icon aria-hidden="true" focusable="false" size={20} strokeWidth={1.5}/><span>{vertical}</span></li>)}</ul><ul className="trigger-list">{b.close.triggers.map(trigger => <li key={trigger}><span aria-hidden="true"/>{trigger}</li>)}</ul></div></div>
-    <dl className="credibility-strip site-grid">{b.close.facts.map(fact => <div className="col-span-4" key={fact.label}><dt className="label-mono text-grey">{fact.label}</dt><dd>{fact.value}</dd></div>)}</dl>
+    <dl className="credibility-strip site-grid">{b.close.facts.map(fact => <div className="col-span-4" key={fact.value}>{fact.label ? <dt className="label-mono text-grey">{fact.label}</dt> : null}<dd>{fact.value}</dd></div>)}</dl>
     <div className="site-grid close-zone"><div className="col-start-3 col-span-8 close-copy"><h2 className="display-l">{b.close.headline}</h2><p className="lead">{b.close.lead}</p><div className="close-actions"><Button size="lg" asChild><a href={homepage.demoUrl} rel="noopener">{homepage.primaryCta}</a></Button><Button size="lg" variant="secondary" asChild><a href={homepage.demoUrl} rel="noopener">{homepage.secondaryCta}</a></Button></div></div><div className="col-start-5 col-span-4 close-answer" aria-hidden="true"><HeroAnswer quiet/></div></div>
   </section>;
 }
