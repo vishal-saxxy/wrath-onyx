@@ -2,15 +2,20 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState, type CSSProperties, type MouseEvent, type ReactNode } from "react";
 import {
   ArrowRight,
+  BarChart3,
   BookOpen,
   Building2,
+  ChevronUp,
   ChevronDown,
   Cloud,
+  FileText,
   GraduationCap,
   HeartPulse,
   Search,
   Send,
+  ShieldCheck,
   ShoppingBag,
+  Sparkles,
 } from "lucide-react";
 import { BandHeader } from "@/components/kasparro/components";
 import { iconMap, type IconName } from "@/components/kasparro/icon-map";
@@ -61,16 +66,22 @@ function IllustrativeLabel() {
   return <span className="illustrative-label">{illustrative.illustrativeLabel}</span>;
 }
 
-function HeroAnswer({ quiet = false, activeBrand, onBrand, sourceActive, onSource }: { quiet?: boolean; activeBrand?: string | null; onBrand?: (brand: string) => void; sourceActive?: boolean; onSource?: () => void }) {
+function HeroAnswer({ quiet = false, featured = false, activeBrand, onBrand, sourceActive, onSource }: { quiet?: boolean; featured?: boolean; activeBrand?: string | null; onBrand?: (brand: string) => void; sourceActive?: boolean; onSource?: () => void }) {
   return <article className={`home-answer layered-panel ${quiet ? "home-answer-quiet" : ""} ${sourceActive ? "source-support-active" : ""}`}>
-    <header className="answer-heading"><span className="answer-dot"/><span>{illustrative.answerHeader}</span></header>
+    <header className="answer-heading">{featured ? <Sparkles className="answer-sparkle" aria-hidden="true" focusable="false" size={18} strokeWidth={1.5}/> : <span className="answer-dot"/>}<span>{illustrative.answerHeader}</span>{featured ? <ChevronUp className="answer-chevron" aria-hidden="true" focusable="false" size={18} strokeWidth={1.5}/> : null}</header>
     <div className="answer-sources"><span className="label-mono text-grey">{illustrative.sourceRowLabel}</span>{illustrative.sources.slice(0, 3).map(source => <button type="button" className={`source-chip motion-control ${sourceActive ? "is-active" : ""}`} key={source} onClick={onSource}>{source}</button>)}</div>
     <p className="body-copy answer-copy">{illustrative.answerBody}</p>
     <div className="answer-brand-list">
-      {illustrative.brands.map((brand, index) => <button type="button" className={`answer-brand-row motion-control ${activeBrand === brand ? "is-active" : ""}`} key={brand} onClick={() => onBrand?.(brand)}><span>{brand}</span>{!quiet && index === 3 ? <span className="missing-status-wrap"><span className="status-red label-mono">{b.hero.notMentioned}</span><span className="missing-panel label-mono">{b.hero.notMentionedDetail}</span></span> : null}</button>)}
+      {illustrative.brands.map((brand, index) => <button type="button" className={`answer-brand-row motion-control ${activeBrand === brand ? "is-active" : ""}`} key={brand} onClick={() => onBrand?.(brand)}><span>{brand}</span>{featured && index < 3 ? <span className="brand-dash" aria-hidden="true"/> : null}{!quiet && index === 3 ? <span className="missing-status-wrap"><span className="status-red label-mono">{b.hero.notMentioned}</span><span className="missing-panel label-mono">{b.hero.notMentionedDetail}</span></span> : null}</button>)}
     </div>
   </article>;
 }
+
+const heroFeatures = [
+  { first: "Real sources.", second: "Not guesses.", Icon: FileText, tone: "blue" },
+  { first: "Verifiable", second: "reasons.", Icon: ShieldCheck, tone: "green" },
+  { first: "Clear next", second: "steps.", Icon: BarChart3, tone: "blue" },
+] as const;
 
 function Homepage() {
   useHomepageMotion();
@@ -101,20 +112,26 @@ function HeroBlock() {
     <div className="site-grid hero-grid">
       <div className="col-span-5 hero-copy">
         <div className="label-mono text-grey">{b.hero.eyebrow}</div>
-        <h1 className="display-xl hero-title"><Headline lines={b.hero.headline}/></h1>
+        <h1 className="display-xl hero-title"><span className="block">{b.hero.headline[0]}</span><span className="block"><span className="hero-ai">{b.hero.headline[1].slice(0, 2)}</span>{b.hero.headline[1].slice(2)}</span></h1>
         <p className="lead hero-descriptor">{b.hero.descriptor}</p>
         <p className="body-copy hero-lead">{b.hero.lead}</p>
-        <div className="hero-actions"><Button size="lg" asChild><a href={homepage.demoUrl} rel="noopener">{homepage.primaryCta}</a></Button><Button size="lg" variant="secondary" asChild><a href={homepage.demoUrl} rel="noopener">{homepage.secondaryCta}</a></Button></div>
+        <div className="hero-actions"><Button size="lg" asChild><a href={homepage.demoUrl} rel="noopener">{homepage.primaryCta}<ArrowRight aria-hidden="true" focusable="false" size={16} strokeWidth={1.5}/></a></Button><Button size="lg" variant="secondary" asChild><a href={homepage.demoUrl} rel="noopener">{homepage.secondaryCta}</a></Button></div>
         <p className="small text-grey hero-micro">{b.hero.micro}</p>
       </div>
       <div className="col-span-7 hero-visual" role="img" aria-label={diagramLabels.hero}>
         <IllustrativeLabel/>
+        <div className="hero-halo" aria-hidden="true"/>
         <div className="hero-prompt"><Search aria-hidden="true" focusable="false" size={20} strokeWidth={1.5}/><span className="prompt-question">{illustrative.heroQuestion}</span><span className="send-pulse"><Send aria-hidden="true" focusable="false" size={20} strokeWidth={1.5}/></span></div>
         <div className="engine-row">{illustrative.engines.map((engine, index) => <button type="button" className={`engine-chip motion-control ${activeEngine === engine ? "is-active" : activeEngine ? "is-dimmed" : ""}`} style={{ "--item-index": index } as CSSProperties} key={engine} onClick={() => setActiveEngine(current => current === engine ? null : engine)}><span className="engine-dot"/>{engine}</button>)}</div>
-        <svg className={`hero-paths ${activeEngine ? "has-selection" : ""}`} viewBox="0 0 720 180" aria-hidden="true" focusable="false"><path className={activeEngine && activeEngine !== illustrative.engines[0] ? "is-dimmed" : ""} d="M60 20 C 72 70, 110 100, 150 135"/><path className={activeEngine && activeEngine !== illustrative.engines[1] ? "is-dimmed" : ""} d="M220 20 C 225 72, 240 102, 270 135"/><path className={activeEngine && activeEngine !== illustrative.engines[2] ? "is-dimmed" : ""} d="M390 20 C 390 72, 395 103, 405 135"/><path className={activeEngine && activeEngine !== illustrative.engines[3] ? "is-dimmed" : ""} d="M555 20 C 550 72, 540 103, 525 135"/>{illustrative.engines.map((engine, index) => <circle className={`travelling-dot dot-${index + 1} ${activeEngine && activeEngine !== engine ? "is-dimmed" : ""}`} key={engine} r="4"/>)}</svg>
-        <div className="hero-answer-wrap"><HeroAnswer activeBrand={activeBrand} onBrand={brand => setActiveBrand(current => current === brand ? null : brand)} sourceActive={sourceActive} onSource={() => setSourceActive(current => !current)}/><div className="hero-annotation"><svg viewBox="0 0 100 52" aria-hidden="true" focusable="false"><path d="M92 46C66 42 31 24 8 6m2 15L7 5l17 3"/></svg><span className="annotation">{illustrative.heroAnnotation}</span></div></div>
+        <svg className={`hero-paths ${activeEngine ? "has-selection" : ""}`} viewBox="0 0 720 180" aria-hidden="true" focusable="false"><path className={activeEngine && activeEngine !== illustrative.engines[0] ? "is-dimmed" : ""} d="M32 20 C 48 72, 128 104, 194 140"/><path className={activeEngine && activeEngine !== illustrative.engines[1] ? "is-dimmed" : ""} d="M160 20 C 176 72, 246 106, 308 140"/><path className={activeEngine && activeEngine !== illustrative.engines[2] ? "is-dimmed" : ""} d="M288 20 C 302 72, 366 106, 422 140"/><path className={activeEngine && activeEngine !== illustrative.engines[3] ? "is-dimmed" : ""} d="M440 20 C 450 72, 500 106, 536 140"/>{illustrative.engines.map((engine, index) => <circle className={`travelling-dot dot-${index + 1} ${activeEngine && activeEngine !== engine ? "is-dimmed" : ""}`} key={engine} r="4"/>)}</svg>
+        <div className="engine-annotation"><span>Multiple AI engines. One answer.</span><svg viewBox="0 0 92 46" aria-hidden="true" focusable="false"><path d="M84 6C65 14 42 23 9 38m13 2L8 39l8-12"/></svg></div>
+        <div className="hero-feature-stack">{heroFeatures.map(({ first, second, Icon, tone }) => <article className="hero-feature-card" key={first}><Icon className={`feature-icon feature-${tone}`} aria-hidden="true" focusable="false" size={18} strokeWidth={1.5}/><span>{first}</span><span>{second}</span></article>)}</div>
+        <svg className="hero-feature-connectors" viewBox="0 0 720 550" aria-hidden="true" focusable="false"><path d="M154 246 C 169 246, 178 242, 190 232"/><path d="M154 348 C 170 348, 180 348, 190 348"/><path d="M154 450 C 169 450, 178 456, 190 466"/>{[[154,246],[190,232],[154,348],[190,348],[154,450],[190,466]].map(([cx, cy]) => <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="2.5"/>)}</svg>
+        <div className="hero-answer-wrap"><HeroAnswer featured activeBrand={activeBrand} onBrand={brand => setActiveBrand(current => current === brand ? null : brand)} sourceActive={sourceActive} onSource={() => setSourceActive(current => !current)}/></div>
+        <div className="hero-annotation"><span className="annotation">{illustrative.heroAnnotation}</span><svg viewBox="0 0 110 54" aria-hidden="true" focusable="false"><path d="M7 44C35 43 70 31 101 9m-4 15l6-17-17 5"/></svg></div>
         <p className="label-mono text-grey fiction-note">{illustrative.fictionFootnote}</p>
       </div>
+      <svg className="hero-contours" viewBox="0 0 620 220" aria-hidden="true" focusable="false"><path d="M-20 196C86 124 154 231 260 164S440 77 640 146"/><path d="M-28 216C77 147 164 251 273 185S457 101 644 166"/><path d="M-35 174C74 100 144 207 250 139S431 52 634 123"/><path d="M-42 151C62 78 133 181 239 116S417 28 629 99"/></svg>
       <div className="col-span-12 hero-rail">
         <div className="step-rail">{b.hero.rail.map(step => <div className="step-item" key={step.number}><span className="label-mono">{step.number}</span><span>{step.label}</span></div>)}</div>
         <p className="label-mono rail-caption">{b.hero.railCaption}</p>

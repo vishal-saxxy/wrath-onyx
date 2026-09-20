@@ -143,27 +143,32 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .hero-copy { padding-top: 12px; }
 .hero-title { margin: 30px 0 0; font-size: 68px; line-height: .98; letter-spacing: -.03em; }
 .hero-title > span { white-space: nowrap; }
+.hero-ai { color: var(--signal-orange); }
 .hero-descriptor { margin-top: 34px; max-width: 40ch; color: var(--ink); }
 .hero-lead { margin-top: 24px; color: var(--graphite); }
 .hero-actions { display: flex; gap: 12px; margin-top: 32px; }
 .hero-micro { margin-top: 14px; }
 .hero-visual { position: relative; min-height: 550px; padding-left: 24px; isolation: isolate; }
 .hero-visual::before { content: ""; position: absolute; z-index: -2; inset: -24px calc((100vw - min(100vw, 1440px)) / -2 - 88px) -18px 0; border-left: 1px solid var(--hairline); background: var(--paper-dim); }
-.hero-visual::after { content: ""; position: absolute; z-index: -1; inset: -24px calc((100vw - min(100vw, 1440px)) / -2 - 88px) -18px 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Ccircle cx='1' cy='1' r='1' fill='%230B0B0C'/%3E%3C/svg%3E"); opacity: .05; pointer-events: none; }
+.hero-visual::after { content: ""; position: absolute; z-index: -1; inset: -24px calc((100vw - min(100vw, 1440px)) / -2 - 88px) -18px 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Ccircle cx='1' cy='1' r='1' fill='%230B0B0C'/%3E%3C/svg%3E"); opacity: .07; pointer-events: none; }
+.hero-halo { position: absolute; z-index: -1; top: 142px; right: 2%; width: 82%; height: 390px; background: radial-gradient(ellipse at center, color-mix(in srgb, var(--signal-blue) 11%, transparent) 0%, transparent 70%); pointer-events: none; }
 .hero-prompt { position: relative; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 16px; min-height: 58px; padding: 8px 20px; border: 1px solid var(--hairline); border-radius: 10px; background: var(--paper-raised); box-shadow: var(--shadow-lift); }
 .engine-row { display: flex; gap: 10px; margin-top: 12px; }
 .engine-chip { display: inline-flex; align-items: center; gap: 8px; height: 34px; padding-inline: 14px; border: 1px solid var(--hairline); border-radius: 999px; background: var(--paper-raised); font-size: 13px; }
 .engine-dot { width: 9px; height: 9px; border-radius: 999px; background: var(--signal-blue); }
 .answer-dot { width: 7px; height: 7px; border-radius: 999px; background: var(--signal-blue); }
-.hero-paths { position: absolute; top: 94px; left: 34px; width: calc(100% - 34px); height: 144px; overflow: visible; }
+.hero-paths { position: absolute; z-index: 1; top: 94px; left: 34px; width: calc(100% - 34px); height: 144px; overflow: visible; }
 .hero-paths path { fill: none; stroke: var(--signal-blue); stroke-width: 1.5; }
-.hero-answer-wrap { position: absolute; top: 202px; right: 0; width: 82%; }
+.hero-answer-wrap { position: absolute; z-index: 3; top: 206px; right: 8px; width: 76%; }
 .hero-answer-wrap .home-answer { box-shadow: var(--shadow-lift); }
-.hero-answer-wrap .home-answer::before { inset: 12px -12px -12px 12px; }
+.hero-answer-wrap .home-answer::before { display: none; }
 .home-answer { padding: 28px; color: var(--ink); }
 .answer-heading { display: flex; align-items: center; gap: 10px; padding-bottom: 16px; border-bottom: 1px solid var(--hairline); font-weight: 500; }
 .hero-answer-wrap .answer-heading { margin: -28px -28px 0; padding: 18px 28px 16px; border-bottom-color: var(--signal-blue); background: var(--signal-blue-tint); border-radius: 13px 13px 0 0; }
-.answer-sources { display: flex; align-items: center; gap: 8px; margin-top: 16px; }
+.answer-sparkle { flex: none; color: var(--signal-blue); }
+.answer-chevron { margin-left: auto; color: var(--grey); }
+.answer-sources { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 16px; }
+.hero-answer-wrap .answer-sources { max-width: 100%; }
 .source-chip { display: inline-flex; padding: 5px 10px; border: 1px solid var(--hairline); border-radius: 999px; background: var(--paper-raised); color: var(--grey); font: 500 12px/1.2 "IBM Plex Mono", monospace; }
 .hero-answer-wrap .source-chip { border-color: var(--signal-blue); background: var(--signal-blue-tint); color: var(--signal-blue); }
 .answer-copy { margin: 18px 0; }
@@ -171,11 +176,25 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .answer-brand-row { display: flex; width: 100%; min-height: 45px; align-items: center; justify-content: space-between; padding-inline: 14px; border-bottom: 1px solid var(--hairline); }
 .answer-brand-row:last-child { border-bottom: 0; }
 .hero-answer-wrap .answer-brand-row:last-child { background: var(--signal-red-tint); }
+.brand-dash { width: 22px; height: 1px; flex: none; background: var(--hairline); }
 .status-red { padding: 5px 8px; border: 1px solid var(--signal-red); border-radius: 4px; background: var(--signal-red-tint); color: var(--signal-red); }
-.hero-annotation { position: absolute; right: 8px; bottom: -60px; display: flex; align-items: flex-end; color: var(--signal-orange); }
+.hero-annotation { position: absolute; z-index: 5; right: 22px; top: 500px; display: flex; align-items: center; color: var(--signal-orange); }
 .hero-annotation .annotation { font-size: 24px; }
-.hero-annotation svg { width: 86px; height: 48px; }
+.hero-annotation svg { width: 110px; height: 54px; }
 .hero-annotation path, .shift-annotation path { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; }
+.engine-annotation { position: absolute; z-index: 4; right: 4px; top: 45px; display: flex; align-items: start; color: var(--graphite); font: 500 20px/1.1 "Caveat", cursive; }
+.engine-annotation svg { width: 92px; height: 46px; margin-top: 12px; }
+.engine-annotation path { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; }
+.hero-feature-stack { position: absolute; z-index: 4; left: 6px; top: 213px; display: grid; gap: 34px; }
+.hero-feature-card { display: grid; width: 148px; min-height: 68px; grid-template-columns: 28px 1fr; align-content: center; padding: 10px 12px; border: 1px solid var(--hairline); border-radius: 6px; background: var(--paper-raised); box-shadow: 0 1px 2px rgba(11,11,12,.05); font-size: 12px; line-height: 1.3; }
+.hero-feature-card .feature-icon { grid-row: 1 / span 2; align-self: center; }
+.feature-blue { color: var(--signal-blue); }
+.feature-green { color: var(--signal-green); }
+.hero-feature-connectors { position: absolute; z-index: 2; inset: 0; width: 100%; height: 550px; pointer-events: none; }
+.hero-feature-connectors path { fill: none; stroke: var(--hairline); stroke-width: 1; stroke-dasharray: 4 4; }
+.hero-feature-connectors circle { fill: var(--hairline); }
+.hero-contours { position: absolute; z-index: 0; left: 0; bottom: 86px; width: 48%; height: 220px; pointer-events: none; }
+.hero-contours path { fill: none; stroke: var(--hairline); stroke-width: 1; opacity: .55; }
 .fiction-note { position: static; margin: 526px 0 0 auto; width: max-content; }
 .hero-rail { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 24px; margin-top: 34px; padding-top: 20px; border-top: 1px solid var(--hairline); }
 .step-rail { display: grid; grid-template-columns: repeat(4, 1fr); }
@@ -374,10 +393,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .hero-paths path, .hero-annotation path, .layered-connectors path, .evidence-quote svg path, .orbit-lines path, .process-loop .loop-arc, .truth-diagram > svg path { stroke-dasharray: 1000; stroke-dashoffset: 0; }
 .travelling-dot { fill: var(--signal-blue); offset-rotate: 0deg; opacity: 0; }
-.dot-1 { offset-path: path("M60 20 C 72 70, 110 100, 150 135"); }
-.dot-2 { offset-path: path("M220 20 C 225 72, 240 102, 270 135"); }
-.dot-3 { offset-path: path("M390 20 C 390 72, 395 103, 405 135"); }
-.dot-4 { offset-path: path("M555 20 C 550 72, 540 103, 525 135"); }
+.dot-1 { offset-path: path("M32 20 C 48 72, 128 104, 194 140"); }
+.dot-2 { offset-path: path("M160 20 C 176 72, 246 106, 308 140"); }
+.dot-3 { offset-path: path("M288 20 C 302 72, 366 106, 422 140"); }
+.dot-4 { offset-path: path("M440 20 C 450 72, 500 106, 536 140"); }
 
 html[data-motion="enhanced"] .hero-running .prompt-question { animation: hero-question var(--dur-type) var(--ease-enter) both; }
 html[data-motion="enhanced"] .hero-running .send-pulse { animation: send-signal var(--dur-micro) var(--ease-signal) 640ms both; }
