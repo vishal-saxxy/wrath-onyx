@@ -19,7 +19,7 @@ import { homepage } from "@/content/homepage";
 import { illustrative } from "@/content/illustrative";
 import { useHomepageMotion } from "@/hooks/use-homepage-motion";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/")({staticData:{sitemap:true},
   head: () => ({
     meta: [
       { title: "Kasparro — Be the brand AI recommends." },
