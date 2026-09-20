@@ -19,6 +19,7 @@ import { Route as StyleguideRouteImport } from './routes/styleguide'
 import { Route as WhoWeWorkWithRouteImport } from './routes/who-we-work-with'
 import { Route as WhyAiAnswersRouteImport } from './routes/why-ai-answers'
 import { Route as WorkRouteImport } from './routes/work'
+import { Route as WorkBeddingContentRouteImport } from './routes/work.bedding-content'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -70,6 +71,11 @@ const WorkRoute = WorkRouteImport.update({
   path: '/work',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WorkBeddingContentRoute = WorkBeddingContentRouteImport.update({
+  id: '/bedding-content',
+  path: '/bedding-content',
+  getParentRoute: () => WorkRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -81,7 +87,8 @@ export interface FileRoutesByFullPath {
   '/styleguide': typeof StyleguideRoute
   '/who-we-work-with': typeof WhoWeWorkWithRoute
   '/why-ai-answers': typeof WhyAiAnswersRoute
-  '/work': typeof WorkRoute
+  '/work': typeof WorkRouteWithChildren
+  '/work/bedding-content': typeof WorkBeddingContentRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -93,7 +100,8 @@ export interface FileRoutesByTo {
   '/styleguide': typeof StyleguideRoute
   '/who-we-work-with': typeof WhoWeWorkWithRoute
   '/why-ai-answers': typeof WhyAiAnswersRoute
-  '/work': typeof WorkRoute
+  '/work': typeof WorkRouteWithChildren
+  '/work/bedding-content': typeof WorkBeddingContentRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -106,7 +114,8 @@ export interface FileRoutesById {
   '/styleguide': typeof StyleguideRoute
   '/who-we-work-with': typeof WhoWeWorkWithRoute
   '/why-ai-answers': typeof WhyAiAnswersRoute
-  '/work': typeof WorkRoute
+  '/work': typeof WorkRouteWithChildren
+  '/work/bedding-content': typeof WorkBeddingContentRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -121,6 +130,7 @@ export interface FileRouteTypes {
     | '/who-we-work-with'
     | '/why-ai-answers'
     | '/work'
+    | '/work/bedding-content'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -133,6 +143,7 @@ export interface FileRouteTypes {
     | '/who-we-work-with'
     | '/why-ai-answers'
     | '/work'
+    | '/work/bedding-content'
   id:
     | '__root__'
     | '/'
@@ -145,6 +156,7 @@ export interface FileRouteTypes {
     | '/who-we-work-with'
     | '/why-ai-answers'
     | '/work'
+    | '/work/bedding-content'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -157,7 +169,7 @@ export interface RootRouteChildren {
   StyleguideRoute: typeof StyleguideRoute
   WhoWeWorkWithRoute: typeof WhoWeWorkWithRoute
   WhyAiAnswersRoute: typeof WhyAiAnswersRoute
-  WorkRoute: typeof WorkRoute
+  WorkRoute: typeof WorkRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -232,8 +244,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/work/bedding-content': {
+      id: '/work/bedding-content'
+      path: '/bedding-content'
+      fullPath: '/work/bedding-content'
+      preLoaderRoute: typeof WorkBeddingContentRouteImport
+      parentRoute: typeof WorkRoute
+    }
   }
 }
+
+interface WorkRouteChildren {
+  WorkBeddingContentRoute: typeof WorkBeddingContentRoute
+}
+
+const WorkRouteChildren: WorkRouteChildren = {
+  WorkBeddingContentRoute: WorkBeddingContentRoute,
+}
+
+const WorkRouteWithChildren = WorkRoute._addFileChildren(WorkRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -245,7 +274,7 @@ const rootRouteChildren: RootRouteChildren = {
   StyleguideRoute: StyleguideRoute,
   WhoWeWorkWithRoute: WhoWeWorkWithRoute,
   WhyAiAnswersRoute: WhyAiAnswersRoute,
-  WorkRoute: WorkRoute,
+  WorkRoute: WorkRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
