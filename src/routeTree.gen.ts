@@ -18,7 +18,6 @@ import { Route as LibraryRouteImport } from './routes/library'
 import { Route as MeasurementRouteImport } from './routes/measurement'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as StyleguideRouteImport } from './routes/styleguide'
 import { Route as WhoWeWorkWithRouteImport } from './routes/who-we-work-with'
 import { Route as WhyAiAnswersRouteImport } from './routes/why-ai-answers'
 import { Route as WorkRouteImport } from './routes/work'
@@ -70,11 +69,6 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const StyleguideRoute = StyleguideRouteImport.update({
-  id: '/styleguide',
-  path: '/styleguide',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const WhoWeWorkWithRoute = WhoWeWorkWithRouteImport.update({
   id: '/who-we-work-with',
   path: '/who-we-work-with',
@@ -111,7 +105,6 @@ export interface FileRoutesByFullPath {
   '/measurement': typeof MeasurementRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/styleguide': typeof StyleguideRoute
   '/who-we-work-with': typeof WhoWeWorkWithRoute
   '/why-ai-answers': typeof WhyAiAnswersRoute
   '/work': typeof WorkRouteWithChildren
@@ -128,7 +121,6 @@ export interface FileRoutesByTo {
   '/measurement': typeof MeasurementRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/styleguide': typeof StyleguideRoute
   '/who-we-work-with': typeof WhoWeWorkWithRoute
   '/why-ai-answers': typeof WhyAiAnswersRoute
   '/work/bedding-content': typeof WorkBeddingContentRoute
@@ -145,7 +137,6 @@ export interface FileRoutesById {
   '/measurement': typeof MeasurementRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/styleguide': typeof StyleguideRoute
   '/who-we-work-with': typeof WhoWeWorkWithRoute
   '/why-ai-answers': typeof WhyAiAnswersRoute
   '/work': typeof WorkRouteWithChildren
@@ -164,7 +155,6 @@ export interface FileRouteTypes {
     | '/measurement'
     | '/robots.txt'
     | '/sitemap.xml'
-    | '/styleguide'
     | '/who-we-work-with'
     | '/why-ai-answers'
     | '/work'
@@ -181,7 +171,6 @@ export interface FileRouteTypes {
     | '/measurement'
     | '/robots.txt'
     | '/sitemap.xml'
-    | '/styleguide'
     | '/who-we-work-with'
     | '/why-ai-answers'
     | '/work/bedding-content'
@@ -197,7 +186,6 @@ export interface FileRouteTypes {
     | '/measurement'
     | '/robots.txt'
     | '/sitemap.xml'
-    | '/styleguide'
     | '/who-we-work-with'
     | '/why-ai-answers'
     | '/work'
@@ -215,7 +203,6 @@ export interface RootRouteChildren {
   MeasurementRoute: typeof MeasurementRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  StyleguideRoute: typeof StyleguideRoute
   WhoWeWorkWithRoute: typeof WhoWeWorkWithRoute
   WhyAiAnswersRoute: typeof WhyAiAnswersRoute
   WorkRoute: typeof WorkRouteWithChildren
@@ -286,13 +273,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/styleguide': {
-      id: '/styleguide'
-      path: '/styleguide'
-      fullPath: '/styleguide'
-      preLoaderRoute: typeof StyleguideRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/who-we-work-with': {
       id: '/who-we-work-with'
       path: '/who-we-work-with'
@@ -353,7 +333,6 @@ const rootRouteChildren: RootRouteChildren = {
   MeasurementRoute: MeasurementRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  StyleguideRoute: StyleguideRoute,
   WhoWeWorkWithRoute: WhoWeWorkWithRoute,
   WhyAiAnswersRoute: WhyAiAnswersRoute,
   WorkRoute: WorkRouteWithChildren,
