@@ -201,7 +201,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .hero-feature-connectors circle { fill: var(--hairline); }
 .hero-contours { position: absolute; z-index: 0; left: 0; bottom: 86px; width: 48%; height: 220px; pointer-events: none; }
 .hero-contours path { fill: none; stroke: var(--hairline); stroke-width: 1.25; opacity: .82; }
-.fiction-note { position: static; margin: 526px 0 0 auto; width: max-content; }
+.fiction-note { position: static; margin: 552px 0 0 auto; width: max-content; }
 .hero-rail { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 24px; margin-top: 34px; padding-top: 20px; border-top: 1px solid var(--hairline); }
 .step-rail { display: grid; grid-template-columns: repeat(4, 1fr); }
 .step-item { display: flex; align-items: center; gap: 12px; padding-right: 28px; }
