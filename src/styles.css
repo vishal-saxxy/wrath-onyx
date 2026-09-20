@@ -65,7 +65,7 @@
   --ink: #0B0B0C;
   --ink-raised: #141416;
   --graphite: #3A3A3D;
-  --grey: #6E6E74;
+  --grey: #626268;
   --grey-on-dark: #9A9AA2;
   --hairline: #DCD7CC;
   --hairline-dark: #2A2A2F;
@@ -134,7 +134,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 80ms !important; animation-duration: 80ms !important; animation-iteration-count: 1 !important; } }
 
 /* Stage 2 homepage: fixed desktop composition, intentionally without breakpoints or motion. */
-.homepage { min-width: 1280px; overflow-x: visible; }
+.homepage { min-width: 1280px; overflow-x: clip; }
 .home-band { position: relative; padding-block: var(--space-block); border-bottom: 1px solid var(--hairline); }
 .home-band .display-l { max-width: 12ch; }
 .home-band .dark-band { color: var(--paper-raised); }
@@ -168,7 +168,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .hero-answer-wrap .source-chip { border-color: var(--signal-blue); background: var(--signal-blue-tint); color: var(--signal-blue); }
 .answer-copy { margin: 18px 0; }
 .answer-brand-list { overflow: hidden; border: 1px solid var(--hairline); border-radius: 10px; }
-.answer-brand-row { display: flex; min-height: 45px; align-items: center; justify-content: space-between; padding-inline: 14px; border-bottom: 1px solid var(--hairline); }
+.answer-brand-row { display: flex; width: 100%; min-height: 45px; align-items: center; justify-content: space-between; padding-inline: 14px; border-bottom: 1px solid var(--hairline); }
 .answer-brand-row:last-child { border-bottom: 0; }
 .hero-answer-wrap .answer-brand-row:last-child { background: var(--signal-red-tint); }
 .status-red { padding: 5px 8px; border: 1px solid var(--signal-red); border-radius: 4px; background: var(--signal-red-tint); color: var(--signal-red); }
@@ -382,6 +382,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 html[data-motion="enhanced"] .hero-running .prompt-question { animation: hero-question var(--dur-type) var(--ease-enter) both; }
 html[data-motion="enhanced"] .hero-running .send-pulse { animation: send-signal var(--dur-micro) var(--ease-signal) 640ms both; }
 html[data-motion="enhanced"] .hero-running .engine-chip { animation: engine-enter var(--dur-move) var(--ease-enter) calc(700ms + var(--item-index) * 60ms) both; }
+html[data-motion="enhanced"] .hero-running .engine-chip { background: var(--signal-blue-tint); }
 html[data-motion="enhanced"] .hero-running .hero-paths path { animation: path-draw var(--dur-build) var(--ease-move) 900ms both; }
 html[data-motion="enhanced"] .hero-running .travelling-dot { animation: path-travel var(--dur-build) var(--ease-move) 900ms both; }
 html[data-motion="enhanced"] .hero-resting .travelling-dot.idle-travelling { animation: path-travel var(--dur-build) var(--ease-move) both; }

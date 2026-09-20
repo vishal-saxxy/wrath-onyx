@@ -79,6 +79,7 @@ export function useHomepageMotion() {
     if (!reduced) {
       hero?.classList.add("hero-running");
       heroRestTimer = window.setTimeout(() => {
+        hero?.classList.remove("hero-running");
         hero?.classList.add("hero-resting");
         const dots = Array.from(hero?.querySelectorAll<SVGCircleElement>(".travelling-dot") ?? []);
         heroIdleTimer = window.setInterval(() => {
