@@ -8,8 +8,8 @@ export function useHomepageMotion() {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const capability = navigator as Navigator & { deviceMemory?: number };
     const lowPower = (navigator.hardwareConcurrency ?? 8) <= 4 || (capability.deviceMemory ?? 8) <= 4;
-    root.dataset.motion = reduced ? "reduced" : "enhanced";
-    root.dataset.power = lowPower ? "low" : "full";
+    root.dataset["motion"] = reduced ? "reduced" : "enhanced";
+    root.dataset["power"] = lowPower ? "low" : "full";
 
     const sections = Array.from(document.querySelectorAll<HTMLElement>(".home-band"));
     const hero = document.querySelector<HTMLElement>(".hero-band");
@@ -35,8 +35,8 @@ export function useHomepageMotion() {
       const current = geometry.findIndex(({ top, bottom }) => centre >= top && centre < bottom);
       const block = Math.max(0, current);
       if (rail) {
-        rail.dataset.visible = block >= 1 && block < 9 ? "true" : "false";
-        rail.dataset.active = block <= 4 ? "measure" : block === 5 ? "diagnose" : block <= 7 ? "fix" : "verify";
+        rail.dataset["visible"] = block >= 1 && block < 9 ? "true" : "false";
+        rail.dataset["active"] = block <= 4 ? "measure" : block === 5 ? "diagnose" : block <= 7 ? "fix" : "verify";
       }
 
       if (!reduced) {
@@ -46,7 +46,7 @@ export function useHomepageMotion() {
           if (!entry) continue;
           const travel = Math.max(1, entry.bottom - entry.top - viewport);
           const progress = Math.min(1, Math.max(0, (scroll - entry.top) / travel));
-          pinned.dataset.phase = String(Math.min(3, Math.floor(progress * 3) + 1));
+          pinned.dataset["phase"] = String(Math.min(3, Math.floor(progress * 3) + 1));
         }
       }
     };
@@ -66,8 +66,8 @@ export function useHomepageMotion() {
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
         const target = entry.target as HTMLElement;
-        target.dataset.visible = entry.isIntersecting ? "true" : "false";
-        if (entry.isIntersecting) target.dataset.entered = "true";
+        target.dataset["visible"] = entry.isIntersecting ? "true" : "false";
+        if (entry.isIntersecting) target.dataset["entered"] = "true";
       }
     }, { threshold: 0.16 });
 
@@ -83,8 +83,8 @@ export function useHomepageMotion() {
       window.removeEventListener("scroll", requestUpdate);
       window.removeEventListener("resize", cacheGeometry);
       if (frame) window.cancelAnimationFrame(frame);
-      delete root.dataset.motion;
-      delete root.dataset.power;
+      delete root.dataset["motion"];
+      delete root.dataset["power"];
     };
   }, []);
 }

@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, type KeyboardEvent, type MouseEvent, type ReactNode } from "react";
+import { useState, type CSSProperties, type KeyboardEvent, type MouseEvent, type ReactNode } from "react";
 import {
   ArrowRight,
   BookOpen,
@@ -113,7 +113,7 @@ function HeroBlock() {
       </div>
       <div className="col-span-7 hero-visual">
         <div className="hero-prompt"><IllustrativeLabel/><Search aria-hidden="true" focusable="false" size={20} strokeWidth={1.5}/><span className="prompt-question">{illustrative.heroQuestion}</span><span className="send-pulse"><Send aria-hidden="true" focusable="false" size={20} strokeWidth={1.5}/></span></div>
-        <div className="engine-row">{illustrative.engines.map((engine, index) => <button type="button" className={`engine-chip motion-control ${activeEngine === engine ? "is-active" : activeEngine ? "is-dimmed" : ""}`} style={{ "--item-index": index } as React.CSSProperties} key={engine} onClick={() => setActiveEngine(current => current === engine ? null : engine)}><span className="engine-dot"/>{engine}</button>)}</div>
+        <div className="engine-row">{illustrative.engines.map((engine, index) => <button type="button" className={`engine-chip motion-control ${activeEngine === engine ? "is-active" : activeEngine ? "is-dimmed" : ""}`} style={{ "--item-index": index } as CSSProperties} key={engine} onClick={() => setActiveEngine(current => current === engine ? null : engine)}><span className="engine-dot"/>{engine}</button>)}</div>
         <svg className={`hero-paths ${activeEngine ? "has-selection" : ""}`} viewBox="0 0 720 180" aria-hidden="true" focusable="false"><path className={activeEngine && activeEngine !== illustrative.engines[0] ? "is-dimmed" : ""} d="M60 20 C 120 100, 430 0, 575 135"/><path className={activeEngine && activeEngine !== illustrative.engines[1] ? "is-dimmed" : ""} d="M220 20 C 260 100, 460 30, 575 135"/><path className={activeEngine && activeEngine !== illustrative.engines[2] ? "is-dimmed" : ""} d="M390 20 C 410 90, 500 80, 575 135"/><path className={activeEngine && activeEngine !== illustrative.engines[3] ? "is-dimmed" : ""} d="M555 20 C 550 70, 565 100, 575 135"/>{illustrative.engines.map((engine, index) => <circle className={`travelling-dot dot-${index + 1} ${activeEngine && activeEngine !== engine ? "is-dimmed" : ""}`} key={engine} r="4"/>)}</svg>
         <div className="hero-answer-wrap"><HeroAnswer activeBrand={activeBrand} onBrand={brand => setActiveBrand(current => current === brand ? null : brand)} sourceActive={sourceActive} onSource={() => setSourceActive(current => !current)}/><div className="hero-annotation"><span className="annotation">{illustrative.heroAnnotation}</span><svg viewBox="0 0 100 52" aria-hidden="true" focusable="false"><path d="M4 8c30 2 57 15 81 34m-14-2 15 3-5-14"/></svg></div></div>
         <p className="label-mono text-grey fiction-note">{illustrative.fictionFootnote}</p>
@@ -180,7 +180,7 @@ function DimensionsBlock() {
     <BlockMark number={b.dimensions.number}/>
     <div className="pin-stage site-grid dimensions-grid">
       <div className="col-span-5 dimensions-copy"><BandHeader eyebrow={b.dimensions.eyebrow} headline={<Headline lines={b.dimensions.headline}/>} lead={b.dimensions.lead}/><p className="label-mono dimensions-note">{b.dimensions.note}</p><TextLink label={b.dimensions.link} to={b.dimensions.linkHref}/></div>
-      <div className="col-span-7 dimension-orbit"><IllustrativeLabel/><svg className="orbit-lines" viewBox="0 0 760 760" aria-hidden="true" focusable="false"><circle cx="380" cy="380" r="310"/><circle cx="380" cy="380" r="225"/><circle cx="380" cy="380" r="140"/>{orbitPoints.map((points, index) => <path className={isolated && isolated !== b.dimensions.items[index].name ? "is-dimmed" : ""} key={b.dimensions.items[index].name} d={`M${points[0]} ${points[1]} L380 380`}/>)}</svg><Button type="button" variant="ghost" className="dimension-nucleus" onClick={() => setIsolated(null)}>{b.dimensions.nucleus}</Button><ol className="dimension-list">{b.dimensions.items.map((item, index) => { const Icon = iconMap[item.name as IconName]; const dimmed = isolated && isolated !== item.name; return <li className={`dimension-item dimension-item-${index + 1} ${dimmed ? "is-dimmed" : ""}`} key={item.name}><Button type="button" variant="ghost" className={`dimension-button dimension-${item.tone} ${isolated === item.name ? "is-active" : ""}`} onClick={() => setIsolated(current => current === item.name ? null : item.name)}><span className="dimension-group label-mono">{item.group}</span><Icon aria-hidden="true" focusable="false" size={19} strokeWidth={1.5}/><span className="dimension-name">{item.name}</span><span className="small">{item.question}</span></Button></li>; })}</ol></div>
+      <div className="col-span-7 dimension-orbit"><IllustrativeLabel/><svg className="orbit-lines" viewBox="0 0 760 760" aria-hidden="true" focusable="false"><circle cx="380" cy="380" r="310"/><circle cx="380" cy="380" r="225"/><circle cx="380" cy="380" r="140"/>{orbitPoints.map((points, index) => { const item = b.dimensions.items[index]; return item ? <path className={isolated && isolated !== item.name ? "is-dimmed" : ""} key={item.name} d={`M${points[0]} ${points[1]} L380 380`}/> : null; })}</svg><Button type="button" variant="ghost" className="dimension-nucleus" onClick={() => setIsolated(null)}>{b.dimensions.nucleus}</Button><ol className="dimension-list">{b.dimensions.items.map((item, index) => { const Icon = iconMap[item.name as IconName]; const dimmed = isolated && isolated !== item.name; return <li className={`dimension-item dimension-item-${index + 1} ${dimmed ? "is-dimmed" : ""}`} key={item.name}><Button type="button" variant="ghost" className={`dimension-button dimension-${item.tone} ${isolated === item.name ? "is-active" : ""}`} onClick={() => setIsolated(current => current === item.name ? null : item.name)}><span className="dimension-group label-mono">{item.group}</span><Icon aria-hidden="true" focusable="false" size={19} strokeWidth={1.5}/><span className="dimension-name">{item.name}</span><span className="small">{item.question}</span></Button></li>; })}</ol></div>
     </div>
   </section>;
 }
@@ -234,7 +234,7 @@ function TruthBlock() {
 
 function WorkBlock() {
   const handleParallax = (event: MouseEvent<HTMLDivElement>) => {
-    if (document.documentElement.dataset.power === "low") return;
+    if (document.documentElement.dataset["power"] === "low") return;
     const rect = event.currentTarget.getBoundingClientRect();
     const amount = Math.max(-3, Math.min(3, ((event.clientX - rect.left) / rect.width - 0.5) * 6));
     event.currentTarget.style.setProperty("--parallax", `${amount}px`);
