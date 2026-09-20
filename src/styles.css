@@ -610,7 +610,7 @@ html[data-power="low"] .shift-band .compact-answer, html[data-power="low"] .shif
 .responsibility-table { border-top: 1px solid var(--ink); }
 .responsibility-table > div { display: grid; grid-template-columns: 1fr 3fr; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--hairline); }
 .responsibility-table p { margin: 0; }
-.empty-guide-list { min-height: 160px; }
+.empty-guide-list { display: none; }
 .library-page .inner-close { border-top: 1px solid var(--hairline); }
 .about-page { min-height: calc(100vh - 68px); }
 .about-page .inner-hero { min-height: 330px; padding-block: 72px; }
