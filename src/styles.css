@@ -342,6 +342,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .engine-chip, .source-chip, .answer-brand-row, .signal-card, .dimension-button, .dimension-nucleus, .surface-bar, .governed-record { transition: opacity var(--dur-state) var(--ease-enter), transform var(--dur-state) var(--ease-move); }
 .engine-chip:hover, .engine-chip:focus-visible, .source-chip:hover, .source-chip:focus-visible, .answer-brand-row:hover, .answer-brand-row:focus-visible { transform: translateY(-2px); }
 .engine-chip.is-active, .source-chip.is-active, .answer-brand-row.is-active { border-color: var(--signal-blue); background: var(--signal-blue-tint); }
+.home-answer.source-support-active .answer-copy { background: var(--signal-green-tint); box-shadow: inset 0 -2px var(--signal-green); }
+.home-answer.source-support-active::after { content: ""; position: absolute; right: 26px; top: 112px; width: 76px; border-top: 1px solid var(--signal-green); transform-origin: right; animation: connector-draw var(--dur-move) var(--ease-move) both; }
+@keyframes connector-draw { from { opacity: 0; transform: scaleX(0); } to { opacity: 1; transform: scaleX(1); } }
 .engine-chip.is-dimmed, .hero-paths .is-dimmed { opacity: .4; }
 .missing-status-wrap { position: relative; }
 .missing-panel { position: absolute; right: 0; bottom: calc(100% + 8px); width: 270px; padding: 10px; border: 1px solid var(--signal-red); border-radius: 4px; background: var(--paper-raised); color: var(--signal-red); opacity: 0; pointer-events: none; transform: translateY(3px); transition: opacity var(--dur-state) var(--ease-enter), transform var(--dur-state) var(--ease-enter); }
@@ -398,6 +401,9 @@ html[data-motion="enhanced"] .shift-band[data-entered="true"] .shift-cross { ani
 .consideration-band[data-phase="1"] .highlight-orange, .consideration-band[data-phase="1"] .layered-sources, .consideration-band[data-phase="1"] .layered-connectors { opacity: .3; }
 .consideration-band[data-phase="2"] .highlight-blue, .consideration-band[data-phase="2"] .layered-sources, .consideration-band[data-phase="2"] .layered-connectors { opacity: .3; }
 .consideration-band[data-phase="3"] .highlight-blue, .consideration-band[data-phase="3"] .highlight-orange { opacity: .3; }
+.layered-answer[data-selected="1"] .highlight-orange, .layered-answer[data-selected="1"] .layered-sources, .layered-answer[data-selected="1"] .layered-connectors { opacity: .3; }
+.layered-answer[data-selected="2"] .highlight-blue, .layered-answer[data-selected="2"] .layered-sources, .layered-answer[data-selected="2"] .layered-connectors { opacity: .3; }
+.layered-answer[data-selected="3"] .highlight-blue, .layered-answer[data-selected="3"] .highlight-orange { opacity: .3; }
 .highlight-blue, .highlight-orange, .layered-sources, .layered-connectors { transition: opacity var(--dur-move) var(--ease-enter); }
 .signal-card { background: transparent; }
 .signal-card:hover, .signal-card:focus-visible, .signal-card.is-active { border-color: currentColor; transform: translateY(-3px); }
@@ -443,6 +449,9 @@ html[data-motion="enhanced"] .shift-band[data-entered="true"] .shift-cross { ani
 @keyframes governed-settle { from { opacity: 0; transform: scale(.98); } to { opacity: 1; transform: scale(1); } }
 .governed-record:hover, .governed-record:focus-visible, .governed-record[aria-expanded="true"] { transform: scale(1.02); }
 .governed-record[aria-expanded="true"] .record-rows { display: grid; }
+.truth-diagram.is-fanned .truth-fragment-1 { transform: translateX(-3px) rotate(-2deg); }
+.truth-diagram.is-fanned .truth-fragment-2 { transform: translateY(-3px) rotate(2deg); }
+.truth-diagram.is-fanned .truth-fragment-3 { transform: translateX(3px) rotate(-1deg); }
 
 .guide-cover { transition: transform var(--dur-state) var(--ease-move); }
 .guide-1 { transform: translate(calc(0px + var(--parallax, 0px)), 0) rotateY(-9deg); }

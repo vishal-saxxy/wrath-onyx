@@ -57,7 +57,7 @@ function IllustrativeLabel() {
 }
 
 function HeroAnswer({ quiet = false, activeBrand, onBrand, sourceActive, onSource }: { quiet?: boolean; activeBrand?: string | null; onBrand?: (brand: string) => void; sourceActive?: boolean; onSource?: () => void }) {
-  return <article className={`home-answer layered-panel ${quiet ? "home-answer-quiet" : ""}`}>
+  return <article className={`home-answer layered-panel ${quiet ? "home-answer-quiet" : ""} ${sourceActive ? "source-support-active" : ""}`}>
     <IllustrativeLabel/>
     <header className="answer-heading"><span className="answer-dot"/><span>{illustrative.answerHeader}</span></header>
     <div className="answer-sources"><span className="label-mono text-grey">{illustrative.sourceRowLabel}</span>{illustrative.sources.slice(0, 3).map(source => <button type="button" className={`source-chip motion-control ${sourceActive ? "is-active" : ""}`} key={source} onClick={onSource}>{source}</button>)}</div>
