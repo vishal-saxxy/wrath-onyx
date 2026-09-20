@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HeadContent, Link, Outlet, Scripts, createRootRouteWithContext } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SITE_INDEXABLE } from "@/lib/site";
 import appCss from "../styles.css?url";
@@ -42,7 +43,7 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 function Header() {
-  return <header className="sticky top-0 z-50 h-[68px] border-b bg-paper"><div className="site-grid h-full items-center"><Link to="/" className="col-span-2 font-display text-2xl font-semibold">Kasparro</Link><nav className="col-span-7 flex items-center justify-center gap-7">{nav.map(([label, to]) => <Link key={to} to={to} className="text-sm font-medium hover:text-signal-blue">{label}</Link>)}</nav><div className="col-span-3 flex justify-end gap-2"><Button variant="secondary" asChild><a href={demo} rel="noopener">Discuss your brand</a></Button><Button asChild><a href={demo} rel="noopener">Get a free demo</a></Button></div></div></header>;
+  return <header className="sticky top-0 z-50 h-[68px] border-b bg-paper"><div className="site-grid h-full items-center"><Link to="/" className="col-span-2 font-display text-2xl font-semibold">Kasparro</Link><nav className="col-span-7 flex items-center justify-center gap-7">{nav.map(([label, to]) => <Link key={to} to={to} className="text-sm font-medium hover:text-signal-blue">{label}</Link>)}</nav><div className="col-span-3 flex justify-end gap-2"><Button variant="secondary" asChild><a href={demo} rel="noopener">Discuss your brand</a></Button><Button asChild><a href={demo} rel="noopener">Get a free demo<ArrowRight aria-hidden="true" focusable="false" size={16} strokeWidth={1.5}/></a></Button></div></div></header>;
 }
 
 function Footer() {
