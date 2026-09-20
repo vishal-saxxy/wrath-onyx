@@ -31,6 +31,10 @@ export const Route = createFileRoute("/")({
       { name: "twitter:title", content: "Kasparro — Be the brand AI recommends." },
       { name: "twitter:description", content: "Measure what AI says about your brand, find what sits behind it, fix it, and verify the change. Answer Engine Optimisation, end to end." },
     ],
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Organization", name: "Kasparro AI", foundingDate: "2026", address: { "@type": "PostalAddress", addressLocality: "Bengaluru", addressCountry: "IN" }, founder: [{ "@type": "Person", name: "Rajat Gupta" }, { "@type": "Person", name: "Ashwin Swaminathan" }] }) },
+      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "WebSite", name: "Kasparro", inLanguage: "en-GB" }) },
+    ],
   }),
   component: Homepage,
 });
