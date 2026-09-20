@@ -22,12 +22,14 @@ import { useHomepageMotion } from "@/hooks/use-homepage-motion";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Kasparro" },
-      { name: "description", content: homepage.blocks.hero.eyebrow },
-      { property: "og:title", content: "Kasparro" },
-      { property: "og:description", content: homepage.blocks.hero.eyebrow },
+      { title: "Kasparro — Be the brand AI recommends." },
+      { name: "description", content: "Measure what AI says about your brand, find what sits behind it, fix it, and verify the change. Answer Engine Optimisation, end to end." },
+      { property: "og:title", content: "Kasparro — Be the brand AI recommends." },
+      { property: "og:description", content: "Measure what AI says about your brand, find what sits behind it, fix it, and verify the change. Answer Engine Optimisation, end to end." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Kasparro — Be the brand AI recommends." },
+      { name: "twitter:description", content: "Measure what AI says about your brand, find what sits behind it, fix it, and verify the change. Answer Engine Optimisation, end to end." },
     ],
   }),
   component: Homepage,
