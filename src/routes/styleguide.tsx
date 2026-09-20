@@ -10,7 +10,13 @@ export const Route = createFileRoute("/styleguide")({
   component: Styleguide,
 });
 
-const colours = ["paper", "paper-raised", "paper-dim", "ink", "ink-raised", "graphite", "grey", "grey-on-dark", "hairline", "hairline-dark", "signal-blue", "signal-orange", "signal-green", "signal-red", "signal-blue-tint", "signal-orange-tint", "signal-green-tint", "signal-red-tint"] as const;
+const colours = [
+  ["paper", "bg-paper"], ["paper-raised", "bg-paper-raised"], ["paper-dim", "bg-paper-dim"], ["ink", "bg-ink"],
+  ["ink-raised", "bg-ink-raised"], ["graphite", "bg-graphite"], ["grey", "bg-grey"], ["grey-on-dark", "bg-grey-on-dark"],
+  ["hairline", "bg-hairline"], ["hairline-dark", "bg-hairline-dark"], ["signal-blue", "bg-signal-blue"], ["signal-orange", "bg-signal-orange"],
+  ["signal-green", "bg-signal-green"], ["signal-red", "bg-signal-red"], ["signal-blue-tint", "bg-signal-blue-tint"],
+  ["signal-orange-tint", "bg-signal-orange-tint"], ["signal-green-tint", "bg-signal-green-tint"], ["signal-red-tint", "bg-signal-red-tint"],
+] as const;
 const states = ["idle", "typing", "sent"] as const;
 const engineStates = ["idle", "receiving", "answered", "dimmed"] as const;
 const signalStates = ["hidden", "drawing", "active", "dimmed"] as const;
@@ -24,7 +30,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 function StateLabel({ children }: { children: React.ReactNode }) { return <div className="label-mono mb-3 text-grey">{children}</div>; }
 function Styleguide() {
   return <main id="main-content">
-    <Section title="Colour"><div className="grid grid-cols-6 gap-6">{colours.map(c => <div key={c}><div className={`h-24 rounded-[10px] border bg-${c}`}/><div className="data-mono mt-3">--{c}</div></div>)}</div><div className="dark-band mt-10 grid grid-cols-6 gap-6 rounded-[14px] p-6">{colours.map(c => <div key={c}><div className={`h-24 rounded-[10px] border bg-${c}`}/><div className="data-mono mt-3">--{c}</div></div>)}</div></Section>
+    <Section title="Colour"><div className="grid grid-cols-6 gap-6">{colours.map(([name, colour]) => <div key={name}><div className={`h-24 rounded-[10px] border ${colour}`}/><div className="data-mono mt-3">--{name}</div></div>)}</div><div className="dark-band mt-10 grid grid-cols-6 gap-6 rounded-[14px] p-6">{colours.map(([name, colour]) => <div key={name}><div className={`h-24 rounded-[10px] border ${colour}`}/><div className="data-mono mt-3">--{name}</div></div>)}</div></Section>
     <Section title="Typography"><div className="space-y-10"><div className="display-xl">Display XL</div><div className="display-l">Display L</div><div className="display-m">Display M</div><div className="lead">Lead</div><div className="body-copy">Body</div><div className="small">Small</div><div className="label-mono">Label, mono</div><div className="data-mono">Data, mono</div><div className="annotation">Annotation</div></div></Section>
     <Section title="Icons"><div className="grid grid-cols-6 gap-6">{Object.entries(iconMap).map(([name, Icon]) => <div key={name} className="rounded-[10px] border bg-paper-raised p-6"><Icon aria-hidden="true" focusable="false" size={24} strokeWidth={1.5}/><div className="small mt-4">{name}</div></div>)}</div></Section>
     <Section title="Buttons"><div className="flex gap-4"><Button>Get a free demo</Button><Button variant="secondary">Discuss your brand</Button></div><div className="dark-band mt-6 flex gap-4 rounded-[14px] p-6"><Button>Get a free demo</Button><Button variant="secondary">Discuss your brand</Button></div></Section>

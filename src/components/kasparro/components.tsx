@@ -25,7 +25,7 @@ export function SignalPath({ state, tone }: { state: SignalPathState; tone: Sign
 type Status = "Not mentioned" | "Mentioned" | "Recommended" | "Verified";
 export function StatusTag({ status }: { status: Status }) {
   const classes = status === "Not mentioned" ? "border-signal-red text-signal-red bg-signal-red-tint" : status === "Recommended" ? "border-signal-orange text-signal-orange bg-signal-orange-tint" : status === "Verified" ? "border-signal-green text-signal-green bg-signal-green-tint" : "border-hairline text-grey bg-paper-dim";
-  return <span className={`inline-flex rounded-[4px] border px-2 py-1 label-mono ${classes}`}>{status}</span>;
+  return <span className={`inline-flex rounded-[4px] border px-2 py-1 label-mono ${status === "Recommended" ? classes.replace("text-signal-orange", "text-ink") : classes}`}>{status}</span>;
 }
 
 type BrandRowState = "neutral" | "tagged" | "highlighted";
