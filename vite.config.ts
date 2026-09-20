@@ -8,7 +8,7 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 // The styleguide route file is excluded from the route tree in production builds,
 // so it is never bundled or served on a published site.
-const isProductionBuild = process.env.NODE_ENV === "production";
+const isProductionBuild = process.env["NODE_ENV"] === "production";
 
 export default defineConfig({
   tanstackStart: {
