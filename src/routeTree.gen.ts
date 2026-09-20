@@ -15,6 +15,7 @@ import { Route as BrandSourceOfTruthRouteImport } from './routes/brand-source-of
 import { Route as FixesRouteImport } from './routes/fixes'
 import { Route as LibraryRouteImport } from './routes/library'
 import { Route as MeasurementRouteImport } from './routes/measurement'
+import { Route as StyleguideRouteImport } from './routes/styleguide'
 import { Route as WhoWeWorkWithRouteImport } from './routes/who-we-work-with'
 import { Route as WhyAiAnswersRouteImport } from './routes/why-ai-answers'
 import { Route as WorkRouteImport } from './routes/work'
@@ -49,6 +50,11 @@ const MeasurementRoute = MeasurementRouteImport.update({
   path: '/measurement',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StyleguideRoute = StyleguideRouteImport.update({
+  id: '/styleguide',
+  path: '/styleguide',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WhoWeWorkWithRoute = WhoWeWorkWithRouteImport.update({
   id: '/who-we-work-with',
   path: '/who-we-work-with',
@@ -72,6 +78,7 @@ export interface FileRoutesByFullPath {
   '/fixes': typeof FixesRoute
   '/library': typeof LibraryRoute
   '/measurement': typeof MeasurementRoute
+  '/styleguide': typeof StyleguideRoute
   '/who-we-work-with': typeof WhoWeWorkWithRoute
   '/why-ai-answers': typeof WhyAiAnswersRoute
   '/work': typeof WorkRoute
@@ -83,6 +90,7 @@ export interface FileRoutesByTo {
   '/fixes': typeof FixesRoute
   '/library': typeof LibraryRoute
   '/measurement': typeof MeasurementRoute
+  '/styleguide': typeof StyleguideRoute
   '/who-we-work-with': typeof WhoWeWorkWithRoute
   '/why-ai-answers': typeof WhyAiAnswersRoute
   '/work': typeof WorkRoute
@@ -95,6 +103,7 @@ export interface FileRoutesById {
   '/fixes': typeof FixesRoute
   '/library': typeof LibraryRoute
   '/measurement': typeof MeasurementRoute
+  '/styleguide': typeof StyleguideRoute
   '/who-we-work-with': typeof WhoWeWorkWithRoute
   '/why-ai-answers': typeof WhyAiAnswersRoute
   '/work': typeof WorkRoute
@@ -108,6 +117,7 @@ export interface FileRouteTypes {
     | '/fixes'
     | '/library'
     | '/measurement'
+    | '/styleguide'
     | '/who-we-work-with'
     | '/why-ai-answers'
     | '/work'
@@ -119,6 +129,7 @@ export interface FileRouteTypes {
     | '/fixes'
     | '/library'
     | '/measurement'
+    | '/styleguide'
     | '/who-we-work-with'
     | '/why-ai-answers'
     | '/work'
@@ -130,6 +141,7 @@ export interface FileRouteTypes {
     | '/fixes'
     | '/library'
     | '/measurement'
+    | '/styleguide'
     | '/who-we-work-with'
     | '/why-ai-answers'
     | '/work'
@@ -142,6 +154,7 @@ export interface RootRouteChildren {
   FixesRoute: typeof FixesRoute
   LibraryRoute: typeof LibraryRoute
   MeasurementRoute: typeof MeasurementRoute
+  StyleguideRoute: typeof StyleguideRoute
   WhoWeWorkWithRoute: typeof WhoWeWorkWithRoute
   WhyAiAnswersRoute: typeof WhyAiAnswersRoute
   WorkRoute: typeof WorkRoute
@@ -191,6 +204,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MeasurementRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/styleguide': {
+      id: '/styleguide'
+      path: '/styleguide'
+      fullPath: '/styleguide'
+      preLoaderRoute: typeof StyleguideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/who-we-work-with': {
       id: '/who-we-work-with'
       path: '/who-we-work-with'
@@ -222,6 +242,7 @@ const rootRouteChildren: RootRouteChildren = {
   FixesRoute: FixesRoute,
   LibraryRoute: LibraryRoute,
   MeasurementRoute: MeasurementRoute,
+  StyleguideRoute: StyleguideRoute,
   WhoWeWorkWithRoute: WhoWeWorkWithRoute,
   WhyAiAnswersRoute: WhyAiAnswersRoute,
   WorkRoute: WorkRoute,
