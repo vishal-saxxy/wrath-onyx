@@ -18,7 +18,7 @@ const colours = [
   ["signal-orange-tint", "bg-signal-orange-tint"], ["signal-green-tint", "bg-signal-green-tint"], ["signal-red-tint", "bg-signal-red-tint"],
 ] as const;
 const states = ["idle", "typing", "sent"] as const;
-const engineStates = ["idle", "receiving", "answered", "dimmed"] as const;
+const engineStates = [["idle", "ChatGPT"], ["receiving", "Gemini"], ["answered", "Claude"], ["dimmed", "Perplexity"]] as const;
 const signalStates = ["hidden", "drawing", "active", "dimmed"] as const;
 const answerStates = ["empty", "assembling", "complete", "highlighted", "zoomed"] as const;
 const evidenceStates = ["hidden", "drawing", "active", "qualified"] as const;
@@ -36,7 +36,7 @@ function Styleguide() {
     <Section title="Buttons"><div className="flex gap-4"><Button>Get a free demo</Button><Button variant="secondary">Discuss your brand</Button></div><div className="dark-band mt-6 flex gap-4 rounded-[14px] p-6"><Button>Get a free demo</Button><Button variant="secondary">Discuss your brand</Button></div></Section>
     <Section title="BandHeader"><BandHeader eyebrow={illustrative.illustrativeLabel} headline={<>Brand Source of Truth<br/>AI Shortlisting</>} lead={illustrative.answerBody}/></Section>
     <Section title="PromptBar"><div className="space-y-6">{states.map(s => <div key={s}><StateLabel>{s}</StateLabel><PromptBar state={s}/></div>)}</div></Section>
-    <Section title="EngineChip"><div className="flex gap-6">{engineStates.map((s,i) => <div key={s}><StateLabel>{s}</StateLabel><EngineChip state={s} engine={illustrative.engines[i]}/></div>)}</div></Section>
+    <Section title="EngineChip"><div className="flex gap-6">{engineStates.map(([state, engine]) => <div key={state}><StateLabel>{state}</StateLabel><EngineChip state={state} engine={engine}/></div>)}</div></Section>
     <Section title="SignalPath"><div className="flex gap-6">{signalStates.map((s,i) => <div key={s}><StateLabel>{s}</StateLabel><SignalPath state={s} tone={i === 1 ? "intervention" : i === 2 ? "verification" : "question"}/></div>)}</div></Section>
     <Section title="AnswerSurface"><div className="grid grid-cols-2 gap-10">{answerStates.map(s => <div key={s}><StateLabel>{s}</StateLabel><AnswerSurface state={s}/></div>)}</div></Section>
     <Section title="BrandRow"><div className="overflow-hidden rounded-[10px] border"><BrandRow brand={illustrative.brands[0]} state="neutral"/><BrandRow brand={illustrative.brands[1]} state="tagged" status="Mentioned"/><BrandRow brand={illustrative.brands[2]} state="highlighted" status="Recommended"/></div></Section>
