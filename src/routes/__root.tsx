@@ -1,126 +1,54 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import {
-  Outlet,
-  Link,
-  createRootRouteWithContext,
-  useRouter,
-  HeadContent,
-  Scripts,
-} from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
-
+import { HeadContent, Link, Outlet, Scripts, createRootRouteWithContext } from "@tanstack/react-router";
+import type { ReactNode } from "react";
+import { Button } from "@/components/ui/button";
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
+
+const nav = [
+  ["Why now", "/why-ai-answers"],
+  ["What we measure", "/measurement"],
+  ["What we fix", "/fixes"],
+  ["Work", "/work"],
+  ["Library", "/library"],
+] as const;
+const more = [["Who this fits", "/who-we-work-with"], ["Brand Source of Truth", "/brand-source-of-truth"], ["About", "/about"]] as const;
+const demo = "https://demo.kasparro.com";
 
 function NotFoundComponent() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
-  console.error(error);
-  const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
-
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
-        </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
-        </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
-          <button
-            onClick={() => {
-              router.invalidate();
-              reset();
-            }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Try again
-          </button>
-          <a
-            href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-          >
-            Go home
-          </a>
-        </div>
-      </div>
-    </div>
-  );
+  return <main id="main-content" className="site-grid min-h-[calc(100vh-68px)] place-items-center"><div className="col-span-12 text-center"><h1 className="display-m">This page isn't in the answer either.</h1><Link to="/" className="interactive-press mt-8 inline-block font-medium text-signal-blue">Back to the homepage</Link></div></main>;
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
-    ],
+    meta: [{ charSet: "utf-8" }, { name: "viewport", content: "width=1440" }],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
+      { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "preload", href: "/fonts/inter-tight-600.ttf", as: "font", type: "font/ttf", crossOrigin: "anonymous" },
+      { rel: "preload", href: "/fonts/inter-400.ttf", as: "font", type: "font/ttf", crossOrigin: "anonymous" },
+      { rel: "preload", href: "/fonts/inter-500.ttf", as: "font", type: "font/ttf", crossOrigin: "anonymous" },
+      { rel: "preload", href: "/fonts/ibm-plex-mono-400.ttf", as: "font", type: "font/ttf", crossOrigin: "anonymous" },
+      { rel: "preload", href: "/fonts/ibm-plex-mono-500.ttf", as: "font", type: "font/ttf", crossOrigin: "anonymous" },
+      { rel: "preload", href: "/fonts/caveat-500.ttf", as: "font", type: "font/ttf", crossOrigin: "anonymous" },
     ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
-  errorComponent: ErrorComponent,
 });
 
 function RootShell({ children }: { children: ReactNode }) {
-  return (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
+  return <html lang="en"><head><HeadContent/></head><body><a href="#main-content" className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-[4px] bg-ink px-4 py-2 text-paper-raised focus:translate-y-0">Skip to content</a>{children}<Scripts/></body></html>;
 }
 
-function RootComponent() {
-  const { queryClient } = Route.useRouteContext();
-
-  return (
-    <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
-    </QueryClientProvider>
-  );
+function Header() {
+  return <header className="sticky top-0 z-50 h-[68px] border-b bg-paper"><div className="site-grid h-full items-center"><Link to="/" className="col-span-2 font-display text-2xl font-semibold">Kasparro</Link><nav className="col-span-7 flex items-center justify-center gap-7">{nav.map(([label, to]) => <Link key={to} to={to} className="text-sm font-medium hover:text-signal-blue">{label}</Link>)}</nav><div className="col-span-3 flex justify-end gap-2"><Button variant="secondary" asChild><a href={demo} rel="noopener">Discuss your brand</a></Button><Button asChild><a href={demo} rel="noopener">Get a free demo</a></Button></div></div></header>;
 }
+
+function Footer() {
+  return <footer className="dark-band border-t border-hairline-dark bg-ink text-paper-raised"><div className="site-grid py-20"><div className="col-span-4"><Link to="/" className="font-display text-3xl font-semibold">Kasparro</Link><p className="lead mt-6 text-grey-on-dark">Answer Engine Optimisation, end to end.</p></div><div className="col-span-8 grid grid-cols-3 gap-6"><FooterColumn heading="Explore" links={nav}/><FooterColumn heading="More" links={more}/><div><h2 className="label-mono text-grey-on-dark">Start</h2><div className="mt-5 flex flex-col items-start gap-3"><a href={demo} rel="noopener">Discuss your brand</a><a href={demo} rel="noopener">Get a free demo</a></div></div></div><div className="col-span-12 mt-20 flex justify-between border-t border-hairline-dark pt-6 text-sm text-grey-on-dark"><span>Kasparro AI · Bengaluru, India</span><span>© 2026 Kasparro AI. All rights reserved.</span></div></div></footer>;
+}
+function FooterColumn({ heading, links }: { heading: string; links: ReadonlyArray<readonly [string, string]> }) {
+  return <div><h2 className="label-mono text-grey-on-dark">{heading}</h2><nav className="mt-5 flex flex-col items-start gap-3">{links.map(([label, to]) => <Link key={to} to={to}>{label}</Link>)}</nav></div>;
+}
+function RootComponent() { const { queryClient } = Route.useRouteContext(); return <QueryClientProvider client={queryClient}><Header/><Outlet/><Footer/></QueryClientProvider>; }
