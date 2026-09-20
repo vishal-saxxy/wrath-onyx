@@ -1,0 +1,42 @@
+import {
+  BadgeCheck,
+  BarChart3,
+  CircleCheck,
+  CodeXml,
+  Database,
+  Eye,
+  FileText,
+  HelpCircle,
+  Link,
+  ListChecks,
+  ListOrdered,
+  MessageCircle,
+  Search,
+  SearchCheck,
+  ShieldCheck,
+  Star,
+  Wrench,
+  type LucideIcon,
+} from "lucide-react";
+
+export const iconMap = {
+  Discovered: Eye,
+  Recommended: Star,
+  Reinforced: ShieldCheck,
+  "AI Shortlisting": ListChecks,
+  "Category Demand Capture": Search,
+  "Brand Credentials": BadgeCheck,
+  "Brand Authority": Link,
+  "Machine Readiness": CodeXml,
+  "Brand Perception": MessageCircle,
+  "AI Framing": HelpCircle,
+  Baseline: BarChart3,
+  Evidence: FileText,
+  Diagnosis: SearchCheck,
+  "Action plan": ListOrdered,
+  Fixes: Wrench,
+  "Brand Source of Truth": Database,
+  Verification: CircleCheck,
+} as const satisfies Record<string, LucideIcon>;
+
+export type IconName = keyof typeof iconMap;
