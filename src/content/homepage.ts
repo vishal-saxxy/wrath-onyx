@@ -11,6 +11,7 @@ export const homepage = {
       lead: "When a buyer asks an assistant what to buy, a few brands make the consideration set. Whether yours is one of them is observable, and the reasons are addressable.",
       micro: "Start with a free view of how AI sees your brand.",
       notMentioned: "Not mentioned",
+      notMentionedDetail: "Absent from this answer. Not ranked low — not surfaced.",
       rail: [
         { number: "01", label: "Measure" },
         { number: "02", label: "Diagnose" },
