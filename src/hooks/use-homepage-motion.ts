@@ -58,7 +58,8 @@ export function useHomepageMotion() {
               window.dispatchEvent(new CustomEvent("homepage-consideration-phase", { detail: phase }));
             }
           } else if (dimensions) {
-            dimensions.dataset["phase"] = String(phase);
+            const previous = Number(dimensions.dataset["phase"] ?? 1);
+            dimensions.dataset["phase"] = String(Math.max(previous, phase));
           }
         }
       }
