@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, type CSSProperties, type MouseEvent, type ReactNode } from "react";
+import { useEffect, useState, type CSSProperties, type MouseEvent, type ReactNode } from "react";
 import {
   ArrowRight,
   BookOpen,
@@ -67,7 +67,6 @@ function IllustrativeLabel() {
 
 function HeroAnswer({ quiet = false, activeBrand, onBrand, sourceActive, onSource }: { quiet?: boolean; activeBrand?: string | null; onBrand?: (brand: string) => void; sourceActive?: boolean; onSource?: () => void }) {
   return <article className={`home-answer layered-panel ${quiet ? "home-answer-quiet" : ""} ${sourceActive ? "source-support-active" : ""}`}>
-    <IllustrativeLabel/>
     <header className="answer-heading"><span className="answer-dot"/><span>{illustrative.answerHeader}</span></header>
     <div className="answer-sources"><span className="label-mono text-grey">{illustrative.sourceRowLabel}</span>{illustrative.sources.slice(0, 3).map(source => <button type="button" className={`source-chip motion-control ${sourceActive ? "is-active" : ""}`} key={source} onClick={onSource}>{source}</button>)}</div>
     <p className="body-copy answer-copy">{illustrative.answerBody}</p>
@@ -114,10 +113,11 @@ function HeroBlock() {
         <p className="small text-grey hero-micro">{b.hero.micro}</p>
       </div>
       <div className="col-span-7 hero-visual" role="img" aria-label={diagramLabels.hero}>
-        <div className="hero-prompt"><IllustrativeLabel/><Search aria-hidden="true" focusable="false" size={20} strokeWidth={1.5}/><span className="prompt-question">{illustrative.heroQuestion}</span><span className="send-pulse"><Send aria-hidden="true" focusable="false" size={20} strokeWidth={1.5}/></span></div>
+        <IllustrativeLabel/>
+        <div className="hero-prompt"><Search aria-hidden="true" focusable="false" size={20} strokeWidth={1.5}/><span className="prompt-question">{illustrative.heroQuestion}</span><span className="send-pulse"><Send aria-hidden="true" focusable="false" size={20} strokeWidth={1.5}/></span></div>
         <div className="engine-row">{illustrative.engines.map((engine, index) => <button type="button" className={`engine-chip motion-control ${activeEngine === engine ? "is-active" : activeEngine ? "is-dimmed" : ""}`} style={{ "--item-index": index } as CSSProperties} key={engine} onClick={() => setActiveEngine(current => current === engine ? null : engine)}><span className="engine-dot"/>{engine}</button>)}</div>
         <svg className={`hero-paths ${activeEngine ? "has-selection" : ""}`} viewBox="0 0 720 180" aria-hidden="true" focusable="false"><path className={activeEngine && activeEngine !== illustrative.engines[0] ? "is-dimmed" : ""} d="M60 20 C 120 100, 430 0, 575 135"/><path className={activeEngine && activeEngine !== illustrative.engines[1] ? "is-dimmed" : ""} d="M220 20 C 260 100, 460 30, 575 135"/><path className={activeEngine && activeEngine !== illustrative.engines[2] ? "is-dimmed" : ""} d="M390 20 C 410 90, 500 80, 575 135"/><path className={activeEngine && activeEngine !== illustrative.engines[3] ? "is-dimmed" : ""} d="M555 20 C 550 70, 565 100, 575 135"/>{illustrative.engines.map((engine, index) => <circle className={`travelling-dot dot-${index + 1} ${activeEngine && activeEngine !== engine ? "is-dimmed" : ""}`} key={engine} r="4"/>)}</svg>
-        <div className="hero-answer-wrap"><HeroAnswer activeBrand={activeBrand} onBrand={brand => setActiveBrand(current => current === brand ? null : brand)} sourceActive={sourceActive} onSource={() => setSourceActive(current => !current)}/><div className="hero-annotation"><span className="annotation">{illustrative.heroAnnotation}</span><svg viewBox="0 0 100 52" aria-hidden="true" focusable="false"><path d="M4 8c30 2 57 15 81 34m-14-2 15 3-5-14"/></svg></div></div>
+        <div className="hero-answer-wrap"><HeroAnswer activeBrand={activeBrand} onBrand={brand => setActiveBrand(current => current === brand ? null : brand)} sourceActive={sourceActive} onSource={() => setSourceActive(current => !current)}/><div className="hero-annotation"><svg viewBox="0 0 100 52" aria-hidden="true" focusable="false"><path d="M92 46C66 42 31 24 8 6m2 15L7 5l17 3"/></svg><span className="annotation">{illustrative.heroAnnotation}</span></div></div>
         <p className="label-mono text-grey fiction-note">{illustrative.fictionFootnote}</p>
       </div>
       <div className="col-span-12 hero-rail">
@@ -137,8 +137,7 @@ function ShiftBlock() {
         <IllustrativeLabel/>
         <div className="shift-panel search-panel"><div className="label-mono">{b.shift.traditionalLabel}</div><p className="small text-grey-on-dark">{b.shift.traditionalCaption}</p><div className="search-field"><Search aria-hidden="true" size={17}/></div><div className="search-bars" aria-hidden="true">{Array.from({ length: 9 }).map((_, index) => <span key={index}/>)}</div></div>
         <div className="shift-cross" aria-hidden="true"><ArrowRight size={24} strokeWidth={1.5}/></div>
-        <div className="shift-panel answer-panel"><div className="label-mono">{b.shift.answerLabel}</div><p className="small text-grey-on-dark">{b.shift.answerCaption}</p><div className="compact-answer"><div className="compact-line"/>{illustrative.brands.slice(0, 3).map(brand => <div className="compact-brand" key={brand}>{brand}</div>)}</div><div className="answer-hard-edge"/></div>
-        <div className="shift-annotation"><span className="annotation">{illustrative.shiftAnnotation}</span><svg viewBox="0 0 72 36" aria-hidden="true"><path d="M3 7c21 1 39 9 60 20m-11-11 12 11-15 2"/></svg></div>
+        <div className="shift-panel answer-panel"><div className="label-mono">{b.shift.answerLabel}</div><p className="small text-grey-on-dark">{b.shift.answerCaption}</p><div className="compact-answer"><div className="compact-line"/>{illustrative.brands.slice(0, 3).map(brand => <div className="compact-brand" key={brand}>{brand}</div>)}</div><div className="answer-edge-anchor"><div className="answer-hard-edge"/><div className="shift-annotation"><svg viewBox="0 0 72 42" aria-hidden="true" focusable="false"><path d="M66 37C47 31 25 19 7 5m2 13L6 4l15 4"/></svg><span className="annotation">{illustrative.shiftAnnotation}</span></div></div></div>
       </div>
     </div>
   </section>;
@@ -146,6 +145,11 @@ function ShiftBlock() {
 
 function ConsiderationBlock() {
   const [selected, setSelected] = useState(3);
+  useEffect(() => {
+    const selectPhase = (event: Event) => setSelected((event as CustomEvent<number>).detail);
+    window.addEventListener("homepage-consideration-phase", selectPhase);
+    return () => window.removeEventListener("homepage-consideration-phase", selectPhase);
+  }, []);
   return <section className="home-band consideration-band">
     <BlockMark number={b.consideration.number}/>
     <div className="pin-stage site-grid">
@@ -158,8 +162,11 @@ function ConsiderationBlock() {
 }
 
 function LayeredAnswer({ selected }: { selected: number }) {
+  const answer = illustrative.evidenceSentence;
   const firstBrand = illustrative.brands[0];
-  return <article className="layered-answer layered-panel" data-selected={selected}><IllustrativeLabel/><header className="answer-heading"><span className="answer-dot"/><span>{illustrative.answerHeader}</span></header><p className="body-copy"><span className="highlight-blue">{firstBrand}</span> <span className="highlight-orange">{illustrative.evidenceClaimSpan}</span></p><div className="answer-brand-list">{illustrative.brands.slice(0, 3).map(brand => <div className="answer-brand-row" key={brand}>{brand}</div>)}</div><div className="layered-sources">{illustrative.sources.slice(0, 3).map(source => <button type="button" className="source-chip source-green motion-control" key={source}>{source}</button>)}</div><svg className="layered-connectors" viewBox="0 0 600 110" aria-hidden="true" focusable="false"><path d="M90 15 C 110 80, 160 80, 185 100"/><path d="M295 15 C 295 70, 300 70, 300 100"/><path d="M505 15 C 490 80, 440 80, 415 100"/></svg></article>;
+  const brandEnd = firstBrand.length;
+  const claimAt = answer.indexOf(illustrative.evidenceClaimSpan);
+  return <article className="layered-answer layered-panel" data-selected={selected}><IllustrativeLabel/><header className="answer-heading"><span className="answer-dot"/><span>{illustrative.answerHeader}</span></header><p className="body-copy"><span className="highlight-blue">{firstBrand}</span>{answer.slice(brandEnd, claimAt)}<span className="highlight-orange">{illustrative.evidenceClaimSpan}</span>{answer.slice(claimAt + illustrative.evidenceClaimSpan.length)}</p><div className="answer-brand-list">{illustrative.brands.slice(0, 3).map(brand => <div className="answer-brand-row" key={brand}>{brand}</div>)}</div><div className="layered-sources">{illustrative.sources.slice(0, 3).map(source => <button type="button" className="source-chip source-green motion-control" key={source}>{source}</button>)}</div><svg className="layered-connectors" viewBox="0 0 600 110" aria-hidden="true" focusable="false"><path d="M92 4 C 110 52, 150 76, 190 105"/><path d="M300 4 C 300 48, 300 72, 300 105"/><path d="M508 4 C 490 52, 450 76, 410 105"/></svg></article>;
 }
 
 function EvidenceBlock() {
@@ -192,9 +199,8 @@ function MovementBlock() {
   return <section className="home-band movement-band">
     <BlockMark number={b.movement.number}/>
     <div className="site-grid movement-grid">
-      <div className="col-span-5"><BandHeader eyebrow={b.movement.eyebrow} headline={<Headline lines={b.movement.headline}/>} lead={b.movement.lead}/><TextLink label={b.movement.link} to={b.movement.linkHref}/></div>
-      <p className="col-start-9 col-span-4 lead movement-second">{b.movement.second}</p>
-      <div className="col-start-3 col-span-8 process-loop" role="img" aria-label={diagramLabels.movement}><IllustrativeLabel/><svg viewBox="0 0 820 280" aria-hidden="true" focusable="false"><rect x="68" y="54" width="684" height="160" rx="80"/><path className="loop-arc loop-arc-one" d="M160 54h166"/><path className="loop-arc loop-arc-two" d="M326 54h334"/><path className="loop-arc loop-arc-three" d="M660 214H160"/></svg><button type="button" className="question-chip motion-control">{illustrative.heroQuestion}<span className="question-repeat">{illustrative.heroQuestion}</span></button><div className="loop-steps">{b.movement.steps.map(step => <span key={step}>{step}</span>)}</div></div>
+      <div className="col-span-5 movement-copy"><BandHeader eyebrow={b.movement.eyebrow} headline={<Headline lines={b.movement.headline}/>} lead={b.movement.lead}/><p className="lead movement-second">{b.movement.second}</p><TextLink label={b.movement.link} to={b.movement.linkHref}/></div>
+      <div className="col-span-7 process-loop" role="img" aria-label={diagramLabels.movement}><IllustrativeLabel/><svg viewBox="0 0 760 380" aria-hidden="true" focusable="false"><path className="loop-arc loop-arc-one" d="M190 92C285 42 475 42 570 92"/><path className="loop-arc loop-arc-two" d="M620 140C670 190 670 260 620 310"/><path className="loop-arc loop-arc-three" d="M570 338C475 378 285 378 190 338"/><path className="loop-arc loop-arc-four" d="M140 310C78 254 78 162 140 104"/>{[[165,100],[595,115],[595,325],[165,325]].map(([cx,cy]) => <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="40"/>)}</svg><button type="button" className="question-chip motion-control">{illustrative.heroQuestion}<span className="question-repeat">{illustrative.heroQuestion}</span></button><div className="loop-steps">{b.movement.steps.map((step, index) => <span className={`loop-step-${index + 1}`} key={step}>{step}</span>)}</div></div>
       <div className="col-start-2 col-span-10 surface-bars">{b.movement.surfaces.map(surface => <button type="button" className={`surface-bar surface-${surface.state.toLowerCase()} motion-control ${activeSurface === surface.name ? "is-active" : ""}`} onClick={() => setActiveSurface(current => current === surface.name ? null : surface.name)} key={surface.name}><span>{surface.name}</span><span className="surface-descriptor label-mono">{activeSurface === surface.name ? surface.name : surface.state}</span></button>)}</div>
       <p className="col-start-3 col-span-8 label-mono text-grey movement-note">{b.movement.note}</p>
     </div>
@@ -206,8 +212,8 @@ function ArtifactsBlock() {
   return <section className="home-band artifacts-band">
     <BlockMark number={b.artifacts.number}/>
     <div className="site-grid artifacts-grid">
-      <div className="col-span-4"><BandHeader eyebrow={b.artifacts.eyebrow} headline={<Headline lines={b.artifacts.headline}/>} lead={b.artifacts.lead}/><TextLink label={b.artifacts.link} to={b.artifacts.linkHref}/></div>
-      <div className="col-span-8 artifact-list">{b.artifacts.items.map(item => { const Icon = iconMap[item.icon as IconName]; const isOpen = open === item.name; const panelId = `artifact-${item.number}`; return <article className={`artifact-home-card ${isOpen ? "artifact-open" : ""}`} key={item.name}><Button variant="ghost" className="artifact-trigger" aria-expanded={isOpen} aria-controls={panelId} onClick={() => setOpen(isOpen ? null : item.name)}><span className="label-mono artifact-number">{item.number}</span><span className="artifact-icon"><Icon aria-hidden="true" focusable="false" size={22} strokeWidth={1.5}/></span><span className="artifact-heading"><strong>{item.name}</strong><small>{item.descriptor}</small></span><ChevronDown aria-hidden="true" focusable="false" size={20} strokeWidth={1.5}/></Button><div id={panelId} className="artifact-fragment" hidden={!isOpen}><ArtifactFragment item={item}/></div></article>; })}</div>
+      <div className="col-span-6"><BandHeader eyebrow={b.artifacts.eyebrow} headline={<Headline lines={b.artifacts.headline}/>} lead={b.artifacts.lead}/><TextLink label={b.artifacts.link} to={b.artifacts.linkHref}/></div>
+      <div className="col-span-12 artifact-list">{b.artifacts.items.map(item => { const Icon = iconMap[item.icon as IconName]; const isOpen = open === item.name; const panelId = `artifact-${item.number}`; return <article className={`artifact-home-card ${isOpen ? "artifact-open" : ""}`} key={item.name}><Button variant="ghost" className="artifact-trigger" aria-expanded={isOpen} aria-controls={panelId} onClick={() => setOpen(isOpen ? null : item.name)}><span className="label-mono artifact-number">{item.number}</span><span className="artifact-icon"><Icon aria-hidden="true" focusable="false" size={22} strokeWidth={1.5}/></span><span className="artifact-heading"><strong>{item.name}</strong><small>{item.descriptor}</small></span><ChevronDown aria-hidden="true" focusable="false" size={20} strokeWidth={1.5}/></Button><div id={panelId} className="artifact-fragment" hidden={!isOpen}><ArtifactFragment item={item}/></div></article>; })}</div>
       <p className="col-span-12 artifact-close">{b.artifacts.close}</p>
     </div>
   </section>;
@@ -229,8 +235,8 @@ function TruthBlock() {
   return <section className="home-band dark-band truth-band">
     <BlockMark number={b.truth.number}/>
     <div className="site-grid truth-grid">
-      <div className="col-span-7"><div className="label-mono text-grey-on-dark">{b.truth.eyebrow}</div><h2 className="truth-title"><Headline lines={b.truth.headline}/></h2><p className="lead">{b.truth.lead}</p><p className="body-copy text-grey-on-dark truth-third">{b.truth.third}</p><TextLink label={b.truth.link} to={b.truth.linkHref}/></div>
-      <div className={`col-start-7 col-span-6 truth-diagram ${fanned ? "is-fanned" : ""}`} role="img" aria-label={diagramLabels.truth}><IllustrativeLabel/><div className="truth-fragments">{illustrative.bsotFragments.map((fragment, index) => <div className={`truth-fragment truth-fragment-${index + 1}`} key={fragment.label}><span className="label-mono text-grey-on-dark">{fragment.label}</span><span>{fragment.value}</span><em>{illustrative.conflictLabel}</em></div>)}</div><svg viewBox="0 0 620 260" aria-hidden="true" focusable="false"><path d="M125 40 C 190 130, 340 100, 475 210"/><path d="M250 80 C 320 120, 380 150, 475 210"/><path d="M410 65 C 440 110, 455 160, 475 210"/></svg><Button type="button" variant="ghost" className="governed-record" aria-expanded={fanned} onClick={() => setFanned(current => !current)}><span className="label-mono">{illustrative.ruledLabel}</span><span className="record-rows">{illustrative.bsotRecordRows.map(row => <span key={row}>{row}</span>)}</span></Button></div>
+      <div className="col-span-5 truth-copy"><div className="label-mono text-grey-on-dark">{b.truth.eyebrow}</div><h2 className="truth-title"><Headline lines={b.truth.headline}/></h2><p className="lead">{b.truth.lead}</p><p className="body-copy text-grey-on-dark truth-third">{b.truth.third}</p><TextLink label={b.truth.link} to={b.truth.linkHref}/></div>
+      <div className={`col-span-7 truth-diagram ${fanned ? "is-fanned" : ""}`} role="img" aria-label={diagramLabels.truth}><IllustrativeLabel/><div className="truth-fragments">{illustrative.bsotFragments.map((fragment, index) => <div className={`truth-fragment truth-fragment-${index + 1}`} key={fragment.label}><span className="label-mono text-grey-on-dark">{fragment.label}</span><span>{fragment.value}</span><em>{illustrative.conflictLabel}</em></div>)}</div><svg viewBox="0 0 620 260" aria-hidden="true" focusable="false"><path d="M125 40 C 190 130, 340 100, 475 210"/><path d="M250 80 C 320 120, 380 150, 475 210"/><path d="M410 65 C 440 110, 455 160, 475 210"/></svg><Button type="button" variant="ghost" className="governed-record" aria-expanded={fanned} onClick={() => setFanned(current => !current)}><span className="label-mono">{illustrative.ruledLabel}</span><span className="record-rows">{illustrative.bsotRecordRows.map(row => <span key={row}>{row}</span>)}</span></Button></div>
     </div>
   </section>;
 }
