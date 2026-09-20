@@ -622,3 +622,7 @@ html[data-power="low"] .shift-band .compact-answer, html[data-power="low"] .shif
 .facts-strip { display: grid; grid-template-columns: repeat(3,1fr); margin-top: 34px; padding-top: 28px; border-top: 1px solid var(--hairline); }
 
 @media (prefers-reduced-motion: reduce) { .why-diagram > svg path { animation: none; } }
+
+/* Block 10 closing answer is decorative: no hover lift, no pointer interaction. */
+.close-answer { pointer-events: none; }
+.close-answer .answer-brand-row:hover, .close-answer .answer-brand-row:focus-visible { transform: none; }
