@@ -70,7 +70,7 @@
   --hairline: #DCD7CC;
   --hairline-dark: #2A2A2F;
   --signal-blue: #1B4FD8;
-  --signal-orange: #C4540B;
+  --signal-orange: #9E4308;
   --signal-green: #0A7A46;
   --signal-red: #B32B20;
   --signal-blue-dark: #5B8CFF;
@@ -174,7 +174,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .status-red { padding: 5px 8px; border: 1px solid var(--signal-red); border-radius: 4px; background: var(--signal-red-tint); color: var(--signal-red); }
 .hero-annotation { position: absolute; right: 8px; bottom: -60px; display: flex; align-items: flex-end; color: var(--signal-orange); }
 .hero-annotation .annotation { font-size: 24px; }
-.hero-annotation .annotation { color: var(--ink); }
 .hero-annotation svg { width: 86px; height: 48px; }
 .hero-annotation path, .shift-annotation path { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; }
 .fiction-note { position: static; margin: 526px 0 0 auto; width: max-content; }
