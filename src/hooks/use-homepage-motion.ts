@@ -38,7 +38,8 @@ export function useHomepageMotion() {
         if (bottom < scroll + viewport) element.dataset["entered"] = "true";
       }
       if (rail) {
-        rail.dataset["visible"] = block >= 1 && block < 9 ? "true" : "false";
+        const heroBottom = geometry[0]?.bottom ?? viewport;
+        rail.dataset["visible"] = scroll >= heroBottom && block < 9 ? "true" : "false";
         rail.dataset["active"] = block <= 4 ? "measure" : block === 5 ? "diagnose" : block <= 7 ? "fix" : "verify";
       }
 

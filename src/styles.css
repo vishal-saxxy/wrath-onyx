@@ -474,7 +474,7 @@ html[data-motion="enhanced"] .shift-band[data-entered="true"] .shift-cross { ani
 @keyframes handoff-answer { to { opacity: .45; transform: translateX(-4px) scale(.6); } }
 @keyframes handoff-fade { to { opacity: 0; } }
 @keyframes handoff-evidence { to { transform: scale(1.02); } }
-@keyframes handoff-orbit { to { opacity: .3; transform: scale(.98); } }
+@keyframes handoff-orbit { to { transform: scale(.98); } }
 @keyframes handoff-fix { to { transform: scaleX(1.02); } }
 
 /* Preserve the ten-block composition while meeting the Stage 3 scroll budget. */
