@@ -437,9 +437,12 @@ html[data-motion="enhanced"] .shift-band[data-entered="true"] .shift-cross { ani
 
 .movement-band:not([data-entered="true"]) .loop-arc, .movement-band:not([data-entered="true"]) .loop-steps span, .movement-band:not([data-entered="true"]) .surface-bar { opacity: 0; }
 .movement-band[data-entered="true"] .loop-steps span:first-child, .movement-band[data-entered="true"] .question-chip { animation: reveal-opacity 280ms var(--ease-enter) both; }
-.movement-band[data-entered="true"] .loop-arc-one, .movement-band[data-entered="true"] .loop-steps span:nth-child(2) { animation: path-draw 280ms var(--ease-move) 280ms both; }
-.movement-band[data-entered="true"] .loop-arc-two, .movement-band[data-entered="true"] .loop-steps span:nth-child(3) { animation: path-draw 280ms var(--ease-move) 560ms both; }
-.movement-band[data-entered="true"] .loop-arc-three, .movement-band[data-entered="true"] .loop-arc-four, .movement-band[data-entered="true"] .loop-steps span:nth-child(4), .movement-band[data-entered="true"] .surface-bar { animation: reveal-opacity 260ms var(--ease-enter) 840ms both; }
+.movement-band[data-entered="true"] .loop-arc-one { animation: path-draw 280ms var(--ease-move) 280ms both; }
+.movement-band[data-entered="true"] .loop-steps span:nth-child(2) { animation: reveal-opacity 280ms var(--ease-enter) 280ms both; }
+.movement-band[data-entered="true"] .loop-arc-two { animation: path-draw 280ms var(--ease-move) 560ms both; }
+.movement-band[data-entered="true"] .loop-steps span:nth-child(3) { animation: reveal-opacity 280ms var(--ease-enter) 560ms both; }
+.movement-band[data-entered="true"] .loop-arc-three, .movement-band[data-entered="true"] .loop-arc-four { animation: path-draw 260ms var(--ease-move) 840ms both; }
+.movement-band[data-entered="true"] .loop-steps span:nth-child(4), .movement-band[data-entered="true"] .surface-bar { animation: reveal-opacity 260ms var(--ease-enter) 840ms both; }
 .question-repeat { position: absolute; left: 50%; top: calc(100% + 12px); width: max-content; opacity: 0; transform: translateX(-50%); }
 .question-chip:hover .question-repeat, .question-chip:focus-visible .question-repeat { opacity: 1; }
 .surface-bar:hover, .surface-bar:focus-visible, .surface-bar.is-active { transform: translateY(-3px); }
