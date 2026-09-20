@@ -56,13 +56,6 @@ function IllustrativeLabel() {
   return <span className="illustrative-label">{illustrative.illustrativeLabel}</span>;
 }
 
-function activateOnKey(event: KeyboardEvent<HTMLElement>, action: () => void) {
-  if (event.key === "Enter" || event.key === " ") {
-    event.preventDefault();
-    action();
-  }
-}
-
 function HeroAnswer({ quiet = false, activeBrand, onBrand, sourceActive, onSource }: { quiet?: boolean; activeBrand?: string | null; onBrand?: (brand: string) => void; sourceActive?: boolean; onSource?: () => void }) {
   return <article className={`home-answer layered-panel ${quiet ? "home-answer-quiet" : ""}`}>
     <IllustrativeLabel/>
@@ -223,11 +216,12 @@ function ArtifactFragment({ item }: { item: (typeof b.artifacts.items)[number] }
 }
 
 function TruthBlock() {
+  const [fanned, setFanned] = useState(false);
   return <section className="home-band dark-band truth-band">
     <BlockMark number={b.truth.number}/>
     <div className="site-grid truth-grid">
       <div className="col-span-7"><div className="label-mono text-grey-on-dark">{b.truth.eyebrow}</div><h2 className="truth-title"><Headline lines={b.truth.headline}/></h2><p className="lead">{b.truth.lead}</p><p className="body-copy text-grey-on-dark truth-third">{b.truth.third}</p><TextLink label={b.truth.link} to={b.truth.linkHref}/></div>
-      <div className="col-start-7 col-span-6 truth-diagram"><IllustrativeLabel/><div className="truth-fragments">{illustrative.bsotFragments.map((fragment, index) => <div className={`truth-fragment truth-fragment-${index + 1}`} key={fragment.label}><span className="label-mono text-grey-on-dark">{fragment.label}</span><span>{fragment.value}</span><em>{illustrative.conflictLabel}</em></div>)}</div><svg viewBox="0 0 620 260" aria-hidden="true" focusable="false"><path d="M125 40 C 190 130, 340 100, 475 210"/><path d="M250 80 C 320 120, 380 150, 475 210"/><path d="M410 65 C 440 110, 455 160, 475 210"/></svg><div className="governed-record" tabIndex={0}><span className="label-mono">{illustrative.ruledLabel}</span><div className="record-rows">{illustrative.bsotRecordRows.map(row => <span key={row}>{row}</span>)}</div></div></div>
+      <div className={`col-start-7 col-span-6 truth-diagram ${fanned ? "is-fanned" : ""}`}><IllustrativeLabel/><div className="truth-fragments">{illustrative.bsotFragments.map((fragment, index) => <div className={`truth-fragment truth-fragment-${index + 1}`} key={fragment.label}><span className="label-mono text-grey-on-dark">{fragment.label}</span><span>{fragment.value}</span><em>{illustrative.conflictLabel}</em></div>)}</div><svg viewBox="0 0 620 260" aria-hidden="true" focusable="false"><path d="M125 40 C 190 130, 340 100, 475 210"/><path d="M250 80 C 320 120, 380 150, 475 210"/><path d="M410 65 C 440 110, 455 160, 475 210"/></svg><Button type="button" variant="ghost" className="governed-record" aria-expanded={fanned} onClick={() => setFanned(current => !current)}><span className="label-mono">{illustrative.ruledLabel}</span><span className="record-rows">{illustrative.bsotRecordRows.map(row => <span key={row}>{row}</span>)}</span></Button></div>
     </div>
   </section>;
 }
