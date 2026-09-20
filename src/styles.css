@@ -258,6 +258,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .process-loop svg { width: 100%; height: 380px; }
 .process-loop svg path, .process-loop svg circle { fill: var(--paper); stroke: var(--ink); stroke-width: 1.5; }
 .process-loop svg path { fill: none; }
+.process-loop marker path { fill: var(--ink); stroke: none; }
 .question-chip { position: absolute; left: 50%; top: 170px; padding: 8px 14px; border: 1px solid var(--signal-blue); border-radius: 999px; background: var(--signal-blue-tint); color: var(--signal-blue); transform: translateX(-50%); font-size: 14px; }
 .loop-steps { position: absolute; inset: 0; font-weight: 500; pointer-events: none; }
 .loop-steps span { position: absolute; width: 100px; text-align: center; }
