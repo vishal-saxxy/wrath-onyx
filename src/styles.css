@@ -342,7 +342,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .close-copy .display-l { max-width: none; }
 .close-copy .lead { margin: 28px auto 0; }
 .close-actions { display: flex; justify-content: center; gap: 12px; margin-top: 34px; }
-.close-answer { position: absolute; left: 50%; bottom: -54px; width: 440px; opacity: .08; transform: translateX(-50%); pointer-events: none; }
+.close-answer { position: absolute; left: 50%; top: 340px; width: 440px; opacity: .08; transform: translateX(-50%); pointer-events: none; }
 .home-answer-quiet { padding: 22px; text-align: left; }
 .home-answer-quiet .answer-copy, .home-answer-quiet .answer-sources { display: none; }
 .home-answer-quiet .answer-brand-row { min-height: 40px; }
@@ -499,7 +499,7 @@ html[data-motion="enhanced"] .shift-band[data-entered="true"] .shift-cross { ani
 .movement-band, .artifacts-band, .truth-band, .work-band, .close-band { padding-block: 72px; }
 .truth-band, .work-band { min-height: 720px; }
 .fit-zone { padding-bottom: 70px; }
-.close-zone { min-height: 540px; }
+.close-zone { min-height: 680px; }
 
 html[data-power="low"] .guide-cover { transition: none; }
 html[data-power="low"] .engine-chip:hover, html[data-power="low"] .source-chip:hover, html[data-power="low"] .answer-brand-row:hover, html[data-power="low"] .signal-card:hover, html[data-power="low"] .dimension-button:hover, html[data-power="low"] .surface-bar:hover { transform: none; }
