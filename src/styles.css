@@ -231,7 +231,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .dimensions-grid { align-items: center; }
 .dimensions-copy { position: relative; z-index: 3; }
 .dimensions-note { margin-top: 46px; max-width: 46ch; line-height: 1.65; }
-.dimension-orbit { position: relative; height: 820px; width: 820px; margin-right: -230px; }
+.dimension-orbit { position: relative; left: -12px; height: 820px; width: 820px; margin-right: -218px; }
 .orbit-lines { position: absolute; inset: 20px; width: 760px; height: 760px; }
 .orbit-lines circle, .orbit-lines path { fill: none; stroke: var(--hairline-dark); stroke-width: 1; }
 .dimension-nucleus { position: absolute; left: 310px; top: 330px; z-index: 2; display: grid; width: 200px; height: 160px; place-items: center; border: 1px solid var(--paper-raised); border-radius: 50%; background: var(--ink); color: var(--paper-raised); text-align: center; white-space: normal; font: 600 22px/1.25 "Inter Tight", sans-serif; }
@@ -342,7 +342,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .close-copy .display-l { max-width: none; }
 .close-copy .lead { margin: 28px auto 0; }
 .close-actions { display: flex; justify-content: center; gap: 12px; margin-top: 34px; }
-.close-answer { position: absolute; left: 50%; top: 340px; width: 440px; opacity: .08; transform: translateX(-50%); pointer-events: none; }
+.close-answer { position: absolute; left: 50%; top: 410px; width: 440px; opacity: .08; transform: translateX(-50%); pointer-events: none; }
 .home-answer-quiet { padding: 22px; text-align: left; }
 .home-answer-quiet .answer-copy, .home-answer-quiet .answer-sources { display: none; }
 .home-answer-quiet .answer-brand-row { min-height: 40px; }
