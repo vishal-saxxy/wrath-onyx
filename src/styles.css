@@ -481,7 +481,7 @@ html[data-motion="enhanced"] .shift-band[data-entered="true"] .shift-cross { ani
 .hero-band { min-height: 760px; padding-top: 82px; padding-bottom: 72px; }
 .hero-visual { min-height: 590px; transform: scale(.9); transform-origin: top right; }
 .fiction-note { top: 590px; }
-.hero-rail { margin-top: 24px; padding-top: 18px; }
+.hero-rail { margin-top: 80px; padding-top: 18px; }
 .shift-band { min-height: 620px; padding-block: 76px; }
 .shift-visual { min-height: 480px; }
 .evidence-band { padding-block: 70px; }
