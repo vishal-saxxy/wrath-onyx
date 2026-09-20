@@ -1,6 +1,6 @@
-import { createFileRoute, notFound } from "@tanstack/react-router";
-export const Route = createFileRoute("/library")({
-  beforeLoad: () => { throw notFound(); },
-  head: () => ({ meta: [{ title: "Library" }, { name: "description", content: "Library" }, { property: "og:title", content: "Library" }, { property: "og:description", content: "Library" }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }),
-  component: () => null,
-});
+import { createFileRoute } from "@tanstack/react-router";
+import { PageClose, PageHero } from "@/components/kasparro/inner-pages";
+import { inner, meta } from "@/content/inner-pages";
+import { pageMeta } from "@/lib/page-meta";
+export const Route=createFileRoute("/library")({head:()=>pageMeta(...meta.library),component:LibraryPage});
+function LibraryPage(){return <main id="main-content" className="inner-page library-page"><PageHero {...inner.library}/><div className="empty-guide-list"/><PageClose/></main>}
