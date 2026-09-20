@@ -18,6 +18,9 @@ export function useHomepageMotion() {
     const dimensions = document.querySelector<HTMLElement>(".dimensions-band");
     let geometry: Array<{ element: HTMLElement; top: number; bottom: number }> = [];
     let frame = 0;
+    let heroRestTimer = 0;
+    let heroIdleTimer = 0;
+    let idleDotIndex = 0;
 
     const cacheGeometry = () => {
       geometry = sections.map((element) => ({
@@ -75,7 +78,20 @@ export function useHomepageMotion() {
 
     if (!reduced) {
       hero?.classList.add("hero-running");
-      window.setTimeout(() => hero?.classList.add("hero-resting"), 2480);
+      heroRestTimer = window.setTimeout(() => {
+        hero?.classList.remove("hero-running");
+        hero?.classList.add("hero-resting");
+        const dots = Array.from(hero?.querySelectorAll<SVGCircleElement>(".travelling-dot") ?? []);
+        heroIdleTimer = window.setInterval(() => {
+          for (const dot of dots) dot.classList.remove("idle-travelling");
+          const nextDot = dots[idleDotIndex];
+          if (nextDot) {
+            nextDot.getBoundingClientRect();
+            nextDot.classList.add("idle-travelling");
+          }
+          idleDotIndex = dots.length ? (idleDotIndex + 1) % dots.length : 0;
+        }, 3000);
+      }, 2480);
     }
 
     const observer = new IntersectionObserver((entries) => {
@@ -98,6 +114,8 @@ export function useHomepageMotion() {
       window.removeEventListener("scroll", requestUpdate);
       window.removeEventListener("resize", cacheGeometry);
       if (frame) window.cancelAnimationFrame(frame);
+      window.clearTimeout(heroRestTimer);
+      window.clearInterval(heroIdleTimer);
       delete root.dataset["motion"];
       delete root.dataset["power"];
     };
