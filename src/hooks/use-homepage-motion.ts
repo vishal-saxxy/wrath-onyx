@@ -50,7 +50,17 @@ export function useHomepageMotion() {
           if (!entry) continue;
           const travel = Math.max(1, entry.bottom - entry.top - viewport);
           const progress = Math.min(1, Math.max(0, (scroll - entry.top) / travel));
-          pinned.dataset["phase"] = String(Math.min(3, Math.floor(progress * 3) + 1));
+          const phase = progress < 0.18 ? 1 : progress < 0.42 ? 2 : 3;
+          if (pinned === consideration) {
+            const previous = Number(consideration.dataset["selected"] ?? 0);
+            if (previous !== phase) {
+              consideration.dataset["selected"] = String(phase);
+              window.dispatchEvent(new CustomEvent("homepage-consideration-phase", { detail: phase }));
+            }
+          } else if (dimensions) {
+            const previous = Number(dimensions.dataset["phase"] ?? 1);
+            dimensions.dataset["phase"] = String(Math.max(previous, phase));
+          }
         }
       }
     };
