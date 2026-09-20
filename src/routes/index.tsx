@@ -156,11 +156,12 @@ function EvidenceBlock() {
 }
 
 function DimensionsBlock() {
+  const orbitPoints = [[380,70],[625,190],[690,430],[545,650],[255,690],[70,470],[125,190]] as const;
   return <section className="home-band dark-band dimensions-band">
     <BlockMark number={b.dimensions.number}/>
     <div className="site-grid dimensions-grid">
       <div className="col-span-5 dimensions-copy"><BandHeader eyebrow={b.dimensions.eyebrow} headline={<Headline lines={b.dimensions.headline}/>} lead={b.dimensions.lead}/><p className="label-mono dimensions-note">{b.dimensions.note}</p><TextLink label={b.dimensions.link} to={b.dimensions.linkHref}/></div>
-      <div className="col-span-7 dimension-orbit"><IllustrativeLabel/><svg className="orbit-lines" viewBox="0 0 760 760" aria-hidden="true" focusable="false"><circle cx="380" cy="380" r="310"/><circle cx="380" cy="380" r="225"/><circle cx="380" cy="380" r="140"/>{b.dimensions.items.map((_, index) => { const points = [[380,70],[625,190],[690,430],[545,650],[255,690],[70,470],[125,190]][index]; return <path key={index} d={`M${points[0]} ${points[1]} L380 380`}/>; })}</svg><div className="dimension-nucleus">{b.dimensions.nucleus}</div><ol className="dimension-list">{b.dimensions.items.map((item, index) => { const Icon = iconMap[item.name as IconName]; return <li className={`dimension-item dimension-item-${index + 1}`} key={item.name}><button type="button" className={`dimension-button dimension-${item.tone}`}><span className="dimension-group label-mono">{item.group}</span><Icon aria-hidden="true" focusable="false" size={19} strokeWidth={1.5}/><span className="dimension-name">{item.name}</span><span className="small">{item.question}</span></button></li>; })}</ol></div>
+      <div className="col-span-7 dimension-orbit"><IllustrativeLabel/><svg className="orbit-lines" viewBox="0 0 760 760" aria-hidden="true" focusable="false"><circle cx="380" cy="380" r="310"/><circle cx="380" cy="380" r="225"/><circle cx="380" cy="380" r="140"/>{orbitPoints.map((points, index) => <path key={index} d={`M${points[0]} ${points[1]} L380 380`}/>)}</svg><div className="dimension-nucleus">{b.dimensions.nucleus}</div><ol className="dimension-list">{b.dimensions.items.map((item, index) => { const Icon = iconMap[item.name as IconName]; return <li className={`dimension-item dimension-item-${index + 1}`} key={item.name}><button type="button" className={`dimension-button dimension-${item.tone}`}><span className="dimension-group label-mono">{item.group}</span><Icon aria-hidden="true" focusable="false" size={19} strokeWidth={1.5}/><span className="dimension-name">{item.name}</span><span className="small">{item.question}</span></button></li>; })}</ol></div>
     </div>
   </section>;
 }
@@ -221,11 +222,17 @@ function WorkBlock() {
   </section>;
 }
 
-const verticalIcons = [ShoppingBag, Cloud, Building2, HeartPulse, GraduationCap] as const;
+const verticalsWithIcons = [
+  [b.close.verticals[0], ShoppingBag],
+  [b.close.verticals[1], Cloud],
+  [b.close.verticals[2], Building2],
+  [b.close.verticals[3], HeartPulse],
+  [b.close.verticals[4], GraduationCap],
+] as const;
 function CloseBlock() {
   return <section className="home-band close-band">
     <BlockMark number={b.close.number}/>
-    <div className="site-grid fit-zone"><div className="col-span-6"><BandHeader eyebrow={b.close.fitEyebrow} headline={<Headline lines={b.close.fitHeadline}/>} lead={null}/><TextLink label={b.close.link} to={b.close.linkHref}/></div><div className="col-start-8 col-span-5"><ul className="vertical-list">{b.close.verticals.map((vertical, index) => { const Icon = verticalIcons[index]; return <li key={vertical}><Icon aria-hidden="true" focusable="false" size={20} strokeWidth={1.5}/><span>{vertical}</span></li>; })}</ul><ul className="trigger-list">{b.close.triggers.map(trigger => <li key={trigger}><span aria-hidden="true"/>{trigger}</li>)}</ul></div></div>
+    <div className="site-grid fit-zone"><div className="col-span-6"><BandHeader eyebrow={b.close.fitEyebrow} headline={<Headline lines={b.close.fitHeadline}/>} lead={null}/><TextLink label={b.close.link} to={b.close.linkHref}/></div><div className="col-start-8 col-span-5"><ul className="vertical-list">{verticalsWithIcons.map(([vertical, Icon]) => <li key={vertical}><Icon aria-hidden="true" focusable="false" size={20} strokeWidth={1.5}/><span>{vertical}</span></li>)}</ul><ul className="trigger-list">{b.close.triggers.map(trigger => <li key={trigger}><span aria-hidden="true"/>{trigger}</li>)}</ul></div></div>
     <dl className="credibility-strip site-grid">{b.close.facts.map(fact => <div className="col-span-4" key={fact.label}><dt className="label-mono text-grey">{fact.label}</dt><dd>{fact.value}</dd></div>)}</dl>
     <div className="site-grid close-zone"><div className="col-start-3 col-span-8 close-copy"><h2 className="display-l">{b.close.headline}</h2><p className="lead">{b.close.lead}</p><div className="close-actions"><Button size="lg" asChild><a href={homepage.demoUrl} rel="noopener">{homepage.primaryCta}</a></Button><Button size="lg" variant="secondary" asChild><a href={homepage.demoUrl} rel="noopener">{homepage.secondaryCta}</a></Button></div></div><div className="col-start-5 col-span-4 close-answer" aria-hidden="true"><HeroAnswer quiet/></div></div>
   </section>;
