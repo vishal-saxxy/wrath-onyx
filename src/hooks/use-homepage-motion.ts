@@ -58,8 +58,9 @@ export function useHomepageMotion() {
               window.dispatchEvent(new CustomEvent("homepage-consideration-phase", { detail: phase }));
             }
           } else if (dimensions) {
-            const previous = Number(dimensions.dataset["phase"] ?? 1);
-            dimensions.dataset["phase"] = String(Math.max(previous, phase));
+            const insidePinnedTravel = scroll >= entry.top && scroll <= entry.bottom - viewport;
+            if (insidePinnedTravel && phase < 3) dimensions.dataset["phase"] = String(phase);
+            else delete dimensions.dataset["phase"];
           }
         }
       }

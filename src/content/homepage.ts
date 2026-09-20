@@ -155,7 +155,6 @@ export const homepage = {
       linkHref: "/who-we-work-with",
       facts: [
         { label: "Founded", value: "2026, Bengaluru" },
-        { label: "", value: "Rajat Gupta and Ashwin Swaminathan" },
         { label: "", value: "Clients across five verticals and two continents" },
       ],
       headline: "Find out what the answer says about you.",
