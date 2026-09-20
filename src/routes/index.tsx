@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { homepage } from "@/content/homepage";
 import { illustrative } from "@/content/illustrative";
 import { useHomepageMotion } from "@/hooks/use-homepage-motion";
+import { canonicalUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/")({staticData:{sitemap:true},
   head: () => ({
