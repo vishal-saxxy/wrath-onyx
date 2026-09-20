@@ -124,8 +124,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .dark-band .button-primary { border-color: var(--paper-raised); background: var(--paper-raised); color: var(--ink); }
 .dark-band .button-secondary { border-color: var(--paper-raised); color: var(--paper-raised); }
 .dark-band .button-secondary:hover { background: var(--hairline-dark); }
-.dark-band button[data-slot="button"], .dark-band .button-ghost { color: var(--paper-raised); }
-.dark-band .button-ghost:hover { background: var(--ink-raised); }
+.dark-band .button-ghost, .dark-band .button-outline { color: var(--paper-raised); }
+.dark-band .button-ghost:hover, .dark-band .button-outline:hover { background: var(--ink-raised); }
 .layered-panel { position: relative; border: 1px solid var(--hairline); border-radius: 14px; background: var(--paper-raised); }
 .layered-panel::before { content: ""; position: absolute; inset: 8px -8px -8px 8px; z-index: -1; border: 1px solid var(--hairline); border-radius: 14px; background: var(--paper-dim); }
 .illustrative-label { position: absolute; top: 12px; right: 14px; color: var(--grey); font: 500 11px/1.2 "IBM Plex Mono", monospace; letter-spacing: .09em; text-transform: uppercase; }

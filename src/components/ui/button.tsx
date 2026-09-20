@@ -8,10 +8,10 @@ const buttonVariants = cva("interactive-press inline-flex items-center justify-c
     variant: {
       default: "border-ink bg-ink text-paper-raised hover:bg-ink-raised",
       primary: "button-primary border-ink bg-ink text-paper-raised hover:bg-ink-raised",
-      outline: "border-ink bg-transparent text-ink hover:bg-paper-dim",
+      outline: "button-outline border-ink bg-transparent text-ink hover:bg-paper-dim",
       secondary: "button-secondary border-ink bg-transparent text-ink hover:bg-paper-dim",
       destructive: "border-signal-red bg-signal-red text-paper-raised",
-      ghost: "border-transparent bg-transparent text-ink hover:bg-paper-dim",
+      ghost: "button-ghost border-transparent bg-transparent text-ink hover:bg-paper-dim",
       link: "h-auto border-transparent px-0 text-signal-blue",
     },
     size: {

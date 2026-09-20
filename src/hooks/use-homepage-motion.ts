@@ -57,7 +57,7 @@ export function useHomepageMotion() {
               consideration.dataset["selected"] = String(phase);
               window.dispatchEvent(new CustomEvent("homepage-consideration-phase", { detail: phase }));
             }
-          } else {
+          } else if (dimensions) {
             dimensions.dataset["phase"] = String(phase);
           }
         }
