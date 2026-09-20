@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://kasparro.com/sitemap.xml

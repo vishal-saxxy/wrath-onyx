@@ -165,6 +165,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .answer-brand-row:last-child { border-bottom: 0; }
 .status-red { padding: 5px 8px; border: 1px solid var(--signal-red); border-radius: 4px; background: var(--signal-red-tint); color: var(--signal-red); }
 .hero-annotation { position: absolute; right: 18px; bottom: -54px; display: flex; align-items: center; color: var(--signal-orange); }
+.hero-annotation .annotation { font-size: 24px; }
 .hero-annotation svg { width: 86px; height: 48px; }
 .hero-annotation path, .shift-annotation path { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; }
 .fiction-note { position: absolute; right: 0; top: 650px; }
@@ -246,7 +247,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .dimension-button .small { grid-column: 1 / -1; color: var(--grey-on-dark); }
 .dimension-blue { color: var(--signal-blue); }
 .dimension-green { color: var(--signal-green); }
-.dimension-orange { color: var(--signal-orange); }
 .dimension-name { color: var(--paper-raised); font-weight: 500; }
 .movement-grid { align-items: start; }
 .movement-second { margin-top: 154px; }
@@ -478,7 +478,7 @@ html[data-motion="enhanced"] .shift-band[data-entered="true"] .shift-cross { ani
 @keyframes handoff-fix { to { transform: scaleX(1.02); } }
 
 /* Preserve the ten-block composition while meeting the Stage 3 scroll budget. */
-.hero-band { min-height: 760px; padding-top: 82px; padding-bottom: 38px; }
+.hero-band { min-height: 760px; padding-top: 82px; padding-bottom: 72px; }
 .hero-visual { min-height: 590px; transform: scale(.9); transform-origin: top right; }
 .fiction-note { top: 590px; }
 .hero-rail { margin-top: 24px; padding-top: 18px; }
