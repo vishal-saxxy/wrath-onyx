@@ -393,6 +393,8 @@ html[data-motion="enhanced"] .shift-band[data-entered="true"] .shift-cross { ani
 .consideration-band .pin-stage, .dimensions-band .pin-stage { position: sticky; top: 68px; min-height: calc(100vh - 68px); align-content: center; padding-block: 44px; }
 .pin-step { display: flex; gap: 14px; justify-content: flex-end; margin-top: 18px; color: var(--grey); }
 .pin-step span.is-active { color: var(--ink); }
+.consideration-band[data-phase] .pin-step span { color: var(--grey); }
+.consideration-band[data-phase="1"] .pin-step span:nth-child(1), .consideration-band[data-phase="2"] .pin-step span:nth-child(2), .consideration-band[data-phase="3"] .pin-step span:nth-child(3) { color: var(--ink); }
 .consideration-band[data-phase="1"] .highlight-orange, .consideration-band[data-phase="1"] .layered-sources, .consideration-band[data-phase="1"] .layered-connectors { opacity: .3; }
 .consideration-band[data-phase="2"] .highlight-blue, .consideration-band[data-phase="2"] .layered-sources, .consideration-band[data-phase="2"] .layered-connectors { opacity: .3; }
 .consideration-band[data-phase="3"] .highlight-blue, .consideration-band[data-phase="3"] .highlight-orange { opacity: .3; }
@@ -452,6 +454,20 @@ html[data-motion="enhanced"] .shift-band[data-entered="true"] .shift-cross { ani
 .close-band[data-entered="true"] .close-answer { animation: close-answer 420ms var(--ease-enter) both; }
 @keyframes close-answer { from { opacity: 0; } to { opacity: .3; } }
 
+/* Handoffs reuse the closing visual state as the next block's opening argument. */
+@supports (animation-timeline: view()) {
+  html[data-motion="enhanced"] .hero-answer-wrap { animation: handoff-answer var(--dur-build) linear both; animation-timeline: view(); animation-range: exit 0% exit 70%; }
+  html[data-motion="enhanced"] .hero-paths, html[data-motion="enhanced"] .engine-row { animation: handoff-fade var(--dur-move) linear both; animation-timeline: view(); animation-range: exit 0% exit 55%; }
+  html[data-motion="enhanced"] .consideration-answer { animation: handoff-evidence var(--dur-build) linear both; animation-timeline: view(); animation-range: exit 15% exit 80%; }
+  html[data-motion="enhanced"] .dimension-orbit { animation: handoff-orbit var(--dur-build) linear both; animation-timeline: view(); animation-range: exit 10% exit 80%; }
+  html[data-motion="enhanced"] .process-loop { animation: handoff-fix var(--dur-build) linear both; animation-timeline: view(); animation-range: exit 20% exit 85%; }
+}
+@keyframes handoff-answer { to { opacity: .45; transform: translateX(-4px) scale(.6); } }
+@keyframes handoff-fade { to { opacity: 0; } }
+@keyframes handoff-evidence { to { transform: scale(1.02); } }
+@keyframes handoff-orbit { to { opacity: .3; transform: scale(.98); } }
+@keyframes handoff-fix { to { transform: scaleX(1.02); } }
+
 /* Preserve the ten-block composition while meeting the Stage 3 scroll budget. */
 .hero-band { min-height: 760px; padding-top: 82px; padding-bottom: 38px; }
 .hero-visual { min-height: 590px; transform: scale(.9); transform-origin: top right; }
@@ -473,6 +489,8 @@ html[data-motion="enhanced"] .shift-band[data-entered="true"] .shift-cross { ani
 
 html[data-power="low"] .guide-cover { transition: none; }
 html[data-power="low"] .engine-chip:hover, html[data-power="low"] .source-chip:hover, html[data-power="low"] .answer-brand-row:hover, html[data-power="low"] .signal-card:hover, html[data-power="low"] .dimension-button:hover, html[data-power="low"] .surface-bar:hover { transform: none; }
+html[data-power="low"] .hero-band *, html[data-power="low"] .shift-band *, html[data-power="low"] .evidence-band *, html[data-power="low"] .dimensions-band *, html[data-power="low"] .movement-band *, html[data-power="low"] .truth-band *, html[data-power="low"] .close-band * { animation: none !important; }
+html[data-power="low"] .shift-band .compact-answer, html[data-power="low"] .shift-band .answer-hard-edge, html[data-power="low"] .shift-band .shift-cross, html[data-power="low"] .evidence-band .evidence-quote mark, html[data-power="low"] .evidence-band .source-qualified, html[data-power="low"] .evidence-band .capture-panel, html[data-power="low"] .evidence-band .evidence-copy p, html[data-power="low"] .movement-band .loop-arc, html[data-power="low"] .movement-band .loop-steps span, html[data-power="low"] .movement-band .surface-bar, html[data-power="low"] .truth-band .truth-fragment, html[data-power="low"] .truth-band .governed-record, html[data-power="low"] .close-band .close-answer { opacity: 1 !important; }
 
 @media (prefers-reduced-motion: reduce) {
   .consideration-band, .dimensions-band { height: auto; padding-block: 72px; }

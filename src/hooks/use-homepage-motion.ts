@@ -34,6 +34,9 @@ export function useHomepageMotion() {
       const centre = scroll + viewport * 0.5;
       const current = geometry.findIndex(({ top, bottom }) => centre >= top && centre < bottom);
       const block = Math.max(0, current);
+      for (const { element, bottom } of geometry) {
+        if (bottom < scroll + viewport) element.dataset["entered"] = "true";
+      }
       if (rail) {
         rail.dataset["visible"] = block >= 1 && block < 9 ? "true" : "false";
         rail.dataset["active"] = block <= 4 ? "measure" : block === 5 ? "diagnose" : block <= 7 ? "fix" : "verify";
