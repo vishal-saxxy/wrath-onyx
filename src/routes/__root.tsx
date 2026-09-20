@@ -23,7 +23,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [{ charSet: "utf-8" }, { name: "viewport", content: "width=1440" }],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "preload", href: "/fonts/inter-tight-latin-wght-normal.woff2", as: "font", type: "font/woff2", crossOrigin: "anonymous" },
       { rel: "preload", href: "/fonts/inter-latin-wght-normal.woff2", as: "font", type: "font/woff2", crossOrigin: "anonymous" },
       { rel: "preload", href: "/fonts/ibm-plex-mono-400.ttf", as: "font", type: "font/ttf", crossOrigin: "anonymous" },

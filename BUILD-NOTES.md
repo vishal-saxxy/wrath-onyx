@@ -2,6 +2,6 @@
 
 ## Unresolved dependencies
 
-- Kasparro logo asset
+- Kasparro logo and favicon assets
 - Privacy copy
 - Terms copy
