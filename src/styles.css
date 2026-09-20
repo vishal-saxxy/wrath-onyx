@@ -174,6 +174,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .status-red { padding: 5px 8px; border: 1px solid var(--signal-red); border-radius: 4px; background: var(--signal-red-tint); color: var(--signal-red); }
 .hero-annotation { position: absolute; right: 8px; bottom: -60px; display: flex; align-items: flex-end; color: var(--signal-orange); }
 .hero-annotation .annotation { font-size: 24px; }
+.hero-annotation .annotation { color: var(--ink); }
 .hero-annotation svg { width: 86px; height: 48px; }
 .hero-annotation path, .shift-annotation path { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; }
 .fiction-note { position: static; margin: 526px 0 0 auto; width: max-content; }
@@ -385,7 +386,7 @@ html[data-motion="enhanced"] .hero-running .engine-chip { animation: engine-ente
 html[data-motion="enhanced"] .hero-running .engine-chip { background: var(--signal-blue-tint); }
 html[data-motion="enhanced"] .hero-running .hero-paths path { animation: path-draw var(--dur-build) var(--ease-move) 900ms both; }
 html[data-motion="enhanced"] .hero-running .travelling-dot { animation: path-travel var(--dur-build) var(--ease-move) 900ms both; }
-html[data-motion="enhanced"] .hero-resting .travelling-dot.idle-travelling { animation: path-travel var(--dur-build) var(--ease-move) both; }
+html[data-motion="enhanced"] .hero-resting .travelling-dot.idle-travelling { animation: idle-path-travel var(--dur-build) var(--ease-move) both; }
 html[data-motion="enhanced"] .hero-running .home-answer { animation: answer-enter var(--dur-move) var(--ease-enter) 1300ms both; }
 html[data-motion="enhanced"] .hero-running .answer-copy { animation: reveal-opacity var(--dur-build) var(--ease-enter) 1500ms both; }
 html[data-motion="enhanced"] .hero-running .answer-brand-row { animation: brand-stamp 300ms var(--ease-signal) calc(1900ms + var(--brand-delay, 0ms)) both; }
@@ -401,6 +402,7 @@ html[data-motion="enhanced"] .hero-running .hero-annotation path { animation: pa
 @keyframes engine-enter { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes path-draw { from { stroke-dashoffset: 1000; } to { stroke-dashoffset: 0; } }
 @keyframes path-travel { from { opacity: 0; offset-distance: 0%; } 20%, 82% { opacity: 1; } to { opacity: 0; offset-distance: 100%; } }
+@keyframes idle-path-travel { from { opacity: 0; offset-distance: 0%; } 20%, 82% { opacity: 1; } to { opacity: 0; offset-distance: 100%; } }
 @keyframes answer-enter { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes reveal-opacity { from { opacity: 0; } to { opacity: 1; } }
 @keyframes brand-stamp { from { opacity: 0; transform: scale(.98); } to { opacity: 1; transform: scale(1); } }
