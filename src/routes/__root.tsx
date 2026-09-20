@@ -20,7 +20,7 @@ function NotFoundComponent() {
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
-    meta: [{ charSet: "utf-8" }, { name: "viewport", content: "width=1440" }],
+    meta: [{ charSet: "utf-8" }, { name: "viewport", content: "width=1440" }, { property: "og:site_name", content: "Kasparro" }, { property: "og:locale", content: "en_GB" }],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "preload", href: "/fonts/inter-tight-latin-wght-normal.woff2", as: "font", type: "font/woff2", crossOrigin: "anonymous" },

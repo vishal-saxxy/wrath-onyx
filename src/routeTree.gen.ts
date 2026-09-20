@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SplatRouteImport } from './routes/$'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as BrandSourceOfTruthRouteImport } from './routes/brand-source-of-truth'
 import { Route as FixesRouteImport } from './routes/fixes'
@@ -19,11 +20,17 @@ import { Route as StyleguideRouteImport } from './routes/styleguide'
 import { Route as WhoWeWorkWithRouteImport } from './routes/who-we-work-with'
 import { Route as WhyAiAnswersRouteImport } from './routes/why-ai-answers'
 import { Route as WorkRouteImport } from './routes/work'
+import { Route as WorkIndexRouteImport } from './routes/work.index'
 import { Route as WorkBeddingContentRouteImport } from './routes/work.bedding-content'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SplatRoute = SplatRouteImport.update({
+  id: '/$',
+  path: '/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -71,6 +78,11 @@ const WorkRoute = WorkRouteImport.update({
   path: '/work',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WorkIndexRoute = WorkIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => WorkRoute,
+} as any)
 const WorkBeddingContentRoute = WorkBeddingContentRouteImport.update({
   id: '/bedding-content',
   path: '/bedding-content',
@@ -79,6 +91,7 @@ const WorkBeddingContentRoute = WorkBeddingContentRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
   '/about': typeof AboutRoute
   '/brand-source-of-truth': typeof BrandSourceOfTruthRoute
   '/fixes': typeof FixesRoute
@@ -89,9 +102,11 @@ export interface FileRoutesByFullPath {
   '/why-ai-answers': typeof WhyAiAnswersRoute
   '/work': typeof WorkRouteWithChildren
   '/work/bedding-content': typeof WorkBeddingContentRoute
+  '/work/': typeof WorkIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
   '/about': typeof AboutRoute
   '/brand-source-of-truth': typeof BrandSourceOfTruthRoute
   '/fixes': typeof FixesRoute
@@ -100,12 +115,13 @@ export interface FileRoutesByTo {
   '/styleguide': typeof StyleguideRoute
   '/who-we-work-with': typeof WhoWeWorkWithRoute
   '/why-ai-answers': typeof WhyAiAnswersRoute
-  '/work': typeof WorkRouteWithChildren
   '/work/bedding-content': typeof WorkBeddingContentRoute
+  '/work': typeof WorkIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
   '/about': typeof AboutRoute
   '/brand-source-of-truth': typeof BrandSourceOfTruthRoute
   '/fixes': typeof FixesRoute
@@ -116,11 +132,13 @@ export interface FileRoutesById {
   '/why-ai-answers': typeof WhyAiAnswersRoute
   '/work': typeof WorkRouteWithChildren
   '/work/bedding-content': typeof WorkBeddingContentRoute
+  '/work/': typeof WorkIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/$'
     | '/about'
     | '/brand-source-of-truth'
     | '/fixes'
@@ -131,9 +149,11 @@ export interface FileRouteTypes {
     | '/why-ai-answers'
     | '/work'
     | '/work/bedding-content'
+    | '/work/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/$'
     | '/about'
     | '/brand-source-of-truth'
     | '/fixes'
@@ -142,11 +162,12 @@ export interface FileRouteTypes {
     | '/styleguide'
     | '/who-we-work-with'
     | '/why-ai-answers'
-    | '/work'
     | '/work/bedding-content'
+    | '/work'
   id:
     | '__root__'
     | '/'
+    | '/$'
     | '/about'
     | '/brand-source-of-truth'
     | '/fixes'
@@ -157,10 +178,12 @@ export interface FileRouteTypes {
     | '/why-ai-answers'
     | '/work'
     | '/work/bedding-content'
+    | '/work/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SplatRoute: typeof SplatRoute
   AboutRoute: typeof AboutRoute
   BrandSourceOfTruthRoute: typeof BrandSourceOfTruthRoute
   FixesRoute: typeof FixesRoute
@@ -179,6 +202,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$': {
+      id: '/$'
+      path: '/$'
+      fullPath: '/$'
+      preLoaderRoute: typeof SplatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -244,6 +274,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/work/': {
+      id: '/work/'
+      path: '/'
+      fullPath: '/work/'
+      preLoaderRoute: typeof WorkIndexRouteImport
+      parentRoute: typeof WorkRoute
+    }
     '/work/bedding-content': {
       id: '/work/bedding-content'
       path: '/bedding-content'
@@ -256,16 +293,19 @@ declare module '@tanstack/react-router' {
 
 interface WorkRouteChildren {
   WorkBeddingContentRoute: typeof WorkBeddingContentRoute
+  WorkIndexRoute: typeof WorkIndexRoute
 }
 
 const WorkRouteChildren: WorkRouteChildren = {
   WorkBeddingContentRoute: WorkBeddingContentRoute,
+  WorkIndexRoute: WorkIndexRoute,
 }
 
 const WorkRouteWithChildren = WorkRoute._addFileChildren(WorkRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SplatRoute: SplatRoute,
   AboutRoute: AboutRoute,
   BrandSourceOfTruthRoute: BrandSourceOfTruthRoute,
   FixesRoute: FixesRoute,

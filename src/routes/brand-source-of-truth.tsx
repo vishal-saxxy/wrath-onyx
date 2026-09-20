@@ -1,6 +1,6 @@
-import { createFileRoute, notFound } from "@tanstack/react-router";
-export const Route = createFileRoute("/brand-source-of-truth")({
-  beforeLoad: () => { throw notFound(); },
-  head: () => ({ meta: [{ title: "Brand Source of Truth" }, { name: "description", content: "Brand Source of Truth" }, { property: "og:title", content: "Brand Source of Truth" }, { property: "og:description", content: "Brand Source of Truth" }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }),
-  component: () => null,
-});
+import { createFileRoute } from "@tanstack/react-router";
+import { PageClose, PageHero, ReadingSections, TruthDiagram } from "@/components/kasparro/inner-pages";
+import { inner, meta } from "@/content/inner-pages";
+import { pageMeta } from "@/lib/page-meta";
+export const Route=createFileRoute("/brand-source-of-truth")({head:()=>pageMeta(...meta.truth),component:TruthPage});
+function TruthPage(){return <main id="main-content" className="inner-page"><PageHero {...inner.truth}/><TruthDiagram/><ReadingSections sections={inner.truth.sections}/><PageClose/></main>}
