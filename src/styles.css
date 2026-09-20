@@ -155,7 +155,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .hero-prompt { position: relative; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 16px; min-height: 58px; padding: 8px 20px; border: 1px solid var(--hairline); border-radius: 10px; background: var(--paper-raised); box-shadow: var(--shadow-lift); }
 .engine-row { display: flex; gap: 10px; margin-top: 12px; }
 .engine-chip { display: inline-flex; align-items: center; gap: 8px; height: 34px; padding-inline: 14px; border: 1px solid var(--hairline); border-radius: 999px; background: var(--paper-raised); font-size: 13px; }
-.engine-dot { width: 9px; height: 9px; border-radius: 999px; background: var(--signal-blue); }
+.engine-dot { position: relative; width: 18px; height: 18px; flex: none; }
+.engine-dot::after { content: ""; position: absolute; inset: 4.5px; border-radius: 999px; background: var(--signal-blue); }
 .engine-logo { display: block; width: 18px; height: 18px; flex: none; object-fit: contain; }
 .answer-dot { width: 7px; height: 7px; border-radius: 999px; background: var(--signal-blue); }
 .hero-paths { position: absolute; z-index: 1; top: 94px; left: 34px; width: calc(100% - 34px); height: 144px; overflow: visible; }
@@ -179,7 +180,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .hero-answer-wrap .answer-brand-row:last-child { background: var(--signal-red-tint); }
 .brand-dash { width: 22px; height: 1px; flex: none; background: var(--hairline); }
 .status-red { padding: 5px 8px; border: 1px solid var(--signal-red); border-radius: 4px; background: var(--signal-red-tint); color: var(--signal-red); }
-.hero-annotation { position: absolute; z-index: 5; right: 16px; top: 458px; display: flex; align-items: center; color: var(--signal-orange); }
+.hero-annotation { position: absolute; z-index: 5; right: 43px; top: 597px; display: flex; align-items: center; color: var(--signal-orange); }
 .hero-annotation .annotation { font-size: 24px; }
 .hero-annotation svg { width: 110px; height: 54px; }
 .hero-annotation path, .shift-annotation path { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; }
