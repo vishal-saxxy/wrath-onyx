@@ -85,7 +85,10 @@ export function useHomepageMotion() {
         heroIdleTimer = window.setInterval(() => {
           for (const dot of dots) dot.classList.remove("idle-travelling");
           const nextDot = dots[idleDotIndex];
-          if (nextDot) nextDot.classList.add("idle-travelling");
+          if (nextDot) {
+            nextDot.getBoundingClientRect();
+            nextDot.classList.add("idle-travelling");
+          }
           idleDotIndex = dots.length ? (idleDotIndex + 1) % dots.length : 0;
         }, 3000);
       }, 2480);
