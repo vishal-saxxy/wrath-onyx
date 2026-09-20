@@ -285,7 +285,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .truth-diagram > svg path { fill: none; stroke: var(--hairline-dark); stroke-width: 1.5; }
 .governed-record { position: absolute; left: 300px; top: 300px; z-index: 2; width: 300px; min-height: 126px; padding: 22px; border: 1px solid var(--signal-green); background: var(--ink); }
 .record-rows { display: none; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 16px; color: var(--grey-on-dark); font-size: 13px; }
-.governed-record:hover .record-rows, .governed-record:focus-within .record-rows { display: grid; }
+.governed-record:hover .record-rows, .governed-record:focus .record-rows, .governed-record:focus-within .record-rows { display: grid; }
 .work-band { min-height: 1020px; }
 .work-visual { position: relative; display: grid; grid-template-columns: 260px 1fr; gap: 42px; min-height: 650px; }
 .guide-stack { position: relative; height: 470px; perspective: 900px; }
