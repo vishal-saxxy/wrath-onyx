@@ -196,7 +196,7 @@ function ArtifactFragment({ item }: { item: (typeof b.artifacts.items)[number] }
   if (fragment.type === "evidence") return <div className="fragment-row"><span>{illustrative.capturePanel[1].value}</span><span>{illustrative.evidenceSource}</span></div>;
   if (fragment.type === "line") return <p>{fragment.line}</p>;
   if (fragment.type === "priorities") return <ol>{fragment.rows.map(row => <li key={row}>{row}</li>)}</ol>;
-  if (fragment.type === "fix") return <div className="fragment-table"><span className="label-mono">{fragment.headings[0]}</span><span className="label-mono">{fragment.headings[1]}</span><span>{item.name}</span><span>{fragment.value}</span></div>;
+  if (fragment.type === "fix") return <div className="fragment-table"><span className="label-mono">{fragment.headings[0]}</span><span className="label-mono">{fragment.headings[1]}</span><span></span><span>{fragment.value}</span></div>;
   if (fragment.type === "ruled") return <div>{fragment.rows.map(row => <div className="fragment-row" key={row}><span>{row}</span><span className="fragment-state">{fragment.state}</span></div>)}</div>;
   return <div className="verification-fragment">{fragment.labels.map(label => <div key={label}><span className="label-mono">{label}</span><p>{illustrative.heroQuestion}</p></div>)}</div>;
 }

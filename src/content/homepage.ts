@@ -143,8 +143,8 @@ export const homepage = {
       linkHref: "/who-we-work-with",
       facts: [
         { label: "Founded", value: "2026, Bengaluru" },
-        { label: "Founders", value: "Rajat Gupta and Ashwin Swaminathan" },
-        { label: "Clients", value: "Clients across five verticals and two continents" },
+        { label: "", value: "Rajat Gupta and Ashwin Swaminathan" },
+        { label: "", value: "Clients across five verticals and two continents" },
       ],
       headline: "Find out what the answer says about you.",
       lead: "A free demo on your domain. A focused, fast view of AI visibility and page readiness where there's enough data, showing the largest observed leaks and the evidence behind each.",
