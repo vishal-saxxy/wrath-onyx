@@ -18,8 +18,9 @@ import { Button } from "@/components/ui/button";
 import { homepage } from "@/content/homepage";
 import { illustrative } from "@/content/illustrative";
 import { useHomepageMotion } from "@/hooks/use-homepage-motion";
+import { canonicalUrl } from "@/lib/site";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/")({staticData:{sitemap:true},
   head: () => ({
     meta: [
       { title: "Kasparro — Be the brand AI recommends." },
@@ -27,9 +28,15 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Kasparro — Be the brand AI recommends." },
       { property: "og:description", content: "Measure what AI says about your brand, find what sits behind it, fix it, and verify the change. Answer Engine Optimisation, end to end." },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: canonicalUrl("/") },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Kasparro — Be the brand AI recommends." },
       { name: "twitter:description", content: "Measure what AI says about your brand, find what sits behind it, fix it, and verify the change. Answer Engine Optimisation, end to end." },
+    ],
+    links: [{ rel: "canonical", href: canonicalUrl("/") }],
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Organization", name: "Kasparro", url: canonicalUrl("/"), foundingDate: "2026", address: { "@type": "PostalAddress", addressLocality: "Bengaluru", addressCountry: "IN" } }) },
+      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "WebSite", name: "Kasparro", url: canonicalUrl("/") }) },
     ],
   }),
   component: Homepage,

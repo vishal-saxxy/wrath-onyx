@@ -2,6 +2,7 @@ import "./lib/error-capture";
 
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
+import { SITE_INDEXABLE, SITE_URL } from "./lib/site";
 
 type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
@@ -46,6 +47,19 @@ function isH3SwallowedErrorBody(body: string): boolean {
 
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
+    // Canonical-host 301. Only active once the site is marked indexable, so the
+    // pre-launch preview host is never redirected away.
+    if (SITE_INDEXABLE) {
+      const requested = new URL(request.url);
+      const canonicalOrigin = new URL(SITE_URL);
+      if (requested.host !== canonicalOrigin.host || requested.protocol !== canonicalOrigin.protocol) {
+        requested.host = canonicalOrigin.host;
+        requested.protocol = canonicalOrigin.protocol;
+        requested.port = canonicalOrigin.port;
+        return new Response(null, { status: 301, headers: { Location: requested.toString() } });
+      }
+    }
+
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);

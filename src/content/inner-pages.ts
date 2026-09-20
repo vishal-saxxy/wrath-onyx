@@ -78,13 +78,13 @@ export const inner = {
 } as const;
 
 export const meta = {
-  why: ["Why now — Kasparro", "Why now", "Search returns a field of options. An answer returns a conclusion. Why visibility inside an AI answer is a different problem from visibility in search."],
-  measurement: ["What we measure — Kasparro", "What we measure", "Seven dimensions of how AI finds, reads, trusts and represents a brand, with the engine response behind every finding kept and re-readable."],
-  fixes: ["What we fix — Kasparro", "What we fix", "Four workstreams covering the surfaces that shape what an engine says: technical, content, authority and user voice."],
-  truth: ["Brand Source of Truth — Kasparro", "Brand Source of Truth", "One approved factual foundation for everything a brand says, so contradictions get ruled on rather than repeated."],
-  fit: ["Who this fits — Kasparro", "Who this fits", "Built for e-commerce and D2C, SaaS, services, healthcare and education brands whose buyers have started asking an assistant first."],
-  work: ["Work — Kasparro", "Work", "Engagements described by what was produced and who owns each remaining step."],
-  case: ["Five buying guides for a bedding brand — Kasparro", "Five buying guides for a bedding brand", "A delivered five-piece content package with structured-data materials prepared and publishing responsibilities assigned."],
-  library: ["Field guides — Kasparro", "Field guides", "Working explanations of how AI answers get built, and what that means for a brand inside them."],
-  about: ["About — Kasparro", "About", "Kasparro AI was founded in 2026 in Bengaluru by Rajat Gupta and Ashwin Swaminathan."],
+  why: ["Why now — Kasparro", "Why now", "Search returns a field of options. An answer returns a conclusion. Why visibility inside an AI answer is a different problem from visibility in search.", "/why-ai-answers"],
+  measurement: ["What we measure — Kasparro", "What we measure", "Seven dimensions of how AI finds, reads, trusts and represents a brand, with the engine response behind every finding kept and re-readable.", "/measurement"],
+  fixes: ["What we fix — Kasparro", "What we fix", "Four workstreams covering the surfaces that shape what an engine says: technical, content, authority and user voice.", "/fixes"],
+  truth: ["Brand Source of Truth — Kasparro", "Brand Source of Truth", "One approved factual foundation for everything a brand says, so contradictions get ruled on rather than repeated.", "/brand-source-of-truth"],
+  fit: ["Who this fits — Kasparro", "Who this fits", "Built for e-commerce and D2C, SaaS, services, healthcare and education brands whose buyers have started asking an assistant first.", "/who-we-work-with"],
+  work: ["Work — Kasparro", "Work", "Engagements described by what was produced and who owns each remaining step.", "/work"],
+  case: ["Five buying guides for a bedding brand — Kasparro", "Five buying guides for a bedding brand", "A delivered five-piece content package with structured-data materials prepared and publishing responsibilities assigned.", "/work/bedding-content"],
+  library: ["Field guides — Kasparro", "Field guides", "Working explanations of how AI answers get built, and what that means for a brand inside them.", "/library"],
+  about: ["About — Kasparro", "About", "Kasparro AI was founded in 2026 in Bengaluru by Rajat Gupta and Ashwin Swaminathan.", "/about"],
 } as const;

@@ -4,8 +4,8 @@
 
 @font-face { font-family: "Inter Tight"; src: url("/fonts/inter-tight-latin-wght-normal.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
 @font-face { font-family: "Inter"; src: url("/fonts/inter-latin-wght-normal.woff2") format("woff2"); font-weight: 400 500; font-style: normal; font-display: swap; }
-@font-face { font-family: "IBM Plex Mono"; src: url("/fonts/ibm-plex-mono-400.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: "IBM Plex Mono"; src: url("/fonts/ibm-plex-mono-500.ttf") format("truetype"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "IBM Plex Mono"; src: url("/fonts/ibm-plex-mono-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "IBM Plex Mono"; src: url("/fonts/ibm-plex-mono-500.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
 @font-face { font-family: "Caveat"; src: url("/fonts/caveat-latin-wght-normal.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
 
 @theme inline {
@@ -610,7 +610,7 @@ html[data-power="low"] .shift-band .compact-answer, html[data-power="low"] .shif
 .responsibility-table { border-top: 1px solid var(--ink); }
 .responsibility-table > div { display: grid; grid-template-columns: 1fr 3fr; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--hairline); }
 .responsibility-table p { margin: 0; }
-.empty-guide-list { min-height: 160px; }
+.empty-guide-list { display: none; }
 .library-page .inner-close { border-top: 1px solid var(--hairline); }
 .about-page { min-height: calc(100vh - 68px); }
 .about-page .inner-hero { min-height: 330px; padding-block: 72px; }
@@ -622,3 +622,7 @@ html[data-power="low"] .shift-band .compact-answer, html[data-power="low"] .shif
 .facts-strip { display: grid; grid-template-columns: repeat(3,1fr); margin-top: 34px; padding-top: 28px; border-top: 1px solid var(--hairline); }
 
 @media (prefers-reduced-motion: reduce) { .why-diagram > svg path { animation: none; } }
+
+/* Block 10 closing answer is decorative: no hover lift, no pointer interaction. */
+.close-answer { pointer-events: none; }
+.close-answer .answer-brand-row:hover, .close-answer .answer-brand-row:focus-visible { transform: none; }

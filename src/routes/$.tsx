@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/$")({
+export const Route = createFileRoute("/$")({staticData:{sitemap:false},
   head: () => ({ meta: [{ title: "This page isn't in the answer either." }, { name: "robots", content: "noindex" }] }),
   component: MissingPage,
 });

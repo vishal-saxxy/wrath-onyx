@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HeadContent, Link, Outlet, Scripts, createRootRouteWithContext } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
+import { SITE_INDEXABLE } from "@/lib/site";
 import appCss from "../styles.css?url";
 
 const nav = [
@@ -19,14 +20,15 @@ function NotFoundComponent() {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  staticData: { sitemap: false },
   head: () => ({
-    meta: [{ charSet: "utf-8" }, { name: "viewport", content: "width=1440" }, { property: "og:site_name", content: "Kasparro" }, { property: "og:locale", content: "en_GB" }],
+    meta: [{ charSet: "utf-8" }, { name: "viewport", content: "width=1440" }, { property: "og:site_name", content: "Kasparro" }, { property: "og:locale", content: "en_GB" }, ...(SITE_INDEXABLE ? [] : [{ name: "robots", content: "noindex, nofollow" }])],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "preload", href: "/fonts/inter-tight-latin-wght-normal.woff2", as: "font", type: "font/woff2", crossOrigin: "anonymous" },
       { rel: "preload", href: "/fonts/inter-latin-wght-normal.woff2", as: "font", type: "font/woff2", crossOrigin: "anonymous" },
-      { rel: "preload", href: "/fonts/ibm-plex-mono-400.ttf", as: "font", type: "font/ttf", crossOrigin: "anonymous" },
-      { rel: "preload", href: "/fonts/ibm-plex-mono-500.ttf", as: "font", type: "font/ttf", crossOrigin: "anonymous" },
+      { rel: "preload", href: "/fonts/ibm-plex-mono-400.woff2", as: "font", type: "font/woff2", crossOrigin: "anonymous" },
+      { rel: "preload", href: "/fonts/ibm-plex-mono-500.woff2", as: "font", type: "font/woff2", crossOrigin: "anonymous" },
       { rel: "preload", href: "/fonts/caveat-latin-wght-normal.woff2", as: "font", type: "font/woff2", crossOrigin: "anonymous" },
     ],
   }),

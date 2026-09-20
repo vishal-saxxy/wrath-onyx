@@ -4,7 +4,7 @@ import { iconMap } from "@/components/kasparro/icon-map";
 import { Annotation, AnswerSurface, ArtifactCard, BandHeader, BrandRow, DimensionNode, EngineChip, EvidenceConnector, PromptBar, SignalPath, SourceChip, StatusTag, StepRail, SurfaceBar } from "@/components/kasparro/components";
 import { Button } from "@/components/ui/button";
 
-export const Route = createFileRoute("/styleguide")({
+export const Route = createFileRoute("/styleguide")({staticData:{sitemap:false},
   beforeLoad: () => { if (import.meta.env.PROD) throw notFound(); },
   head: () => ({ meta: [{ title: "Styleguide" }, { name: "robots", content: "noindex, nofollow" }] }),
   component: Styleguide,
