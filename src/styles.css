@@ -186,7 +186,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .hero-annotation svg { width: 270px; height: 112px; }
 .hero-annotation path, .shift-annotation path { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; }
 .engine-annotation { position: absolute; z-index: 5; right: 0; top: 78px; display: flex; flex-direction: column; align-items: flex-end; width: 192px; color: var(--graphite); font: 500 20px/1.05 "Caveat", cursive; }
-.engine-annotation svg { width: 132px; height: 64px; margin: -2px 4px 0 0; }
+.engine-annotation svg { width: 260px; height: 80px; margin: -22px 0 0 0; }
 .engine-annotation path { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; }
 .hero-feature-stack { position: absolute; z-index: 5; left: 16px; top: 213px; display: grid; gap: 38px; }
 .hero-feature-card { display: grid; width: 136px; min-height: 68px; grid-template-columns: 28px 1fr; align-content: center; padding: 10px 12px; border: 1px solid var(--hairline); border-radius: 10px; background: var(--paper-raised); box-shadow: var(--shadow-lift); font-size: 12px; line-height: 1.3; }
