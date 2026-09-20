@@ -156,6 +156,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .engine-row { display: flex; gap: 10px; margin-top: 12px; }
 .engine-chip { display: inline-flex; align-items: center; gap: 8px; height: 34px; padding-inline: 14px; border: 1px solid var(--hairline); border-radius: 999px; background: var(--paper-raised); font-size: 13px; }
 .engine-dot { width: 9px; height: 9px; border-radius: 999px; background: var(--signal-blue); }
+.engine-logo { display: block; width: 18px; height: 18px; flex: none; object-fit: contain; }
 .answer-dot { width: 7px; height: 7px; border-radius: 999px; background: var(--signal-blue); }
 .hero-paths { position: absolute; z-index: 1; top: 94px; left: 34px; width: calc(100% - 34px); height: 144px; overflow: visible; }
 .hero-paths path { fill: none; stroke: var(--signal-blue); stroke-width: 1.5; }

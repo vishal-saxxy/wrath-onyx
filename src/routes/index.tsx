@@ -83,6 +83,12 @@ const heroFeatures = [
   { first: "Clear next", second: "steps.", Icon: BarChart3, tone: "blue" },
 ] as const;
 
+function EngineMark({ engine }: { engine: (typeof illustrative.engines)[number] }) {
+  if (engine === "ChatGPT") return <img className="engine-logo" src="/engine-logos/chatgpt.svg" alt="" aria-hidden="true"/>;
+  if (engine === "Perplexity") return <img className="engine-logo" src="/engine-logos/perplexity.svg" alt="" aria-hidden="true"/>;
+  return <span className="engine-dot"/>;
+}
+
 function Homepage() {
   useHomepageMotion();
   return <main id="main-content" className="homepage">
@@ -122,7 +128,7 @@ function HeroBlock() {
         <IllustrativeLabel/>
         <div className="hero-halo" aria-hidden="true"/>
         <div className="hero-prompt"><Search aria-hidden="true" focusable="false" size={20} strokeWidth={1.5}/><span className="prompt-question">{illustrative.heroQuestion}</span><span className="send-pulse"><Send aria-hidden="true" focusable="false" size={20} strokeWidth={1.5}/></span></div>
-        <div className="engine-row">{illustrative.engines.map((engine, index) => <button type="button" className={`engine-chip motion-control ${activeEngine === engine ? "is-active" : activeEngine ? "is-dimmed" : ""}`} style={{ "--item-index": index } as CSSProperties} key={engine} onClick={() => setActiveEngine(current => current === engine ? null : engine)}><span className="engine-dot"/>{engine}</button>)}</div>
+        <div className="engine-row">{illustrative.engines.map((engine, index) => <button type="button" className={`engine-chip motion-control ${activeEngine === engine ? "is-active" : activeEngine ? "is-dimmed" : ""}`} style={{ "--item-index": index } as CSSProperties} key={engine} onClick={() => setActiveEngine(current => current === engine ? null : engine)}><EngineMark engine={engine}/>{engine}</button>)}</div>
         <svg className={`hero-paths ${activeEngine ? "has-selection" : ""}`} viewBox="0 0 720 180" aria-hidden="true" focusable="false"><path className={activeEngine && activeEngine !== illustrative.engines[0] ? "is-dimmed" : ""} d="M32 20 C 48 72, 128 104, 194 140"/><path className={activeEngine && activeEngine !== illustrative.engines[1] ? "is-dimmed" : ""} d="M160 20 C 176 72, 246 106, 308 140"/><path className={activeEngine && activeEngine !== illustrative.engines[2] ? "is-dimmed" : ""} d="M288 20 C 302 72, 366 106, 422 140"/><path className={activeEngine && activeEngine !== illustrative.engines[3] ? "is-dimmed" : ""} d="M440 20 C 450 72, 500 106, 536 140"/>{illustrative.engines.map((engine, index) => <circle className={`travelling-dot dot-${index + 1} ${activeEngine && activeEngine !== engine ? "is-dimmed" : ""}`} key={engine} r="4"/>)}</svg>
         <div className="engine-annotation"><span>Multiple AI engines. One answer.</span><svg viewBox="0 0 92 46" aria-hidden="true" focusable="false"><path d="M84 6C65 14 42 23 9 38m13 2L8 39l8-12"/></svg></div>
         <div className="hero-feature-stack">{heroFeatures.map(({ first, second, Icon, tone }) => <article className="hero-feature-card" key={first}><Icon className={`feature-icon feature-${tone}`} aria-hidden="true" focusable="false" size={18} strokeWidth={1.5}/><span>{first}</span><span>{second}</span></article>)}</div>
