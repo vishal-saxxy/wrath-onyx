@@ -16,6 +16,7 @@ import { Route as BrandSourceOfTruthRouteImport } from './routes/brand-source-of
 import { Route as FixesRouteImport } from './routes/fixes'
 import { Route as LibraryRouteImport } from './routes/library'
 import { Route as MeasurementRouteImport } from './routes/measurement'
+import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as StyleguideRouteImport } from './routes/styleguide'
 import { Route as WhoWeWorkWithRouteImport } from './routes/who-we-work-with'
@@ -57,6 +58,11 @@ const LibraryRoute = LibraryRouteImport.update({
 const MeasurementRoute = MeasurementRouteImport.update({
   id: '/measurement',
   path: '/measurement',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
+  id: '/robots.txt',
+  path: '/robots.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -103,6 +109,7 @@ export interface FileRoutesByFullPath {
   '/fixes': typeof FixesRoute
   '/library': typeof LibraryRoute
   '/measurement': typeof MeasurementRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/styleguide': typeof StyleguideRoute
   '/who-we-work-with': typeof WhoWeWorkWithRoute
@@ -119,6 +126,7 @@ export interface FileRoutesByTo {
   '/fixes': typeof FixesRoute
   '/library': typeof LibraryRoute
   '/measurement': typeof MeasurementRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/styleguide': typeof StyleguideRoute
   '/who-we-work-with': typeof WhoWeWorkWithRoute
@@ -135,6 +143,7 @@ export interface FileRoutesById {
   '/fixes': typeof FixesRoute
   '/library': typeof LibraryRoute
   '/measurement': typeof MeasurementRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/styleguide': typeof StyleguideRoute
   '/who-we-work-with': typeof WhoWeWorkWithRoute
@@ -153,6 +162,7 @@ export interface FileRouteTypes {
     | '/fixes'
     | '/library'
     | '/measurement'
+    | '/robots.txt'
     | '/sitemap.xml'
     | '/styleguide'
     | '/who-we-work-with'
@@ -169,6 +179,7 @@ export interface FileRouteTypes {
     | '/fixes'
     | '/library'
     | '/measurement'
+    | '/robots.txt'
     | '/sitemap.xml'
     | '/styleguide'
     | '/who-we-work-with'
@@ -184,6 +195,7 @@ export interface FileRouteTypes {
     | '/fixes'
     | '/library'
     | '/measurement'
+    | '/robots.txt'
     | '/sitemap.xml'
     | '/styleguide'
     | '/who-we-work-with'
@@ -201,6 +213,7 @@ export interface RootRouteChildren {
   FixesRoute: typeof FixesRoute
   LibraryRoute: typeof LibraryRoute
   MeasurementRoute: typeof MeasurementRoute
+  RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StyleguideRoute: typeof StyleguideRoute
   WhoWeWorkWithRoute: typeof WhoWeWorkWithRoute
@@ -257,6 +270,13 @@ declare module '@tanstack/react-router' {
       path: '/measurement'
       fullPath: '/measurement'
       preLoaderRoute: typeof MeasurementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/robots.txt': {
+      id: '/robots.txt'
+      path: '/robots.txt'
+      fullPath: '/robots.txt'
+      preLoaderRoute: typeof RobotsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -331,6 +351,7 @@ const rootRouteChildren: RootRouteChildren = {
   FixesRoute: FixesRoute,
   LibraryRoute: LibraryRoute,
   MeasurementRoute: MeasurementRoute,
+  RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   StyleguideRoute: StyleguideRoute,
   WhoWeWorkWithRoute: WhoWeWorkWithRoute,
