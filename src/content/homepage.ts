@@ -1,3 +1,14 @@
+export const diagramLabels = {
+  hero: "An illustrative AI answer assembling from four answer engines, listing three fictional brands, with a fourth row marked not mentioned.",
+  shift: "A comparison of two journeys: a search results list that continues beyond the frame, and an AI answer that names three brands and ends.",
+  consideration: "A single illustrative AI answer, highlighted three ways in turn to show discovery, recommendation and supporting evidence.",
+  evidence: "An illustrative claim from an AI answer, connected to the source attached to it, with the connection then marked as association rather than cause.",
+  dimensions: "Seven measurement dimensions arranged around a brand at the centre, each connected to the part of an AI answer it reads.",
+  movement: "A four-step loop — measure, diagnose, fix, verify — above five surfaces that shape what an AI answer says.",
+  truth: "Three pages of one website stating the same fact differently, resolving into a single ruled record.",
+  work: "A stack of five delivered content guides beside a list of what each contained.",
+} as const;
+
 export const homepage = {
   demoUrl: "https://demo.kasparro.com",
   primaryCta: "Get a free demo",
