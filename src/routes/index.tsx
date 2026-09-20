@@ -57,10 +57,6 @@ function TextLink({ label, to }: { label: string; to: string }) {
   return <Link to={to} className="interactive-press mt-8 inline-flex items-center gap-2 font-medium text-signal-blue">{label}<ArrowRight aria-hidden="true" focusable="false" size={16} strokeWidth={1.5}/></Link>;
 }
 
-function BlockMark({ number }: { number: string }) {
-  return <span className="block-mark label-mono" aria-hidden="true">{number}</span>;
-}
-
 function IllustrativeLabel() {
   return <span className="illustrative-label">{illustrative.illustrativeLabel}</span>;
 }
@@ -102,7 +98,6 @@ function HeroBlock() {
   const [activeBrand, setActiveBrand] = useState<string | null>(null);
   const [sourceActive, setSourceActive] = useState(false);
   return <section className="home-band hero-band">
-    <BlockMark number={b.hero.number}/>
     <div className="site-grid hero-grid">
       <div className="col-span-5 hero-copy">
         <div className="label-mono text-grey">{b.hero.eyebrow}</div>
@@ -116,7 +111,7 @@ function HeroBlock() {
         <IllustrativeLabel/>
         <div className="hero-prompt"><Search aria-hidden="true" focusable="false" size={20} strokeWidth={1.5}/><span className="prompt-question">{illustrative.heroQuestion}</span><span className="send-pulse"><Send aria-hidden="true" focusable="false" size={20} strokeWidth={1.5}/></span></div>
         <div className="engine-row">{illustrative.engines.map((engine, index) => <button type="button" className={`engine-chip motion-control ${activeEngine === engine ? "is-active" : activeEngine ? "is-dimmed" : ""}`} style={{ "--item-index": index } as CSSProperties} key={engine} onClick={() => setActiveEngine(current => current === engine ? null : engine)}><span className="engine-dot"/>{engine}</button>)}</div>
-        <svg className={`hero-paths ${activeEngine ? "has-selection" : ""}`} viewBox="0 0 720 180" aria-hidden="true" focusable="false"><path className={activeEngine && activeEngine !== illustrative.engines[0] ? "is-dimmed" : ""} d="M60 20 C 120 100, 430 0, 575 135"/><path className={activeEngine && activeEngine !== illustrative.engines[1] ? "is-dimmed" : ""} d="M220 20 C 260 100, 460 30, 575 135"/><path className={activeEngine && activeEngine !== illustrative.engines[2] ? "is-dimmed" : ""} d="M390 20 C 410 90, 500 80, 575 135"/><path className={activeEngine && activeEngine !== illustrative.engines[3] ? "is-dimmed" : ""} d="M555 20 C 550 70, 565 100, 575 135"/>{illustrative.engines.map((engine, index) => <circle className={`travelling-dot dot-${index + 1} ${activeEngine && activeEngine !== engine ? "is-dimmed" : ""}`} key={engine} r="4"/>)}</svg>
+        <svg className={`hero-paths ${activeEngine ? "has-selection" : ""}`} viewBox="0 0 720 180" aria-hidden="true" focusable="false"><path className={activeEngine && activeEngine !== illustrative.engines[0] ? "is-dimmed" : ""} d="M60 20 C 72 70, 110 100, 150 135"/><path className={activeEngine && activeEngine !== illustrative.engines[1] ? "is-dimmed" : ""} d="M220 20 C 225 72, 240 102, 270 135"/><path className={activeEngine && activeEngine !== illustrative.engines[2] ? "is-dimmed" : ""} d="M390 20 C 390 72, 395 103, 405 135"/><path className={activeEngine && activeEngine !== illustrative.engines[3] ? "is-dimmed" : ""} d="M555 20 C 550 72, 540 103, 525 135"/>{illustrative.engines.map((engine, index) => <circle className={`travelling-dot dot-${index + 1} ${activeEngine && activeEngine !== engine ? "is-dimmed" : ""}`} key={engine} r="4"/>)}</svg>
         <div className="hero-answer-wrap"><HeroAnswer activeBrand={activeBrand} onBrand={brand => setActiveBrand(current => current === brand ? null : brand)} sourceActive={sourceActive} onSource={() => setSourceActive(current => !current)}/><div className="hero-annotation"><svg viewBox="0 0 100 52" aria-hidden="true" focusable="false"><path d="M92 46C66 42 31 24 8 6m2 15L7 5l17 3"/></svg><span className="annotation">{illustrative.heroAnnotation}</span></div></div>
         <p className="label-mono text-grey fiction-note">{illustrative.fictionFootnote}</p>
       </div>
@@ -130,7 +125,6 @@ function HeroBlock() {
 
 function ShiftBlock() {
   return <section className="home-band dark-band shift-band">
-    <BlockMark number={b.shift.number}/>
     <div className="site-grid">
       <div className="col-span-5"><BandHeader eyebrow={b.shift.eyebrow} headline={<Headline lines={b.shift.headline}/>} lead={b.shift.lead}/><TextLink label={b.shift.link} to={b.shift.linkHref}/></div>
       <div className="col-span-7 shift-visual" role="img" aria-label={diagramLabels.shift}>
@@ -151,7 +145,6 @@ function ConsiderationBlock() {
     return () => window.removeEventListener("homepage-consideration-phase", selectPhase);
   }, []);
   return <section className="home-band consideration-band">
-    <BlockMark number={b.consideration.number}/>
     <div className="pin-stage site-grid">
       <div className="col-span-5"><BandHeader eyebrow={b.consideration.eyebrow} headline={<Headline lines={b.consideration.headline}/>} lead={b.consideration.lead}/><TextLink label={b.consideration.link} to={b.consideration.linkHref}/></div>
        <div className="col-start-6 col-span-7 consideration-answer" role="img" aria-label={diagramLabels.consideration}><LayeredAnswer selected={selected}/><div className="pin-step label-mono" aria-hidden="true"><span className={selected === 1 ? "is-active" : ""}>{b.consideration.cards[0].name}</span><span className={selected === 2 ? "is-active" : ""}>{b.consideration.cards[1].name}</span><span className={selected === 3 ? "is-active" : ""}>{b.consideration.cards[2].name}</span></div></div>
@@ -175,7 +168,6 @@ function EvidenceBlock() {
   const claim = illustrative.evidenceClaimSpan;
   const after = illustrative.evidenceSentence.slice(claimAt + illustrative.evidenceClaimSpan.length);
   return <section className="home-band dark-band evidence-band">
-    <BlockMark number={b.evidence.number}/>
     <div className="site-grid evidence-heading"><div className="col-span-7 col-start-2"><BandHeader eyebrow={b.evidence.eyebrow} headline={<Headline lines={b.evidence.headline}/>} lead={b.evidence.lead}/></div></div>
     <div className="evidence-frame" role="img" aria-label={diagramLabels.evidence}><IllustrativeLabel/><div className="evidence-quote"><p>{before}<mark>{claim}</mark>{after}</p><svg viewBox="0 0 430 130" aria-hidden="true"><path d="M70 4 C 70 75, 270 65, 350 120"/></svg><span className="source-chip source-qualified">{illustrative.evidenceSource}</span></div><dl className="capture-panel">{illustrative.capturePanel.map(row => <div key={row.label}><dt className="label-mono text-grey-on-dark">{row.label}</dt><dd>{row.value}</dd></div>)}</dl></div>
     <div className="site-grid evidence-copy"><div className="col-start-2 col-span-7"><p className="label-mono">{b.evidence.limitOne}</p><p className="label-mono">{b.evidence.limitTwo}</p><TextLink label={b.evidence.link} to={b.evidence.linkHref}/></div></div>
@@ -186,7 +178,6 @@ function DimensionsBlock() {
   const orbitPoints = [[380,70],[625,190],[690,430],[545,650],[255,690],[70,470],[125,190]] as const;
   const [isolated, setIsolated] = useState<string | null>(null);
   return <section className="home-band dark-band dimensions-band">
-    <BlockMark number={b.dimensions.number}/>
     <div className="pin-stage site-grid dimensions-grid">
       <div className="col-span-5 dimensions-copy"><BandHeader eyebrow={b.dimensions.eyebrow} headline={<Headline lines={b.dimensions.headline}/>} lead={b.dimensions.lead}/><p className="label-mono dimensions-note">{b.dimensions.note}</p><TextLink label={b.dimensions.link} to={b.dimensions.linkHref}/></div>
       <div className="col-span-7 dimension-orbit"><IllustrativeLabel/><svg className="orbit-lines" viewBox="0 0 760 760" role="img" aria-label={diagramLabels.dimensions} focusable="false"><circle cx="380" cy="380" r="310"/><circle cx="380" cy="380" r="225"/><circle cx="380" cy="380" r="140"/>{orbitPoints.map((points, index) => { const item = b.dimensions.items[index]; return item ? <path className={isolated && isolated !== item.name ? "is-dimmed" : ""} key={item.name} d={`M${points[0]} ${points[1]} L380 380`}/> : null; })}</svg><Button type="button" variant="ghost" className="dimension-nucleus" onClick={() => setIsolated(null)}>{b.dimensions.nucleus}</Button><ol className="dimension-list">{b.dimensions.items.map((item, index) => { const Icon = iconMap[item.name as IconName]; const dimmed = isolated && isolated !== item.name; return <li className={`dimension-item dimension-item-${index + 1} ${dimmed ? "is-dimmed" : ""}`} key={item.name}><Button type="button" variant="ghost" className={`dimension-button dimension-${item.tone} ${isolated === item.name ? "is-active" : ""}`} onClick={() => setIsolated(current => current === item.name ? null : item.name)}><span className="dimension-group label-mono">{item.group}</span><Icon aria-hidden="true" focusable="false" size={19} strokeWidth={1.5}/><span className="dimension-name">{item.name}</span><span className="small">{item.question}</span></Button></li>; })}</ol></div>
@@ -197,7 +188,6 @@ function DimensionsBlock() {
 function MovementBlock() {
   const [activeSurface, setActiveSurface] = useState<string | null>(null);
   return <section className="home-band movement-band">
-    <BlockMark number={b.movement.number}/>
     <div className="site-grid movement-grid">
       <div className="col-span-5 movement-copy"><BandHeader eyebrow={b.movement.eyebrow} headline={<Headline lines={b.movement.headline}/>} lead={b.movement.lead}/><p className="lead movement-second">{b.movement.second}</p><TextLink label={b.movement.link} to={b.movement.linkHref}/></div>
       <div className="col-span-7 process-loop" role="img" aria-label={diagramLabels.movement}><IllustrativeLabel/><svg viewBox="0 0 760 380" aria-hidden="true" focusable="false"><defs><marker id="loop-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z"/></marker></defs><path className="loop-arc loop-arc-one" markerEnd="url(#loop-arrow)" d="M190 92C285 42 475 42 570 92"/><path className="loop-arc loop-arc-two" markerEnd="url(#loop-arrow)" d="M620 140C670 190 670 260 620 310"/><path className="loop-arc loop-arc-three" markerEnd="url(#loop-arrow)" d="M570 338C475 378 285 378 190 338"/><path className="loop-arc loop-arc-four" markerEnd="url(#loop-arrow)" d="M140 310C78 254 78 162 140 104"/>{[[165,100],[595,115],[595,325],[165,325]].map(([cx,cy]) => <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="40"/>)}</svg><button type="button" className="question-chip motion-control">{illustrative.heroQuestion}<span className="question-repeat">{illustrative.heroQuestion}</span></button><div className="loop-steps">{b.movement.steps.map((step, index) => <span className={`loop-step-${index + 1}`} key={step}>{step}</span>)}</div></div>
@@ -210,7 +200,6 @@ function MovementBlock() {
 function ArtifactsBlock() {
   const [open, setOpen] = useState<string | null>(null);
   return <section className="home-band artifacts-band">
-    <BlockMark number={b.artifacts.number}/>
     <div className="site-grid artifacts-grid">
       <div className="col-span-6"><BandHeader eyebrow={b.artifacts.eyebrow} headline={<Headline lines={b.artifacts.headline}/>} lead={b.artifacts.lead}/><TextLink label={b.artifacts.link} to={b.artifacts.linkHref}/></div>
       <div className="col-span-12 artifact-list">{b.artifacts.items.map(item => { const Icon = iconMap[item.icon as IconName]; const isOpen = open === item.name; const panelId = `artifact-${item.number}`; return <article className={`artifact-home-card ${isOpen ? "artifact-open" : ""}`} key={item.name}><Button variant="ghost" className="artifact-trigger" aria-expanded={isOpen} aria-controls={panelId} onClick={() => setOpen(isOpen ? null : item.name)}><span className="label-mono artifact-number">{item.number}</span><span className="artifact-icon"><Icon aria-hidden="true" focusable="false" size={22} strokeWidth={1.5}/></span><span className="artifact-heading"><strong>{item.name}</strong><small>{item.descriptor}</small></span><ChevronDown aria-hidden="true" focusable="false" size={20} strokeWidth={1.5}/></Button><div id={panelId} className="artifact-fragment" hidden={!isOpen}><ArtifactFragment item={item}/></div></article>; })}</div>
@@ -233,7 +222,6 @@ function ArtifactFragment({ item }: { item: (typeof b.artifacts.items)[number] }
 function TruthBlock() {
   const [fanned, setFanned] = useState(false);
   return <section className="home-band dark-band truth-band">
-    <BlockMark number={b.truth.number}/>
     <div className="site-grid truth-grid">
       <div className="col-span-5 truth-copy"><div className="label-mono text-grey-on-dark">{b.truth.eyebrow}</div><h2 className="truth-title"><Headline lines={b.truth.headline}/></h2><p className="lead">{b.truth.lead}</p><p className="body-copy text-grey-on-dark truth-third">{b.truth.third}</p><TextLink label={b.truth.link} to={b.truth.linkHref}/></div>
       <div className={`col-span-7 truth-diagram ${fanned ? "is-fanned" : ""}`} role="img" aria-label={diagramLabels.truth}><IllustrativeLabel/><div className="truth-fragments">{illustrative.bsotFragments.map((fragment, index) => <div className={`truth-fragment truth-fragment-${index + 1}`} key={fragment.label}><span className="label-mono text-grey-on-dark">{fragment.label}</span><span>{fragment.value}</span><em>{illustrative.conflictLabel}</em></div>)}</div><svg viewBox="0 0 620 260" aria-hidden="true" focusable="false"><path d="M125 40 C 190 130, 340 100, 475 210"/><path d="M250 80 C 320 120, 380 150, 475 210"/><path d="M410 65 C 440 110, 455 160, 475 210"/></svg><Button type="button" variant="ghost" className="governed-record" aria-expanded={fanned} onClick={() => setFanned(current => !current)}><span className="label-mono">{illustrative.ruledLabel}</span><span className="record-rows">{illustrative.bsotRecordRows.map(row => <span key={row}>{row}</span>)}</span></Button></div>
@@ -249,7 +237,6 @@ function WorkBlock() {
     event.currentTarget.style.setProperty("--parallax", `${amount}px`);
   };
   return <section className="home-band dark-band work-band">
-    <BlockMark number={b.work.number}/>
     <div className="site-grid">
       <div className="col-span-5"><BandHeader eyebrow={b.work.eyebrow} headline={<Headline lines={b.work.headline}/>} lead={b.work.lead}/><TextLink label={b.work.link} to={b.work.linkHref}/></div>
       <div className="col-span-7 work-visual" role="img" aria-label={diagramLabels.work}><IllustrativeLabel/><div className="guide-stack" onMouseMove={handleParallax} onMouseLeave={event => event.currentTarget.style.removeProperty("--parallax")}>{b.work.panelOneItems.map((topic, index) => <div className={`guide-cover guide-${index + 1}`} key={topic}><BookOpen aria-hidden="true" focusable="false" size={20} strokeWidth={1.5}/><span>{topic}</span></div>)}</div><div className="work-panels"><article><h3>{b.work.panelOne}</h3><ul>{b.work.panelOneItems.map(item => <li key={item}>{item}</li>)}</ul></article><article><h3>{b.work.panelTwo}</h3><ul>{b.work.panelTwoItems.map(item => <li key={item}>{item}</li>)}</ul></article></div><p className="label-mono work-bound">{b.work.bound}</p></div>
@@ -266,9 +253,8 @@ const verticalsWithIcons = [
 ] as const;
 function CloseBlock() {
   return <section className="home-band close-band">
-    <BlockMark number={b.close.number}/>
     <div className="site-grid fit-zone"><div className="col-span-6"><BandHeader eyebrow={b.close.fitEyebrow} headline={<Headline lines={b.close.fitHeadline}/>} lead={null}/><TextLink label={b.close.link} to={b.close.linkHref}/></div><div className="col-start-8 col-span-5"><ul className="vertical-list">{verticalsWithIcons.map(([vertical, Icon]) => <li key={vertical}><Icon aria-hidden="true" focusable="false" size={20} strokeWidth={1.5}/><span>{vertical}</span></li>)}</ul><ul className="trigger-list">{b.close.triggers.map(trigger => <li key={trigger}><span aria-hidden="true"/>{trigger}</li>)}</ul></div></div>
-    <dl className="credibility-strip site-grid">{b.close.facts.map(fact => <div className="col-span-4" key={fact.value}>{fact.label ? <dt className="label-mono text-grey">{fact.label}</dt> : null}<dd>{fact.value}</dd></div>)}</dl>
+    <dl className="credibility-strip site-grid">{b.close.facts.map(fact => <div className="col-span-6" key={fact.value}>{fact.label ? <dt className="label-mono text-grey">{fact.label}</dt> : null}<dd>{fact.value}</dd></div>)}</dl>
     <div className="site-grid close-zone"><div className="col-start-3 col-span-8 close-copy"><h2 className="display-l">{b.close.headline}</h2><p className="lead">{b.close.lead}</p><div className="close-actions"><Button size="lg" asChild><a href={homepage.demoUrl} rel="noopener">{homepage.primaryCta}</a></Button><Button size="lg" variant="secondary" asChild><a href={homepage.demoUrl} rel="noopener">{homepage.secondaryCta}</a></Button></div></div><div className="col-start-5 col-span-4 close-answer" aria-hidden="true"><HeroAnswer quiet/></div></div>
   </section>;
 }
