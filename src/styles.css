@@ -155,8 +155,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .hero-prompt { position: relative; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 16px; min-height: 58px; padding: 8px 20px; border: 1px solid var(--hairline); border-radius: 10px; background: var(--paper-raised); box-shadow: var(--shadow-lift); }
 .engine-row { position: relative; z-index: 3; display: flex; gap: 8px; margin-top: 12px; }
 .engine-chip { display: inline-flex; align-items: center; gap: 8px; height: 34px; padding-inline: 14px; border: 1px solid var(--hairline); border-radius: 999px; background: var(--paper-raised); font-size: 13px; }
-.engine-dot { position: relative; width: 18px; height: 18px; flex: none; }
-.engine-dot::after { content: ""; position: absolute; inset: 4.5px; border-radius: 999px; background: var(--signal-blue); }
 .engine-logo { display: block; width: 18px; height: 18px; flex: none; object-fit: contain; }
 .answer-dot { width: 7px; height: 7px; border-radius: 999px; background: var(--signal-blue); }
 .hero-paths { position: absolute; z-index: 1; top: 94px; left: 34px; width: calc(100% - 34px); height: 144px; overflow: visible; }
@@ -183,12 +181,12 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .hero-answer-wrap .answer-brand-row:last-child { background: var(--signal-red-tint); }
 .brand-dash { width: 22px; height: 1px; flex: none; background: var(--hairline); }
 .status-red { padding: 5px 8px; border: 1px solid var(--signal-red); border-radius: 4px; background: var(--signal-red-tint); color: var(--signal-red); }
-.hero-annotation { position: absolute; z-index: 5; left: 174px; top: 594px; display: flex; align-items: center; color: var(--signal-orange); white-space: nowrap; }
+.hero-annotation { position: absolute; z-index: 5; left: 164px; top: 500px; display: flex; align-items: flex-end; color: var(--signal-orange); white-space: nowrap; }
 .hero-annotation .annotation { font-size: 24px; }
-.hero-annotation svg { width: 260px; height: 54px; }
+.hero-annotation svg { width: 270px; height: 112px; }
 .hero-annotation path, .shift-annotation path { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; }
 .engine-annotation { position: absolute; z-index: 5; right: 0; top: 78px; display: flex; flex-direction: column; align-items: flex-end; width: 192px; color: var(--graphite); font: 500 20px/1.05 "Caveat", cursive; }
-.engine-annotation svg { width: 104px; height: 54px; margin: -2px 4px 0 0; }
+.engine-annotation svg { width: 260px; height: 80px; margin: -22px 0 0 0; }
 .engine-annotation path { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; }
 .hero-feature-stack { position: absolute; z-index: 5; left: 16px; top: 213px; display: grid; gap: 38px; }
 .hero-feature-card { display: grid; width: 136px; min-height: 68px; grid-template-columns: 28px 1fr; align-content: center; padding: 10px 12px; border: 1px solid var(--hairline); border-radius: 10px; background: var(--paper-raised); box-shadow: var(--shadow-lift); font-size: 12px; line-height: 1.3; }
@@ -399,10 +397,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .hero-paths path, .hero-annotation path, .layered-connectors path, .evidence-quote svg path, .orbit-lines path, .process-loop .loop-arc, .truth-diagram > svg path { stroke-dasharray: 1000; stroke-dashoffset: 0; }
 .travelling-dot { fill: var(--signal-blue); offset-rotate: 0deg; opacity: 0; }
-.dot-1 { offset-path: path("M32 20 C 48 72, 128 104, 194 140"); }
-.dot-2 { offset-path: path("M160 20 C 176 72, 246 106, 308 140"); }
-.dot-3 { offset-path: path("M288 20 C 302 72, 366 106, 422 140"); }
-.dot-4 { offset-path: path("M440 20 C 450 72, 500 106, 536 140"); }
+.dot-1 { offset-path: path("M32 20 C 10 58, 142 84, 194 140"); }
+.dot-2 { offset-path: path("M160 20 C 214 52, 220 112, 308 140"); }
+.dot-3 { offset-path: path("M288 20 C 272 80, 402 72, 422 140"); }
+.dot-4 { offset-path: path("M440 20 C 520 54, 470 104, 536 140"); }
 
 html[data-motion="enhanced"] .hero-running .prompt-question { animation: hero-question var(--dur-type) var(--ease-enter) both; }
 html[data-motion="enhanced"] .hero-running .send-pulse { animation: send-signal var(--dur-micro) var(--ease-signal) 640ms both; }
@@ -418,8 +416,11 @@ html[data-motion="enhanced"] .hero-running .answer-brand-row:nth-child(2) { --br
 html[data-motion="enhanced"] .hero-running .answer-brand-row:nth-child(3) { --brand-delay: 120ms; }
 html[data-motion="enhanced"] .hero-running .answer-brand-row:nth-child(4) { --brand-delay: 240ms; }
 html[data-motion="enhanced"] .hero-running .status-red { animation: status-flip var(--dur-state) var(--ease-signal) 2140ms both; }
-html[data-motion="enhanced"] .hero-running .answer-sources, html[data-motion="enhanced"] .hero-running .hero-annotation { animation: reveal-opacity var(--dur-move) var(--ease-enter) 2060ms both; }
-html[data-motion="enhanced"] .hero-running .hero-annotation path { animation: path-draw var(--dur-move) var(--ease-move) 2060ms both; }
+html[data-motion="enhanced"] .hero-running .answer-sources { animation: reveal-opacity var(--dur-move) var(--ease-enter) 2060ms both; }
+html[data-motion="enhanced"] .hero-running .hero-annotation { animation: reveal-opacity 420ms var(--ease-enter) 2400ms both; }
+html[data-motion="enhanced"] .hero-running .hero-annotation path { animation: path-draw 420ms var(--ease-move) 2400ms both; }
+html[data-motion="enhanced"] .hero-running .engine-annotation { animation: reveal-opacity var(--dur-move) var(--ease-enter) 700ms both; }
+html[data-motion="enhanced"] .hero-running .engine-annotation path { stroke-dasharray: 1000; animation: path-draw var(--dur-move) var(--ease-move) 700ms both; }
 
 @keyframes hero-question { from { opacity: 0; transform: translateX(-4px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes send-signal { 50% { opacity: .55; transform: scale(1.02); } }
