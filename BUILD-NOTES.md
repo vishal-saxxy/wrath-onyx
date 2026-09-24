@@ -2,8 +2,8 @@
 
 ## Unresolved dependencies
 
-- Kasparro logo asset
-- Kasparro favicon asset
+- Wrath logo asset
+- Wrath favicon asset
 - Open Graph and share image asset
 - Canonical public host
 - Privacy copy

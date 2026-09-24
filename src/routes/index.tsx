@@ -17,8 +17,8 @@ import {
   ShoppingBag,
   Sparkles,
 } from "lucide-react";
-import { BandHeader } from "@/components/kasparro/components";
-import { iconMap, type IconName } from "@/components/kasparro/icon-map";
+import { BandHeader } from "@/components/wrath/components";
+import { iconMap, type IconName } from "@/components/wrath/icon-map";
 import { Button } from "@/components/ui/button";
 import { diagramLabels, homepage } from "@/content/homepage";
 import { illustrative } from "@/content/illustrative";

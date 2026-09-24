@@ -1,7 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { illustrative } from "@/content/illustrative";
-import { iconMap } from "@/components/kasparro/icon-map";
-import { Annotation, AnswerSurface, ArtifactCard, BandHeader, BrandRow, DimensionNode, EngineChip, EvidenceConnector, PromptBar, SignalPath, SourceChip, StatusTag, StepRail, SurfaceBar } from "@/components/kasparro/components";
+import { iconMap } from "@/components/wrath/icon-map";
+import { Annotation, AnswerSurface, ArtifactCard, BandHeader, BrandRow, DimensionNode, EngineChip, EvidenceConnector, PromptBar, SignalPath, SourceChip, StatusTag, StepRail, SurfaceBar } from "@/components/wrath/components";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/styleguide")({staticData:{sitemap:false},
