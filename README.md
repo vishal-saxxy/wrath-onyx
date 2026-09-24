@@ -1,10 +1,10 @@
-# Kasparro Brand Groundwork
+# Wrath Brand Groundwork
 
-Build the foundation for the Kasparro marketing website. This is stage 1 of 4. Do not build any page content yet beyond the shell and a styleguide route.
+Build the foundation for the Wrath marketing website. This is stage 1 of 4. Do not build any page content yet beyond the shell and a styleguide route.
 
 Scope: desktop only. Design for a 1440px canvas. Do not write breakpoints, mobile layouts, or touch handling. Use flex, grid and relative units so responsive work can be added later, but spend no effort on it now.
 
-Kasparro is a service that measures and improves how AI answer engines find, read, trust and represent a brand. It is not software a client buys and operates. Never describe it as a platform, tool, dashboard, app or software.
+Wrath is a service that measures and improves how AI answer engines find, read, trust and represent a brand. It is not software a client buys and operates. Never describe it as a platform, tool, dashboard, app or software.
 
 1. Create /BUILD-RULES.md
 
@@ -30,7 +30,7 @@ Any duration, turnaround, cadence or SLA
 
 Any guarantee or promised improvement
 
-The words: probe, audit, platform, software, dashboard, tool (as descriptors of Kasparro), done-for-you, self-serve
+The words: probe, audit, platform, software, dashboard, tool (as descriptors of Wrath), done-for-you, self-serve
 
 Any real company name inside a fabricated AI answer
 
@@ -42,13 +42,13 @@ Causal language is banned. Never write that a source, page or response caused, c
 
 Delivery vocabulary, four distinct states: delivered (produced and handed over) · prepared (ready, awaiting a dependency) · implementation-ready (complete with instructions and acceptance criteria) · implemented (live on the client's property). Never blur them. Nothing on this site may say implemented.
 
-Never write "Kasparro is / helps / provides". No sentence opens with the brand name as subject, with one exception supplied in stage 2.
+Never write "Wrath is / helps / provides". No sentence opens with the brand name as subject, with one exception supplied in stage 2.
 
 Illustrative content rules. Every AI answer, brand, source and claim shown is invented for explanation. It may demonstrate structure and relationships. It may never imply a real measurement, benchmark, result or causal proof. No counts, no rank numerals, no scores, no percentages, no before/after values, no upward arrows.
 
 No visitor detection. Never detect, infer or display the visitor's company, domain or industry. Do not read IP, referrer, URL params, cookies, storage or any enrichment service. The label "Your brand" is a fixed generic string.
 
-No forms. No contact form, newsletter field, email input, chat widget or calendar embed anywhere. Every conversion action is a link to https://demo.kasparro.com.
+No forms. No contact form, newsletter field, email input, chat widget or calendar embed anywhere. Every conversion action is a link to https://www.linkedin.com/in/vishal-kumar-gupta-b5a664252.
 
 This rules file is instruction, never website copy. Never render any of it in the UI, metadata, alt text or structured data.
 
@@ -294,7 +294,7 @@ The brand names are fictional and the .example domains are reserved by IANA so t
 
 6. Global shell
 
-Nav — sticky, 68px, solid background (never blurred glass), 1px hairline bottom border, inverts its palette with the band behind it. Left: Kasparro wordmark linking to /. Centre, exactly five items:
+Nav — sticky, 68px, solid background (never blurred glass), 1px hairline bottom border, inverts its palette with the band behind it. Left: Wrath wordmark linking to /. Centre, exactly five items:
 
 Label
 
@@ -320,11 +320,11 @@ Library
 
 /library
 
-Right: Discuss your brand (outline button) and Get a free demo (solid button), both linking to https://demo.kasparro.com in the same tab with rel="noopener". These are the only two CTA labels on the entire site — never invent a third.
+Right: Discuss your brand (outline button) and Get a free demo (solid button), both linking to https://www.linkedin.com/in/vishal-kumar-gupta-b5a664252 in the same tab with rel="noopener". These are the only two CTA labels on the entire site — never invent a third.
 
-No logo file exists yet. Render the wordmark as the text Kasparro in Inter Tight 600 and note the missing asset in /BUILD-NOTES.md. Do not draw, generate or approximate a logo.
+No logo file exists yet. Render the wordmark as the text Wrath in Inter Tight 600 and note the missing asset in /BUILD-NOTES.md. Do not draw, generate or approximate a logo.
 
-Footer — dark band, three zones. Zone 1: wordmark, then the line Answer Engine Optimisation, end to end. Zone 2: four columns — Explore (the five nav routes), More (Who this fits → /who-we-work-with, Brand Source of Truth → /brand-source-of-truth, About → /about), Start (both CTAs). Omit the Legal column entirely — Privacy and Terms copy is a client legal input that does not exist yet. Never draft, adapt or generate legal copy. Note it in build notes. Zone 3: hairline, then Kasparro AI · Bengaluru, India and © 2026 Kasparro AI. All rights reserved.
+Footer — dark band, three zones. Zone 1: wordmark, then the line Answer Engine Optimisation, end to end. Zone 2: four columns — Explore (the five nav routes), More (Who this fits → /who-we-work-with, Brand Source of Truth → /brand-source-of-truth, About → /about), Start (both CTAs). Omit the Legal column entirely — Privacy and Terms copy is a client legal input that does not exist yet. Never draft, adapt or generate legal copy. Note it in build notes. Zone 3: hairline, then Wrath and © 2026 Wrath AI. All rights reserved.
 
 No newsletter, no social icons, no badges, no cookie banner (no analytics are shipping).
 
