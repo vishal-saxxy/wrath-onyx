@@ -44,7 +44,7 @@ export const inner = {
     ],
     sections: [
       { headline: "Every fix ships with a way to check it.", body: "A fix is written against a specific finding and arrives with the instruction, the reason it matters, and a pass-or-fail acceptance criterion. Checking is not a matter of opinion — either the criterion is met or it is not." },
-      { headline: "Produced here. Published there.", body: "Kasparro produces the approved work and the implementation package. Your team or your partners publish and implement where required.", note: "Delivered means produced and handed over. Prepared means ready and waiting on a dependency. Implementation-ready means complete with instructions and acceptance criteria. Implemented means live on your property." },
+      { headline: "Produced here. Published there.", body: "wrath produces the approved work and the implementation package. Your team or your partners publish and implement where required.", note: "Delivered means produced and handed over. Prepared means ready and waiting on a dependency. Implementation-ready means complete with instructions and acceptance criteria. Implemented means live on your property." },
     ],
   },
   truth: {
@@ -70,21 +70,21 @@ export const inner = {
       { headline: "Cool at first touch is not cool all night.", body: "The guides separated the feeling of a cool surface from comfort later in the night, and kept the limits of a product test beside the claim it supported. That gave shoppers better questions to ask, and stopped a narrow test result being read as a promise about the whole night." },
       { headline: "Where this stops.", body: "The documented result is an approved five-piece content package and a corresponding technical hand-off, with client approval and the division of publishing responsibilities on record. Full deployment and final live-page verification are separate milestones. No measured change in AI recommendations, search traffic or revenue is established here." },
     ],
-    delivered: "Delivered: Finished page copy · Titles and descriptions · Product and supporting links · Publishing guidance.", prepared: "Prepared: Structured-data materials, prepared for the technical team.", tableHeadline: "Who did what.", table: [["Kasparro", "Created the five final content pieces, incorporated the approved inputs, and supplied the corresponding structured-data materials."], ["Brand team", "Reviewed the content and product inputs, approved the package, and took responsibility for building the content pages."], ["Technical partner", "Was assigned the corresponding technical implementation, with the final approach subject to the brand's own technical decisions."]],
+    delivered: "Delivered: Finished page copy · Titles and descriptions · Product and supporting links · Publishing guidance.", prepared: "Prepared: Structured-data materials, prepared for the technical team.", tableHeadline: "Who did what.", table: [["wrath", "Created the five final content pieces, incorporated the approved inputs, and supplied the corresponding structured-data materials."], ["Brand team", "Reviewed the content and product inputs, approved the package, and took responsibility for building the content pages."], ["Technical partner", "Was assigned the corresponding technical implementation, with the final approach subject to the brand's own technical decisions."]],
   },
   library: { eyebrow: "LIBRARY", headline: ["Field guides."], lead: "Working explanations of how AI answers get built, and what that means for a brand inside them." },
-  about: { eyebrow: "ABOUT", headline: ["Who is behind this."], lead: "Kasparro AI was founded in 2026 in Bengaluru.", principles: [["MEASUREMENT BEFORE OPINION", "Every engagement opens with a reading, not a recommendation."], ["REAL ENGINES, NOT PROXIES", "Real questions go to real answer engines, and what comes back is kept."], ["FIXES, NOT JUST FINDINGS", "A finding without the work to resolve it is half a deliverable."], ["BRAND TRUTH AS INFRASTRUCTURE", "Decide what is true once, then write everything from it."]], facts: ["Founded 2026, Bengaluru", "Clients across five verticals and two continents"] },
+  about: { eyebrow: "ABOUT", headline: ["Who is behind this."], lead: "wrath AI.", principles: [["MEASUREMENT BEFORE OPINION", "Every engagement opens with a reading, not a recommendation."], ["REAL ENGINES, NOT PROXIES", "Real questions go to real answer engines, and what comes back is kept."], ["FIXES, NOT JUST FINDINGS", "A finding without the work to resolve it is half a deliverable."], ["BRAND TRUTH AS INFRASTRUCTURE", "Decide what is true once, then write everything from it."]], facts: [] },
   dimensions: homepage.blocks.dimensions.items,
 } as const;
 
 export const meta = {
-  why: ["Why now — Kasparro", "Why now", "Search returns a field of options. An answer returns a conclusion. Why visibility inside an AI answer is a different problem from visibility in search.", "/why-ai-answers"],
-  measurement: ["What we measure — Kasparro", "What we measure", "Seven dimensions of how AI finds, reads, trusts and represents a brand, with the engine response behind every finding kept and re-readable.", "/measurement"],
-  fixes: ["What we fix — Kasparro", "What we fix", "Four workstreams covering the surfaces that shape what an engine says: technical, content, authority and user voice.", "/fixes"],
-  truth: ["Brand Source of Truth — Kasparro", "Brand Source of Truth", "One approved factual foundation for everything a brand says, so contradictions get ruled on rather than repeated.", "/brand-source-of-truth"],
-  fit: ["Who this fits — Kasparro", "Who this fits", "Built for e-commerce and D2C, SaaS, services, healthcare and education brands whose buyers have started asking an assistant first.", "/who-we-work-with"],
-  work: ["Work — Kasparro", "Work", "Engagements described by what was produced and who owns each remaining step.", "/work"],
-  case: ["Five buying guides for a bedding brand — Kasparro", "Five buying guides for a bedding brand", "A delivered five-piece content package with structured-data materials prepared and publishing responsibilities assigned.", "/work/bedding-content"],
-  library: ["Field guides — Kasparro", "Field guides", "Working explanations of how AI answers get built, and what that means for a brand inside them.", "/library"],
-  about: ["About — Kasparro", "About", "Kasparro AI was founded in 2026 in Bengaluru.", "/about"],
+  why: ["Why now — wrath", "Why now", "Search returns a field of options. An answer returns a conclusion. Why visibility inside an AI answer is a different problem from visibility in search.", "/why-ai-answers"],
+  measurement: ["What we measure — wrath", "What we measure", "Seven dimensions of how AI finds, reads, trusts and represents a brand, with the engine response behind every finding kept and re-readable.", "/measurement"],
+  fixes: ["What we fix — wrath", "What we fix", "Four workstreams covering the surfaces that shape what an engine says: technical, content, authority and user voice.", "/fixes"],
+  truth: ["Brand Source of Truth — wrath", "Brand Source of Truth", "One approved factual foundation for everything a brand says, so contradictions get ruled on rather than repeated.", "/brand-source-of-truth"],
+  fit: ["Who this fits — wrath", "Who this fits", "Built for e-commerce and D2C, SaaS, services, healthcare and education brands whose buyers have started asking an assistant first.", "/who-we-work-with"],
+  work: ["Work — wrath", "Work", "Engagements described by what was produced and who owns each remaining step.", "/work"],
+  case: ["Five buying guides for a bedding brand — wrath", "Five buying guides for a bedding brand", "A delivered five-piece content package with structured-data materials prepared and publishing responsibilities assigned.", "/work/bedding-content"],
+  library: ["Field guides — wrath", "Field guides", "Working explanations of how AI answers get built, and what that means for a brand inside them.", "/library"],
+  about: ["About — wrath", "About", "wrath AI.", "/about"],
 } as const;

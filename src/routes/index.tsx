@@ -28,20 +28,20 @@ import { canonicalUrl } from "@/lib/site";
 export const Route = createFileRoute("/")({staticData:{sitemap:true},
   head: () => ({
     meta: [
-      { title: "Kasparro — Be the brand AI recommends." },
+      { title: "wrath — Be the brand AI recommends." },
       { name: "description", content: "Measure what AI says about your brand, find what sits behind it, fix it, and verify the change. Answer Engine Optimisation, end to end." },
-      { property: "og:title", content: "Kasparro — Be the brand AI recommends." },
+      { property: "og:title", content: "wrath — Be the brand AI recommends." },
       { property: "og:description", content: "Measure what AI says about your brand, find what sits behind it, fix it, and verify the change. Answer Engine Optimisation, end to end." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: canonicalUrl("/") },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Kasparro — Be the brand AI recommends." },
+      { name: "twitter:title", content: "wrath — Be the brand AI recommends." },
       { name: "twitter:description", content: "Measure what AI says about your brand, find what sits behind it, fix it, and verify the change. Answer Engine Optimisation, end to end." },
     ],
     links: [{ rel: "canonical", href: canonicalUrl("/") }],
     scripts: [
-      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Organization", name: "Kasparro", url: canonicalUrl("/"), foundingDate: "2026", address: { "@type": "PostalAddress", addressLocality: "Bengaluru", addressCountry: "IN" } }) },
-      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "WebSite", name: "Kasparro", url: canonicalUrl("/") }) },
+      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Organization", name: "wrath", url: canonicalUrl("/") }) },
+      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "WebSite", name: "wrath", url: canonicalUrl("/") }) },
     ],
   }),
   component: Homepage,
@@ -281,7 +281,6 @@ const verticalsWithIcons = [
 function CloseBlock() {
   return <section className="home-band close-band">
     <div className="site-grid fit-zone"><div className="col-span-6"><BandHeader eyebrow={b.close.fitEyebrow} headline={<Headline lines={b.close.fitHeadline}/>} lead={null}/><TextLink label={b.close.link} to={b.close.linkHref}/></div><div className="col-start-8 col-span-5"><ul className="vertical-list">{verticalsWithIcons.map(([vertical, Icon]) => <li key={vertical}><Icon aria-hidden="true" focusable="false" size={20} strokeWidth={1.5}/><span>{vertical}</span></li>)}</ul><ul className="trigger-list">{b.close.triggers.map(trigger => <li key={trigger}><span aria-hidden="true"/>{trigger}</li>)}</ul></div></div>
-    <dl className="credibility-strip site-grid">{b.close.facts.map(fact => <div className="col-span-6" key={fact.value}>{fact.label ? <dt className="label-mono text-grey">{fact.label}</dt> : null}<dd>{fact.value}</dd></div>)}</dl>
     <div className="site-grid close-zone"><div className="col-start-3 col-span-8 close-copy"><h2 className="display-l">{b.close.headline}</h2><p className="lead">{b.close.lead}</p><div className="close-actions"><Button size="lg" asChild><a href={homepage.demoUrl} rel="noopener">{homepage.primaryCta}</a></Button><Button size="lg" variant="secondary" asChild><a href={homepage.demoUrl} rel="noopener">{homepage.secondaryCta}</a></Button></div></div><div className="col-start-5 col-span-4 close-answer" aria-hidden="true"><HeroAnswer quiet/></div></div>
   </section>;
 }

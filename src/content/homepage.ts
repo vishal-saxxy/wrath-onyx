@@ -10,7 +10,7 @@ export const diagramLabels = {
 } as const;
 
 export const homepage = {
-  demoUrl: "https://demo.kasparro.com",
+  demoUrl: "https://www.linkedin.com/in/vishal-kumar-gupta-b5a664252/",
   primaryCta: "Get a free demo",
   secondaryCta: "Discuss your brand",
   blocks: {
@@ -111,7 +111,7 @@ export const homepage = {
       lead: "A clear diagnosis, a prioritised plan and implementation-ready fixes. Components are included where relevant to your business.",
       link: "See what you get",
       linkHref: "/fixes",
-      close: "Kasparro produces the approved work and the implementation package. Your team or your partners publish and implement where required.",
+      close: "wrath produces the approved work and the implementation package. Your team or your partners publish and implement where required.",
       items: [
         { number: "01", name: "Baseline", icon: "Baseline", descriptor: "Where you stand across the dimensions measured.", fragment: { type: "states", dimension: "AI Shortlisting", states: ["Measured", "Not computable"] } },
         { number: "02", name: "Evidence", icon: "Evidence", descriptor: "What each engine said, quoted verbatim and retained.", fragment: { type: "evidence" } },
@@ -153,10 +153,7 @@ export const homepage = {
       triggers: ["Organic traffic holding while discovery falls.", "Engines describing you with stale facts, and no way to see it.", "Needing a defensible baseline before spending on AI content."],
       link: "Who this fits",
       linkHref: "/who-we-work-with",
-      facts: [
-        { label: "Founded", value: "2026, Bengaluru" },
-        { label: "", value: "Clients across five verticals and two continents" },
-      ],
+      facts: [],
       headline: "Find out what the answer says about you.",
       lead: "A free demo on your domain. A focused, fast view of AI visibility and page readiness where there's enough data, showing the largest observed leaks and the evidence behind each.",
     },
