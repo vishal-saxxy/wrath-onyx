@@ -111,7 +111,7 @@ export const homepage = {
       lead: "A clear diagnosis, a prioritised plan and implementation-ready fixes. Components are included where relevant to your business.",
       link: "See what you get",
       linkHref: "/fixes",
-      close: "Wrath produces the approved work and the implementation package. Your team or your partners publish and implement where required.",
+      close: "wrath produces the approved work and the implementation package. Your team or your partners publish and implement where required.",
       items: [
         { number: "01", name: "Baseline", icon: "Baseline", descriptor: "Where you stand across the dimensions measured.", fragment: { type: "states", dimension: "AI Shortlisting", states: ["Measured", "Not computable"] } },
         { number: "02", name: "Evidence", icon: "Evidence", descriptor: "What each engine said, quoted verbatim and retained.", fragment: { type: "evidence" } },

@@ -23,7 +23,7 @@ function NotFoundComponent() {
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   staticData: { sitemap: false },
   head: () => ({
-    meta: [{ charSet: "utf-8" }, { name: "viewport", content: "width=1440" }, { property: "og:site_name", content: "Wrath" }, { property: "og:locale", content: "en_GB" }, ...(SITE_INDEXABLE ? [] : [{ name: "robots", content: "noindex, nofollow" }])],
+    meta: [{ charSet: "utf-8" }, { name: "viewport", content: "width=1440" }, { property: "og:site_name", content: "wrath" }, { property: "og:locale", content: "en_GB" }, ...(SITE_INDEXABLE ? [] : [{ name: "robots", content: "noindex, nofollow" }])],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "preload", href: "/fonts/inter-tight-latin-wght-normal.woff2", as: "font", type: "font/woff2", crossOrigin: "anonymous" },
@@ -43,11 +43,11 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 function Header() {
-  return <header className="sticky top-0 z-50 h-[68px] border-b bg-paper"><div className="site-grid h-full items-center"><Link to="/" className="col-span-2 font-display text-2xl font-semibold">Wrath</Link><nav className="col-span-7 flex items-center justify-center gap-7">{nav.map(([label, to]) => <Link key={to} to={to} className="text-sm font-medium hover:text-signal-blue">{label}</Link>)}</nav><div className="col-span-3 flex justify-end gap-2"><Button variant="secondary" asChild><a href={demo} rel="noopener">Discuss your brand</a></Button><Button asChild><a href={demo} rel="noopener">Get a free demo<ArrowRight aria-hidden="true" focusable="false" size={16} strokeWidth={1.5}/></a></Button></div></div></header>;
+  return <header className="sticky top-0 z-50 h-[68px] border-b bg-paper"><div className="site-grid h-full items-center"><Link to="/" className="col-span-2 font-display text-2xl font-semibold">wrath</Link><nav className="col-span-7 flex items-center justify-center gap-7">{nav.map(([label, to]) => <Link key={to} to={to} className="text-sm font-medium hover:text-signal-blue">{label}</Link>)}</nav><div className="col-span-3 flex justify-end gap-2"><Button variant="secondary" asChild><a href={demo} rel="noopener">Discuss your brand</a></Button><Button asChild><a href={demo} rel="noopener">Get a free demo<ArrowRight aria-hidden="true" focusable="false" size={16} strokeWidth={1.5}/></a></Button></div></div></header>;
 }
 
 function Footer() {
-  return <footer className="dark-band border-t border-hairline-dark bg-ink text-paper-raised"><div className="site-grid py-20"><div className="col-span-4"><Link to="/" className="font-display text-3xl font-semibold">Wrath</Link><p className="lead mt-6 text-grey-on-dark">Answer Engine Optimisation, end to end.</p></div><div className="col-span-8 grid grid-cols-3 gap-6"><FooterColumn heading="Explore" links={nav}/><FooterColumn heading="More" links={more}/><div><h2 className="label-mono text-grey-on-dark">Start</h2><div className="mt-5 flex flex-col items-start gap-3"><a href={demo} rel="noopener">Discuss your brand</a><a href={demo} rel="noopener">Get a free demo</a></div></div></div><div className="col-span-12 mt-20 border-t border-hairline-dark pt-6 text-right text-sm text-grey-on-dark"><span>© 2026 Wrath. All rights reserved.</span></div></div></footer>;
+  return <footer className="dark-band border-t border-hairline-dark bg-ink text-paper-raised"><div className="site-grid py-20"><div className="col-span-4"><Link to="/" className="font-display text-3xl font-semibold">wrath</Link><p className="lead mt-6 text-grey-on-dark">Answer Engine Optimisation, end to end.</p></div><div className="col-span-8 grid grid-cols-3 gap-6"><FooterColumn heading="Explore" links={nav}/><FooterColumn heading="More" links={more}/><div><h2 className="label-mono text-grey-on-dark">Start</h2><div className="mt-5 flex flex-col items-start gap-3"><a href={demo} rel="noopener">Discuss your brand</a><a href={demo} rel="noopener">Get a free demo</a></div></div></div><div className="col-span-12 mt-20 border-t border-hairline-dark pt-6 text-right text-sm text-grey-on-dark"><span>© 2026 wrath. All rights reserved.</span></div></div></footer>;
 }
 function FooterColumn({ heading, links }: { heading: string; links: ReadonlyArray<readonly [string, string]> }) {
   return <div><h2 className="label-mono text-grey-on-dark">{heading}</h2><nav className="mt-5 flex flex-col items-start gap-3">{links.map(([label, to]) => <Link key={to} to={to}>{label}</Link>)}</nav></div>;
