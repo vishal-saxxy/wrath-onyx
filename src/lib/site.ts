@@ -1,4 +1,4 @@
-const rawSiteUrl = (import.meta.env["VITE_SITE_URL"] as string | undefined) ?? "https://kasparro.com";
+const rawSiteUrl = (import.meta.env["VITE_SITE_URL"] as string | undefined) ?? "https://id-preview--61a79795-4c86-49bd-be24-d71b37501c06.lovable.app";
 
 export const SITE_URL = rawSiteUrl.trim().toLowerCase().replace(/\/+$/, "");
 
