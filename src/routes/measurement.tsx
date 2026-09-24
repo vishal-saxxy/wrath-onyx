@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import { EvidenceFrame, MeasurementSystem, PageClose, PageHero, ReadingSections } from "@/components/kasparro/inner-pages";
+import { EvidenceFrame, MeasurementSystem, PageClose, PageHero, ReadingSections } from "@/components/wrath/inner-pages";
 import { homepage } from "@/content/homepage";
 import { inner, meta } from "@/content/inner-pages";
 import { pageMeta } from "@/lib/page-meta";

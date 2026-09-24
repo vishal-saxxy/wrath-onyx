@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero } from "@/components/kasparro/inner-pages";
+import { PageHero } from "@/components/wrath/inner-pages";
 import { inner, meta } from "@/content/inner-pages";
 import { pageMeta } from "@/lib/page-meta";
 export const Route=createFileRoute("/about")({staticData:{sitemap:true},head:()=>pageMeta(...meta.about),component:AboutPage});

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageClose, PageHero, ReadingSections } from "@/components/kasparro/inner-pages";
+import { PageClose, PageHero, ReadingSections } from "@/components/wrath/inner-pages";
 import { inner, meta } from "@/content/inner-pages";
 import { pageMeta } from "@/lib/page-meta";
 import { canonicalUrl } from "@/lib/site";

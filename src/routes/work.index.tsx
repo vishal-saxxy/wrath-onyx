@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageClose, PageHero, SectionLink, WorkSignature } from "@/components/kasparro/inner-pages";
+import { PageClose, PageHero, SectionLink, WorkSignature } from "@/components/wrath/inner-pages";
 import { inner, meta } from "@/content/inner-pages";
 import { pageMeta } from "@/lib/page-meta";
 export const Route=createFileRoute("/work/")({staticData:{sitemap:true},head:()=>pageMeta(...meta.work),component:WorkPage});

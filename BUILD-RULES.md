@@ -13,7 +13,7 @@ Never appears anywhere on this site:
 - Any named competitor, or implied comparison such as "unlike other tools" or "most dashboards"
 - Any duration, turnaround, cadence or SLA
 - Any guarantee or promised improvement
-- The words: probe, audit, platform, software, dashboard, tool (as descriptors of Kasparro), done-for-you, self-serve
+- The words: probe, audit, platform, software, dashboard, tool (as descriptors of Wrath), done-for-you, self-serve
 - Any real company name inside a fabricated AI answer
 - Any chart, graph, sparkline, gauge or progress percentage, anywhere on the site
 
@@ -23,13 +23,13 @@ Causal language is banned. Never write that a source, page or response caused, c
 
 Delivery vocabulary, four distinct states: delivered (produced and handed over) · prepared (ready, awaiting a dependency) · implementation-ready (complete with instructions and acceptance criteria) · implemented (live on the client's property). Never blur them. Nothing on this site may say implemented.
 
-Never write "Kasparro is / helps / provides". No sentence opens with the brand name as subject, with one exception supplied in stage 2.
+Never write "Wrath is / helps / provides". No sentence opens with the brand name as subject, with one exception supplied in stage 2.
 
 Illustrative content rules. Every AI answer, brand, source and claim shown is invented for explanation. It may demonstrate structure and relationships. It may never imply a real measurement, benchmark, result or causal proof. No counts, no rank numerals, no scores, no percentages, no before/after values, no upward arrows.
 
 No visitor detection. Never detect, infer or display the visitor's company, domain or industry. Do not read IP, referrer, URL params, cookies, storage or any enrichment service. The label "Your brand" is a fixed generic string.
 
-No forms. No contact form, newsletter field, email input, chat widget or calendar embed anywhere. Every conversion action is a link to https://demo.kasparro.com.
+No forms. No contact form, newsletter field, email input, chat widget or calendar embed anywhere. Every conversion action is a link to https://www.linkedin.com/in/vishal-kumar-gupta-b5a664252.
 
 This rules file is instruction, never website copy. Never render any of it in the UI, metadata, alt text or structured data.
 
